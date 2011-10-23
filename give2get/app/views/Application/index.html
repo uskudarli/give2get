@@ -76,25 +76,25 @@
 
     <div class="round" id='container'>
         <div id='header'>
-        <div id='title'><a href="index.php" class="home">Give2Get</a></div>
+        <div id='title'><a href="index.jsp" class="home">Give2Get</a></div>
             <div id='actions'>
-            <?php
+            <?jsp
                 if(isset($_SESSION['username'])) {
             ?>
-                Welcome <a href="edit_user.php?email=<?=$_SESSION['email'];?>"><?=$_SESSION['username'];?> <img src="@{'public/images/user_green.png'}"></a> | <a href="sign_out.php">Sign out</a>
+                Welcome <a href="edit_user.jsp?email=<?=$_SESSION['email'];?>"><?=$_SESSION['username'];?> <img src="@{'public/images/user_green.png'}"></a> | <a href="sign_out.jsp">Sign out</a>
 
-            <?php } ?>
+            <?jsp } ?>
             </div>
         </div>
 
-<?php if(isset($_GET['msg'])){ ?>
+<?jsp if(isset($_GET['msg'])){ ?>
             <div id="messages" class="round <?=$_GET['msg_type']?>"><?=$message[$_GET['msg']]?></div>
-<?php } ?>
+<?jsp } ?>
 
 
 
 
-<form id="form_sign_in" action="sign_in.php" method="POST">
+<form id="form_sign_in" action="sign_in.jsp" method="POST">
 <div class="sign_in_box round">
     <div id="sign_in">
         <input id="username" class="validate[required]" type="text" name="username" placeholder="Username"/>
@@ -113,8 +113,8 @@
 
 
 <div class="creation round box small" id="sign_up_box">
-<h3>Sign up to Voterama</h3>
-<form id="form_sign_up" action="sign_up.php" method="POST">
+<h3>Sign up to Give2Get</h3>
+<form id="form_sign_up" action="sign_up.jsp" method="POST">
 
     <table width="100%" cellspacing="0" cellpadding="0">
         <tr>
@@ -151,7 +151,7 @@
 
 <div class="round box small creation" id="msie6">
 <h3>Send Activation</h3>
-<form action="send_password.php" method="POST">
+<form action="send_password.jsp" method="POST">
 
     <table width="100%" cellspacing="0" cellpadding="0">
         <tr>
