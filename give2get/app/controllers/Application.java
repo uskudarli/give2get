@@ -7,6 +7,11 @@ import java.util.*;
 
 import models.*;
 
+import controllers.Security;
+
+
+
+@With(Secure.class)
 public class Application extends Controller {
 
     public static void index() {
@@ -14,8 +19,8 @@ public class Application extends Controller {
         render(users);
     }
 
-    public static void signUp(String name, String surname, String username, String password) {
-    	User user = new User(name, surname, username, password).save();
+    public static void signUp(String name, String surname, String username, String password, String email) {
+    	User user = new User(name, surname, username, password, email).save();
     	renderJSON(user);
     }
 }

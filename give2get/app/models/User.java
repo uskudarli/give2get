@@ -8,16 +8,23 @@ import java.util.*;
 
 @Entity
 public class User extends Model {
+	
+	public Date registrationDate;
+	
     public String name;
     public String surname;
     public String username;
     public String password;
+    public String email;
     public String status;
     
-    public User(String raw_name, String raw_surname, String raw_username, String raw_password) {
-    	this.name = raw_name;
-    	this.surname = raw_surname;
-    	this.username = raw_username;
-    	this.password = raw_password;
+    public User(String name, String surname, String username, String password, String email) {
+    	this.name = name;
+    	this.surname = surname;
+    	this.username = username;
+    	this.password = password;
+    	this.email = email;
+    	this.status = "inactive";
+    	this.registrationDate = new Date();
     }
 }

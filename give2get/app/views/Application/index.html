@@ -1,7 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-
 #{ifnot users}
 	<p>
 		No Users *yet.
@@ -11,7 +10,7 @@
 <ul>
 	#{list items:users, as:'user'}
 	    <li>
-	    	${user.id} - ${user.name} - ${user.surname} - ${user.username} - ${user.password} - ${user.status}
+	    	${user.id} - ${user.name} - ${user.surname} - ${user.username} - ${user.password} - ${user.status} - ${user.email}
 	    </li>
 	#{/list}
 </ul>
@@ -27,143 +26,4 @@
 	})
 </script>
 
-
-        <script>
-            $(document).ready(function(){
-
-                $('#form_sign_up').validationEngine({promptPosition : "centerRight", scroll: false});
-                $('#form_edit_voting').validationEngine({promptPosition : "centerRight", scroll: false});
-                $('#form_add_voting').validationEngine({promptPosition : "centerRight", scroll: false});
-                $('#form_add_admin').validationEngine({promptPosition : "centerRight", scroll: false});
-                $('#form_add_user').validationEngine({promptPosition : "centerRight", scroll: false});
-                $('#form_sign_in').validationEngine({promptPosition : "bottomLeft", scroll: false});
-
-                $('#send_password').overlay({
-                    color: '#ccc',
-                    top: 100
-                });
-
-                $('#sign_up').overlay({
-                    color: '#ccc',
-                    top: 100
-                });
-
-                $('#send_massive_email').overlay({
-                    color: '#ccc',
-                    top: 100
-                });
-
-
-
-                $('#add_voting').overlay({
-                    color: '#ccc',
-                    top: 100
-                });
-                $('#add_administrator').overlay({
-                    color: '#ccc',
-                    top: 100
-                });
-                $('#add_user').overlay({
-                    color: '#ccc',
-                    top: 100
-                });
-
-                $('#messages').click(function() {
-                      $('#messages').slideToggle('slow', function() {});
-                });
-            });
-        </script>
-
-    <div class="round" id='container'>
-        <div id='header'>
-        <div id='title'><a href="index.jsp" class="home">Give2Get</a></div>
-            <div id='actions'>
-            <?jsp
-                if(isset($_SESSION['username'])) {
-            ?>
-                Welcome <a href="edit_user.jsp?email=<?=$_SESSION['email'];?>"><?=$_SESSION['username'];?> <img src="@{'public/images/user_green.png'}"></a> | <a href="sign_out.jsp">Sign out</a>
-
-            <?jsp } ?>
-            </div>
-        </div>
-
-<?jsp if(isset($_GET['msg'])){ ?>
-            <div id="messages" class="round <?=$_GET['msg_type']?>"><?=$message[$_GET['msg']]?></div>
-<?jsp } ?>
-
-
-
-
-<form id="form_sign_in" action="sign_in.jsp" method="POST">
-<div class="sign_in_box round">
-    <div id="sign_in">
-        <input id="username" class="validate[required]" type="text" name="username" placeholder="Username"/>
-        <input id="password" class="validate[required]" type="password" name="password" placeholder="Password"/>
-        <input class="sign_in_submit" type="image" src="@{'public/images/arrow-right.png'}" alt="Sign In" />
-    </div>
-
-    <div id="sign_in_options">
-        <a rel="#sign_up_box" id="sign_up" href="#">I want to <b>sign up!</b></a>
-        <br />
-        <a href="#" rel="#msie6" id="send_password">I forgot my password</a>
-    </div>
-</div>
-</form>
-
-
-
-<div class="creation round box small" id="sign_up_box">
-<h3>Sign up to Give2Get</h3>
-<form id="form_sign_up" action="sign_up.jsp" method="POST">
-
-    <table width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td><input id="name" type="text" name="name" class="validate[required]" placeholder="Name"/></td>
-        </tr>
-        <tr>
-            <td><input id="surname" type="text" name="surname" class="validate[required]" placeholder="Surname"/></td>
-        </tr>
-        <tr>
-            <td><input id="useername" type="text" name="username" class="validate[required]" placeholder="Username"/></td>
-        </tr>
-        <tr>
-            <td><input id="password" type="password" name="password" class="validate[required]" placeholder="Password"/></td>
-        </tr>
-        <tr>
-            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
-        </tr>
-        <tr>
-            <td><input id="organization" type="text" name="organization" placeholder="Organization"/></td>
-        </tr>
-        <tr>
-            <td><input id="job" type="text" name="job" placeholder="Job"/></td>
-        </tr>
-        <tr>
-            <td align="right" colspan="2">
-                <input type="submit" value="Register" />
-            </td>
-        </tr>
-    </table>
-
-</form>
-</div>
-
-
-<div class="round box small creation" id="msie6">
-<h3>Send Activation</h3>
-<form action="send_password.jsp" method="POST">
-
-    <table width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
-        </tr>
-        <tr>
-            <td align="right" colspan="2">
-                <input type="submit" value="Register" />
-            </td>
-        </tr>
-    </table>
-
-</form>
-</div>
 
