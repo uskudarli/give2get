@@ -47,89 +47,95 @@
             });
         </script>
 
-    <div class="round" id='container'>
+
         <div id='header'>
         <div id='title'><a href="index.jsp" class="home">Give2Get</a></div>
             <div id='actions'>
-            <?jsp
-                if(isset($_SESSION['username'])) {
-            ?>
+            
+             #{if logged_in}            
                 Welcome <a href="edit_user.jsp?email=<?=$_SESSION['email'];?>"><?=$_SESSION['username'];?> <img src="@{'public/images/user_green.png'}"></a> | <a href="sign_out.jsp">Sign out</a>
-
-            <?jsp } ?>
+             #{/if}
             </div>
         </div>
 
-<?jsp if(isset($_GET['msg'])){ ?>
-            <div id="messages" class="round <?=$_GET['msg_type']?>"><?=$message[$_GET['msg']]?></div>
-<?jsp } ?>
+#{errors}
+        <div id="messages" class="round error">${error}</div>
+#{/errors}
 
 
 
+		<form id="form_sign_in" action="@{Application.signIn()}" method="POST">
+		<div class="sign_in_box round">
+		    <div id="sign_in">
+		        <input id="username" class="validate[required]" type="text" name="username" placeholder="Username"/>
+		        <input id="password" class="validate[required]" type="password" name="password" placeholder="Password"/>
+		        <input class="sign_in_submit" type="image" src="@{'public/images/arrow-right.png'}" alt="Sign In" />
+		    </div>
+		
+		    <div id="sign_in_options">
+		        <a rel="#sign_up_box" id="sign_up" href="#">I want to <b>sign up!</b></a>
+		        <br />
+		        <a href="#" rel="#msie6" id="send_password">I forgot my password</a>
+		    </div>
+		</div>
+		</form>
+		
+		
+		<div class="creation round box small" id="sign_up_box">
+		<h3>Be a part of Give2Get</h3>
+		<form id="form_sign_up" action="@{Application.signUp()}" method="POST">
+		
+		    <table width="100%" cellspacing="0" cellpadding="0">
+		        <tr>
+		            <td><input id="name" type="text" name="name" class="validate[required]" placeholder="Name"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="surname" type="text" name="surname" class="validate[required]" placeholder="Surname"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="username" type="text" name="username" class="validate[required]" placeholder="Username"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="password" type="password" name="password" class="validate[required]" placeholder="Password"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
+		        </tr>
+		        <tr>
+		            <td>
+		            	<img src="@{Application.captcha(randomID)}" />
+    					<br />
+    					<input type="text" name="code" id="code" size="18" value="" />
+    					<input type="hidden" name="randomID" value="${randomID}" />
+    				</td>
+		        </tr>  
 
-<form id="form_sign_in" action="sign_in.jsp" method="POST">
-<div class="sign_in_box round">
-    <div id="sign_in">
-        <input id="username" class="validate[required]" type="text" name="username" placeholder="Username"/>
-        <input id="password" class="validate[required]" type="password" name="password" placeholder="Password"/>
-        <input class="sign_in_submit" type="image" src="@{'public/images/arrow-right.png'}" alt="Sign In" />
-    </div>
+		        <tr>
+		            <td align="right" colspan="2">
+		                <input type="submit" value="Register" />
+		            </td>
+		        </tr>
+		    </table>
+		
+		</form>
+		</div>
+		
+		
+		<div class="round box small creation" id="msie6">
+		<h3>Send Activation</h3>
+		<form action="send_password.jsp" method="POST">
+		
+		    <table width="100%" cellspacing="0" cellpadding="0">
+		        <tr>
+		            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
+		        </tr>
+		        <tr>
+		            <td align="right" colspan="2">
+		                <input type="submit" value="Register" />
+		            </td>
+		        </tr>
+		    </table>
+		
+		</form>
+		</div>
 
-    <div id="sign_in_options">
-        <a rel="#sign_up_box" id="sign_up" href="#">I want to <b>sign up!</b></a>
-        <br />
-        <a href="#" rel="#msie6" id="send_password">I forgot my password</a>
-    </div>
-</div>
-</form>
-
-
-
-<div class="creation round box small" id="sign_up_box">
-<h3>Sign up to Give2Get</h3>
-<form id="form_sign_up" action="@{Application.signUp()}" method="POST">
-
-    <table width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td><input id="name" type="text" name="name" class="validate[required]" placeholder="Name"/></td>
-        </tr>
-        <tr>
-            <td><input id="surname" type="text" name="surname" class="validate[required]" placeholder="Surname"/></td>
-        </tr>
-        <tr>
-            <td><input id="username" type="text" name="username" class="validate[required]" placeholder="Username"/></td>
-        </tr>
-        <tr>
-            <td><input id="password" type="password" name="password" class="validate[required]" placeholder="Password"/></td>
-        </tr>
-        <tr>
-            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
-        </tr>
-        <tr>
-            <td align="right" colspan="2">
-                <input type="submit" value="Register" />
-            </td>
-        </tr>
-    </table>
-
-</form>
-</div>
-
-
-<div class="round box small creation" id="msie6">
-<h3>Send Activation</h3>
-<form action="send_password.jsp" method="POST">
-
-    <table width="100%" cellspacing="0" cellpadding="0">
-        <tr>
-            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
-        </tr>
-        <tr>
-            <td align="right" colspan="2">
-                <input type="submit" value="Register" />
-            </td>
-        </tr>
-    </table>
-
-</form>
-</div>

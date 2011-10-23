@@ -14,16 +14,3 @@
 	    </li>
 	#{/list}
 </ul>
-
-<p>
-	<a id="signUp" href="#">Sign Up</a>
-</p>
-
-<script type="text/javascript" charset="utf-8">
-	// Create user
-	$('#signUp').click(function() {
-		$.post('@{signUp()}', {name: prompt('whats your name?')})
-	})
-</script>
-
-
