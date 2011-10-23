@@ -64,7 +64,7 @@
 
 
 
-		<form id="form_sign_in" action="@{Application.signIn()}" method="POST">
+		<form id="form_sign_in" action="@{Secure.authenticate()}" method="POST">
 		<div class="sign_in_box round">
 		    <div id="sign_in">
 		        <input id="username" class="validate[required]" type="text" name="username" placeholder="Username"/>

@@ -27,4 +27,8 @@ public class User extends Model {
     	this.status = "inactive";
     	this.registrationDate = new Date();
     }
+    
+    public static User connect(String username, String password) {
+        return find("byUsernameAndPassword", username, password).first();
+    }
 }
