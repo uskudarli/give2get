@@ -28,7 +28,7 @@ public class User extends Model {
     	this.registrationDate = new Date();
     }
     
-    public static User connect(String username, String password) {
+    public static User getUser(String username, String password) {
         return find("byUsernameAndPassword", username, password).first();
     }
 }

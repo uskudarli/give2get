@@ -51,10 +51,11 @@
         <div id='header'>
         <div id='title'><a href="index.jsp" class="home">Give2Get</a></div>
             <div id='actions'>
-            
-             #{if logged_in}            
-                Welcome <a href="edit_user.jsp?email=<?=$_SESSION['email'];?>"><?=$_SESSION['username'];?> <img src="@{'public/images/user_green.png'}"></a> | <a href="sign_out.jsp">Sign out</a>
-             #{/if}
+	             #{if session.username}            
+	                Welcome <a href="#" onclick="alert('go to {Application.edit}');">
+	                ${session.username} 
+	                <img src="@{'public/images/user_green.png'}"></a> | <a href="@{Secure.logout()}">Sign out</a>
+	             #{/if}
             </div>
         </div>
 
@@ -63,7 +64,7 @@
 #{/errors}
 
 
-
+		#{ifnot session.username}
 		<form id="form_sign_in" action="@{Secure.authenticate()}" method="POST">
 		<div class="sign_in_box round">
 		    <div id="sign_in">
@@ -79,7 +80,7 @@
 		    </div>
 		</div>
 		</form>
-		
+		#{/ifnot}
 		
 		<div class="creation round box small" id="sign_up_box">
 		<h3>Be a part of Give2Get</h3>

@@ -10,7 +10,6 @@ import java.util.*;
 
 import models.*;
 
-//@With(Secure.class)
 public class Application extends Controller {
 
 	public static void captcha(String id) {
@@ -21,7 +20,7 @@ public class Application extends Controller {
 	}
 	
     public static void index() {
-    	List users = User.find("order by id desc").fetch();
+    	List<User> users = User.find("order by id desc").fetch();
         render(users);
     }
 
@@ -30,7 +29,4 @@ public class Application extends Controller {
     	renderJSON(user);
     }
     
-    public static void signIn() {
-    	
-    }
 }
