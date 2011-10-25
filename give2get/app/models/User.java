@@ -1,6 +1,7 @@
 package models;
 
 import play.*;
+import play.data.validation.*;
 import play.db.jpa.*;
 
 import javax.persistence.*;
@@ -11,12 +12,33 @@ public class User extends Model {
 	
 	public Date registrationDate;
 	
+	@Required
+	@MaxSize(100)
+	@Match("[a-zA-Z]")
     public String name;
+	
+	@Required
+	@MaxSize(100)
+	@Match("[a-zA-Z]")
     public String surname;
-    public String username;
-    public String password;
+    
+	@Required
+	@MaxSize(100)
+	public String username;
+    
+	@Required
+	@MaxSize(100)
+	@Min(4)
+	public String password;
+    
+    @Required
+    @MaxSize(100)
+    @Email
     public String email;
+    
     public String status;
+    public int reputation;
+    
     
     public User(String name, String surname, String username, String password, String email) {
     	this.name = name;
