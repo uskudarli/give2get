@@ -8,8 +8,9 @@ import java.util.*;
 
 @Entity
 public class Rating extends Model {
+	@OneToOne
     public Service service;
     public User rater;
     public int rating;
-    public String status; //Rated, Waiting Rating
+    public String status; //Rated, Awaiting Rating
 }

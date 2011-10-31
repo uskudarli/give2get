@@ -8,10 +8,17 @@ import play.cache.*;
 
 import java.util.*;
 
+import org.eclipse.jdt.core.dom.ThisExpression;
+
 import models.*;
 
 public class Application extends Controller {
-
+	
+    public static void index() {
+    	List<User> users = User.find("order by id desc").fetch();
+        render(users);
+    }
+    
 	public static void captcha(String id) {
 	    Images.Captcha captcha = Images.captcha();
 	    String code = captcha.getText("#222222");
@@ -19,14 +26,17 @@ public class Application extends Controller {
 	    renderBinary(captcha);
 	}
 	
-    public static void index() {
-    	List<User> users = User.find("order by id desc").fetch();
-        render(users);
-    }
-
     public static void signUp(String name, String surname, String username, String password, String email) {
-    	User user = new User(name, surname, username, password, email).save();
-    	renderJSON(user);
+    	
+    	if (validation.hasErrors()) {
+            params.flash(); // add http parameters to the flash scope
+            validation.keep(); // keep the errors for the next request
+            index();
+    	}
+    	else {
+    		User user = new User(name, surname, username, password, email).save();
+    		renderJSON(user);
+    	}
     }
     
 }

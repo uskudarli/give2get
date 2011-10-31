@@ -1,11 +1,13 @@
 package controllers;
 
+import java.util.List;
+
 import play.Logger;
 import play.mvc.*;
 import models.*;
 
 public class Security extends Secure.Security {
-
+	
 	static boolean authenticate(String username, String password) {
 		return User.getUser(username, password) != null;
     }
@@ -16,6 +18,7 @@ public class Security extends Secure.Security {
 		// If profile is inactive
 	    if("inactive".equals(User.find("byUsername", connected()).<User>first().status)) {
 	        //return User.find("byUsername", connected()).<User>first().status == "admin";
+
 	    	return false;
 	    }
 	    else if("admin".equals(User.find("byUsername", connected()).<User>first().status)){
@@ -32,8 +35,8 @@ public class Security extends Secure.Security {
 	
 	static void onCheckFailed(String profile) {
 		Logger.warn("Failed auth for profile -> %s", profile);
-		forbidden();
-		//Application.index();
+		//forbidden();
+		Application.index();
 	}
 	
 	static void onAuthenticated() {
@@ -45,6 +48,10 @@ public class Security extends Secure.Security {
 		Home.index();
 	}
 	
+	static void onAuthanticationFailed() {
+		
+	}
+
 
 
 

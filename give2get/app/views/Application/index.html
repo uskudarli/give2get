@@ -1,16 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{ifErrors}
- 
-   <h1>Oops…</h1>
- 
-   #{errors}
-       <li>${error}</li>
-   #{/errors}
- 
-#{/ifErrors}
-
 #{ifnot users}
 	<p>
 		No Users *yet.
@@ -24,3 +14,4 @@
 	    </li>
 	#{/list}
 </ul>
+

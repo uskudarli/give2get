@@ -59,9 +59,25 @@
             </div>
         </div>
 
-#{errors}
-        <div id="messages" class="round error">${error}</div>
-#{/errors}
+
+#{if session.error}
+ 		    <div id="messages" class="round error">
+ 			<ul>   
+	        <li>Oops.. ${session.error}</li>
+	        </ul>
+	        </div>
+ #{/if}
+
+ 		#{ifErrors}
+ 		    <div id="messages" class="round error">
+ 			<ul>
+	 		#{errors}    
+	        <li>${error}</li>
+	        #{/errors}
+	        </ul>
+	        </div>
+	    #{/ifErrors}
+
 
 
 		#{ifnot session.username}

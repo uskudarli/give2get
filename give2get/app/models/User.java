@@ -14,12 +14,10 @@ public class User extends Model {
 	
 	@Required
 	@MaxSize(100)
-	@Match("[a-zA-Z]")
     public String name;
 	
 	@Required
 	@MaxSize(100)
-	@Match("[a-zA-Z]")
     public String surname;
     
 	@Required
@@ -39,6 +37,14 @@ public class User extends Model {
     public String status;
     public int reputation;
     
+    public String phone;
+    public Boolean avatar;
+    
+    public String participantRating;
+    public String serviceRating;
+    
+    @OneToMany
+    public List<Service> services;
     
     public User(String name, String surname, String username, String password, String email) {
     	this.name = name;

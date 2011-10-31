@@ -30,9 +30,6 @@ public class Service extends Model {
     
     public Timestamp creationDate;
     
-    @OneToMany
-    public List<Comment> comment;
-    
     public String status;
     public boolean provided;
     public boolean consumed;

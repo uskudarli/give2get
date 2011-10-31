@@ -23,7 +23,8 @@ public class Home extends Controller {
  
     @Check("user")
     public static void index() {
-        render();
+    	List<User> services = Service.find("order by id desc").fetch();
+        render(services);
     }
     
 }
