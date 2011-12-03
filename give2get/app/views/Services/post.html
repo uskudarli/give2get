@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Post New Service' /}
+
+<div id="new_service">
+
+    <h2>Post New Service</h2>
+
+    #{ifErrors}
+        <p class="error">
+            Please correct these errors!
+        </p>        
+    #{/ifErrors}
+
+    
+    #{form @postNewService()}
+
+    #{field 'title'}
+        <div class="signupelement">
+            <label class="signuptitle">Title</label><br>                                                           
+            <input type="text" name="${field.name}" tabindex="1" class="new_post_title" value="${flash.title}"/>
+            <span class="error">#{error 'title' /}</span>
+        </div>
+    #{/field}
+
+
+    #{field 'description'}
+        <div class="signupelement">
+            <label class="signuptitle">Description</label><br>
+            <textarea name="${field.name}" class="new_service">${flash.description}</textarea>
+            <span class="error">#{error 'description' /}</span>
+        </div>
+    #{/field}
+
+
+    #{field 'startdate'}
+        <div class="signupelement">
+            <label class="signuptitle">Start Date</label><br>
+            <input name="startdate" value="${flash.startdate}">
+            <input type=button value="select" onclick="displayDatePicker('startdate', this);">
+            <span class="error">#{error 'startdate' /}</span>
+        </div>
+    #{/field}
+
+
+    #{field 'enddate'}
+        <div class="signupelement">
+            <label class="signuptitle">End Date</label><br>
+            <input name="enddate" value="${flash.enddate}">
+            <input type=button value="select" onclick="displayDatePicker('enddate', this);">
+            <span class="error">#{error 'enddate' /}</span>
+        </div>
+    #{/field}
+
+    #{field 'duration'}
+        <div class="signupelement">
+            <label class="signuptitle">Duration</label><br>
+            <input type="text" name="${field.name}" size="30" tabindex="2" class="new_service" value="${flash.duration}"/>
+            <span class="error">#{error 'duration' /}</span>
+        </div>
+    #{/field}
+   
+    #{field 'location'}
+        <div class="signupelement">
+            <label class="signuptitle">Location</label><br>
+            <input type="text" name="${field.name}" size="30" tabindex="2" class="new_service" value="${flash.location}"/>
+            <span class="error">#{error 'location' /}</span>
+        </div>
+    #{/field}
+
+
+        <div class="signupelement">
+            <input type="submit" value="Post"/>
+        </div>
+
+    #{/form}
+
+</div>
+
+#{if flash.success}
+<div class="container">
+    <p id="status">
+        ${flash.success}
+    </p>
+</div>
+#{/if}
+

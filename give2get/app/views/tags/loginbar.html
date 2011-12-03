@@ -1,0 +1,24 @@
+#{form @Application.login()}
+<div id="login">
+
+    <div class="loginelement">
+        <label class="logintitle">Email</label>
+        <input type="text" name="email" class="field border" tabindex="1"/>
+    </div>
+
+    <div class="loginelement">
+        <label class="logintitle">Password</label>
+        <input type="password" name="password" class="field border" tabindex="2"/>
+    </div>
+
+    <div class="loginelement" style="margin-left:10px;">
+        <input type="image" src="@{'/public/images/login-button.png'}" class="login-button" value="Login" tabindex="4"/>
+    </div>
+
+    <div class="loginelement" style="margin-left:10px; margin-top:3px;">
+        <a href="@{Application.signup()}" title="Sign Up">Sign Up</a>
+    </div>
+
+</div>
+#{/form}
+

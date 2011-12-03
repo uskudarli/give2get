@@ -1,0 +1,37 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - New Comment' /}
+
+
+<div id="service_list">
+
+    <p id="title_profile">${services.size()} Available Services</p>
+
+    <table width="100%" id="table_service_list">
+
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Provider</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        #{list services, as:'service'}
+        <tr class="${service.oddOrEven}">
+            <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+            <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>            
+            <td style="text-align:center;">${service.created}</td>
+            <td style="text-align:center;">${service.status}</td>
+            <td style="text-align:center;"><input type="submit" value="Request"/></td>
+        </tr>
+        #{/list}
+
+        </tbody>
+
+    </table>
+
+</div>

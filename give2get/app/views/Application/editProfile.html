@@ -1,0 +1,105 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Profile' /}
+
+
+<div id="profile">
+
+    <!-- User Basic Info & Rating -->
+    <div id="info_and_rating">
+
+        <!-- User Name -->
+        <font id="username">${username}</font> 
+        
+        <table width="100%">
+
+            <tr>
+
+                <!-- Basic User Info -->
+                <td width="50%">
+					#{form @Application.completeEditProfile()} 
+                    <table id="profile_basic_info" width="100%" border="1">
+                        <tr class="odd">
+                            <td>Email</td>
+                            <td><input type="text" name="email" value="${user.getRegistration().getEmail()}"/></td>
+                        </tr>
+                        <tr class="even">
+                            <td>First Name</td>
+                            <td><input type="text" name="firstName" tabindex="1" value="${user.getRegistration().getFirstname()}"/></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Last Name</td>
+                            <td><input type="text" name="lastName" tabindex="1" value="${user.getRegistration().getLastname()}"/></td>
+                        </tr>
+                        <tr class="even">
+                            <td>Member Since</td>
+                            <td>${user.getRegistration().getActivated()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td># of Posted Services</td>
+                            <td>${user.getNumOfPostedServices()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td># of Comments</td>
+                            <td>${user.getNumOfComments()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Rating</td>
+                            <td>270</td>
+                        </tr>
+                         <tr class="even">
+                         	<td><input type="submit" value="Post"/></td>
+                    </table>
+					#{/form}
+                </td>
+
+
+                <!-- Rating -->
+                <td valign="middle" style="vertical-align:middle;" width="50%">
+                    <p id="rating">270</p>                
+
+                </td>
+
+            </tr>
+        </table>
+
+    </div>
+
+
+    <!-- My Posted Services -->
+    <div id="user_services">
+
+        <p id="title_profile">My Last 15 Services</p>
+
+        <table width="100%" id="user_posted_services">
+
+            <thead>
+            <tr>
+                <th>Title</th>                
+                <th>Created</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list userProvidedServices, as:'service'}
+            <tr class="${service.oddOrEven}">
+                <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+                <td style="text-align:center;">${service.created}</td>
+                <td style="text-align:center;">${service.status}</td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- My Requested Services -->
+    <div id="user_requested_services">
+    </div>
+
+
+</div>
