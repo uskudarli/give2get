@@ -213,9 +213,11 @@ public class Application extends Controller {
     
     public static final void search(String keyword,String provider,String date) {
 
-    		//   Search Results
-            List<Service> services = DAO.getSearchResults(keyword,provider,date);
-            render(services, keyword,provider,date);
+    		
+        //   Search Results
+        List<Service> services = DAO.getSearchResults(keyword,provider,date);
+
+        render(services, keyword,provider,date);
     }
 
     public static final void profile() {

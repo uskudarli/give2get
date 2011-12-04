@@ -5,6 +5,7 @@ import com.boun.give2get.db.DAO;
 import com.boun.give2get.core.Messages;
 import org.apache.log4j.Logger;
 
+
 /**
  * Created by IntelliJ IDEA.
  * User: canelmas
@@ -13,7 +14,7 @@ import org.apache.log4j.Logger;
  * To change this template use File | Settings | File Templates.
  */
 @OnApplicationStart
-public class Bootstrap extends Job{
+public class Bootstrap extends Job {
 
     private static final Logger log = Logger.getLogger(Bootstrap.class);
 
