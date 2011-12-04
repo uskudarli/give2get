@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Service Detail' /}
+
+
+<div id="service_detail">
+
+    <p id="title_service_detail">${service.title}</p>
+
+
+    <!-- Service Detail -->
+    <div id="detail">
+
+        <table width="100%" id="details">
+            <tr>
+
+                <!-- First Set of Data -->
+                <td>
+                #{form @Services.completeEditService()} 
+                    <table width="100%">
+                        <tr class="odd">
+                            <td>Title</td>
+                            <td><input type="hidden" name="serviceId" tabindex="1" value="${id}"/>
+                            <input type="text" name="title" tabindex="1" size="120" value="${service.title}"/></td>
+                        </tr>
+                        <tr class="even">
+                            <td>Description</td>
+                            <td><input type="text" name="description" tabindex="1" size="120" value="${service.description}"/></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Location</td>
+                            <td><input type="text" name="location" tabindex="1" size="120" value="${service.location}"/></td>
+                        </tr>
+                        <tr class="even">
+                            <td>Duration</td>
+                            <td><input type="text" name="duration" tabindex="1" size="120" value="${service.duration}"/></td>
+                        </tr>
+                        <tr class="even">
+                            <td></td>
+                            <td>
+                            	<input type="submit" value="Submit"/>
+                            </td>
+                        </tr>
+                    </table>
+				#{/form}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>

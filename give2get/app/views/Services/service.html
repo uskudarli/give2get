@@ -70,7 +70,12 @@
                         <tr class="even">
                             <td></td>
                             <td>
+                            #{if userId != service.providerId}
                                 <input type="submit" value="Request"/>
+                            #{/if}
+                            #{else}
+                            	<a href="/editService/${service.id}">Edit Service</a>
+                            #{/else}
                             </td>
 
                         </tr>

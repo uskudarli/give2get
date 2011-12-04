@@ -107,15 +107,63 @@ public class Services extends Controller {
 
         }
 
+        int userId = Integer.parseInt(session.get("userid"));
         Service service  = DAO.getServiceDetail(id);
 
         List<Comment> comments = service.getComments();
 
-        render(service, comments);
+        render(service, comments,userId);
 
+    }
+    
+    public static final void editService(int id) {
+
+        if (session.get("userid") == null) {
+
+            Application.index();           
+
+        }
+        
+        int userId = Integer.parseInt(session.get("userid"));
+        
+        Service service  = DAO.getServiceDetail(id);
+        
+        if (userId != service.getProviderId()) {
+
+            Application.index();           
+
+        }
+        render(service,id);
     }
 
 
+    public static final void completeEditService(
+    		String title,
+            String description,
+            String startdate,
+            String enddate,
+            String duration,
+            String location,
+            String serviceId,
+            String period) {
+
+        if (session.get("userid") == null) {
+
+            Application.index();           
+
+        }
+        
+        String userId = session.get("userid");
+        
+        Service service = new Service(title, description, startdate, enddate, duration, location, period);
+        
+        System.out.println("title:"+service.getTitle());
+        
+        DAO.completeEditService(service,userId,serviceId);
+        
+        service(Integer.parseInt(serviceId));
+    }
+    
     public static final void newComment(int serviceId, String title) {
 
         render(serviceId, title);

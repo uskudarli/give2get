@@ -1114,7 +1114,6 @@ public final class DAO {
             pstmt = conn.prepareStatement("UPDATE registrations r,users u SET r.email='"+email+"', r.firstname='"+firstName+"', r.lastname='"+lastName+"' WHERE u.id="+userId+" and u.reg_id = r.id;");
 
             pstmt.executeUpdate();
-            System.out.println("update count:"+pstmt.getUpdateCount());
             conn.commit();
             
         } catch (Exception e) {
@@ -1131,6 +1130,39 @@ public final class DAO {
 
         }
 
+    }
+    
+    public static final void completeEditService(Service service,String userId,String serviceId) {
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+
+        try {
+
+            conn = getConnection();
+
+            System.out.println("userIdddd:"+userId);
+            pstmt = conn.prepareStatement("UPDATE services SET title='"+service.getTitle()+"', " +
+            				"description='"+service.getDescription()+"', location='"+service.getLocation()+"', " +
+            				"duration='"+service.getDuration()+"' WHERE id='"+serviceId+"' and " +
+            				"provider_id = '"+userId+"';");
+
+            pstmt.executeUpdate();
+            conn.commit();
+            
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+            close(pstmt);
+            close(conn);
+
+        }
     }
     
     
@@ -1207,6 +1239,9 @@ public final class DAO {
                     "WHERE s.provider_id != ? AND s.status = ? AND r.id = u.reg_id AND u.id = s.provider_id " +
                     "ORDER BY s.created DESC LIMIT 50");
 
+            pstmt.setInt(1,     userId);
+            pstmt.setString(2,  "WAITING_FOR_REQUESTS");
+            
             rs = pstmt.executeQuery();
 
             services = new ArrayList<Service>();

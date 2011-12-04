@@ -14,10 +14,11 @@ GET     /complete                               Application.complete
 
 
 
-#   Post New Service
+#   Service
 GET     /services                               Services.list
 GET     /post                                   Services.post
 POST    /post                                   Services.saveService
+GET		/editService/{id} 						Services.editService
 
 
 #   Show Service Detail
