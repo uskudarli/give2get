@@ -66,6 +66,34 @@
 
     </div>
 
+	<!-- My Skills -->
+    <div id="user_services">
+
+        <p id="title_profile">My Skills</p>
+
+        <table width="100%" id="user_posted_services">
+
+            <thead>
+            <tr>
+                <th>Title</th>                
+                <th>Description</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list userSkills, as:'skill'}
+            <tr class="${skill.oddOrEven}">
+                <td>${skill.title.length() > 200 ? skill.title[0..200] + '..' : skill.title}</a></td>
+                <td>${skill.description}</td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
     <!-- My Posted Services -->
     <div id="user_services">
