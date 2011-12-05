@@ -19,6 +19,8 @@ GET     /services                               Services.list
 GET     /post                                   Services.post
 POST    /post                                   Services.saveService
 GET		/editService/{id} 						Services.editService
+POST    /request                                Services.request
+GET     /requesters/{serviceId}                 Services.requesters
 
 
 #   Show Service Detail

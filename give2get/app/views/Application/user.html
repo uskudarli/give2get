@@ -40,19 +40,21 @@
                         </tr>
                         <tr class="odd">
                             <td>Rating</td>
-                            <td>270</td>
+                            <td>${user.getRating()}</td>
                         </tr>
 
                     </table>
 
                 </td>
 
-
+                
                 <!-- Rating -->
                 <td valign="middle" style="vertical-align:middle;" width="50%">
-                    <p id="rating">270</p>
-
+                    <p>Rating</p>
+                    <p class="userrating">${user.getRating()}</p>
                 </td>
+
+
 
             </tr>
         </table>
@@ -63,8 +65,9 @@
     <!-- User Services -->
     <div id="user_services">
 
-        <p id="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Services</p>
+        <p class="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Services</p>
 
+        #{if userServices}
         <table width="100%" id="user_posted_services">
 
             <thead>
@@ -91,6 +94,10 @@
             </tbody>
 
         </table>
+        #{/if}
+        #{else}
+        <p align="center">No Provided Services</p>
+        #{/else}
 
     </div>
 

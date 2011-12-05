@@ -33,6 +33,12 @@ public final class MailFactory {
     private static String welcomeSubject;
     private static String welcomeContent;
 
+    private static String newRequestSubject;
+    private static String newRequestContent;
+
+    private static String acceptedRequestSubject;
+    private static String acceptedRequestContent;
+
 
     //  AWS Credentials
     private static final String ACCESS_KEY = "AKIAJGSRHPNJSO7SWAGQ";
@@ -56,10 +62,21 @@ public final class MailFactory {
 
         from = otherProps.getProperty("from");
 
+        //  Registration Content
         registrationContent = otherProps.getProperty("register.content");
         registrationSubject = otherProps.getProperty("register.subject");
+
+        //  Welcome Content
         welcomeContent      = otherProps.getProperty("welcome.content");
         welcomeSubject      = otherProps.getProperty("welcome.subject");
+
+        //  New Request Content
+        newRequestContent   = otherProps.getProperty("newrequest.content");
+        newRequestSubject   = otherProps.getProperty("newrequest.subject");
+
+        //  Accepted Request Content
+        acceptedRequestContent  = otherProps.getProperty("acceptedrequest.content");
+        acceptedRequestSubject  = otherProps.getProperty("acceptedrequest.subject");
 
     }
 
@@ -76,6 +93,22 @@ public final class MailFactory {
 
     public static String getFrom() {
         return from;
+    }
+
+    public static String getAcceptedRequestSubject() {
+        return acceptedRequestSubject;
+    }
+
+    public static String getAcceptedRequestContent() {
+        return acceptedRequestContent;
+    }
+
+    public static String getNewRequestSubject() {
+        return newRequestSubject;
+    }
+
+    public static String getNewRequestContent() {
+        return newRequestContent;
     }
 
     public static String getRegistrationSubject() {

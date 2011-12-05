@@ -6,6 +6,7 @@ import play.data.validation.Required;
 import models.*;
 import com.boun.give2get.registration.RegistrationController;
 import com.boun.give2get.db.DAO;
+import com.boun.give2get.db.ServiceDAO;
 import com.boun.give2get.mail.MailUtil;
 import com.boun.give2get.exceptions.MailException;
 import org.apache.log4j.Logger;
@@ -13,8 +14,6 @@ import org.apache.log4j.Logger;
 import java.util.List;
 
 public class Application extends Controller {
-
-    private static final org.apache.log4j.Logger log = Logger.getLogger(Application.class);
 
 
     @Before
@@ -35,6 +34,7 @@ public class Application extends Controller {
 
     public static final User isUserConnected() {
 
+        
         //  Check render Args
         if (renderArgs.get("user") != null) {
 
@@ -57,7 +57,7 @@ public class Application extends Controller {
 
             return user;
 
-        }
+        }         
 
         //  Not Logged in
         return null;
@@ -78,6 +78,11 @@ public class Application extends Controller {
 
         renderArgs.put("topRatedServices", topRatedServices);
 
+
+        //  Top Rated Users
+        List<TopRatedUser> topRatedUsers = DAO.getTopRatedUsers();
+
+        renderArgs.put("topRatedUsers", topRatedUsers);
 
         
         render();
@@ -159,7 +164,7 @@ public class Application extends Controller {
 
         }else {
 
-            session.put("userid",      user.getId());
+            session.put("userid",       user.getId());
             session.put("username",     user.getRegistration().getFirstname().concat(" ").concat(user.getRegistration().getLastname()));
             
             renderArgs.put("user",      user);
@@ -212,7 +217,6 @@ public class Application extends Controller {
 
     
     public static final void search(String keyword,String provider,String date) {
-
     		
         //   Search Results
         List<Service> services = DAO.getSearchResults(keyword,provider,date);
@@ -220,20 +224,14 @@ public class Application extends Controller {
         render(services, keyword,provider,date);
     }
 
-    public static final void profile() {
+    public static final void profile(String message) {
 
         if (session.get("userid") != null) {
-
-            System.out.println("profile()");
-
+            
             int userId = Integer.valueOf(session.get("userid")).intValue();
-            System.out.println("userId=" + userId);
 
             String username = session.get("username");
-            System.out.println(username);
-
-
-            //   Rating Info
+            
 
             // Basic Info
             User user = DAO.getUserDetailedInfo(userId);
@@ -242,17 +240,42 @@ public class Application extends Controller {
             //  Posted Services
             List<Service> userProvidedServices = DAO.getUserPostedServices(userId);
 
+            //  Posted Rolling Services
+            List<Service> providedRollingServices = DAO.getUserOnRollServices(userId);
+
+            System.out.println(providedRollingServices.size());
+
 
             //  Latest Comments
             List<Comment> userComments = DAO.getUserLatestComments(userId);
 
 
-            render(user, username, userProvidedServices, userComments);
+            //  My Requested Services
+            List<Service> requestedServices = ServiceDAO.getRequestedServices(userId);
+
+            String postedServiceOnRollError  = "Error!!";
+
+            if (message != null) {                
+                renderArgs.put("profile_status",    message);
+            }
+
+
+            //  Unreated Services
+            List<ServiceProgress> unratedServicesProgresses  = ServiceDAO
+
+            render(user, username, userProvidedServices, userComments, requestedServices, providedRollingServices, postedServiceOnRollError);
 
         }
 
         index();
 
+    }
+
+    public static final void profile() {
+
+        System.out.println("here!");
+
+        profile(null);
         
     }
     
@@ -319,6 +342,12 @@ public class Application extends Controller {
 
         }
 
+        if (id == Integer.parseInt(session.get("userid"))) {
+
+            Application.profile();
+
+        }
+
         //  Basic Info
         User user = DAO.getUserDetailedInfo(id);
 
@@ -330,4 +359,6 @@ public class Application extends Controller {
 
     }
 
+
+  
 }

@@ -1,17 +1,11 @@
 package models;
 
-import play.db.jpa.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
 import java.util.Date;
 import java.util.UUID;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.hibernate.annotations.GenericGenerator;
 import com.boun.give2get.registration.RegistrationStatus;
 
 
@@ -70,6 +64,10 @@ public final class Registration {
 
     public int getId() {
         return id;
+    }
+
+    public String getFullName() {
+        return firstname.concat(" ").concat(lastname);
     }
 
     public RegistrationStatus getStatus() {

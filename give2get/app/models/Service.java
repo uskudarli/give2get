@@ -23,12 +23,35 @@ public final class Service extends ListableModel{
     private String created;
     private String status;
 
+    private int requestCount;
+
     private int viewCount;
 
     private int providerId;
     private String providerFullName;
 
+    private int requesterId;
+    private String requesterFullName;
+
     private List<Comment> comments;
+
+
+    public static Service newOnRollService(ResultSet rs, int index) throws SQLException {
+
+        Service service = new Service();
+
+        service.id                  = rs.getInt("id");
+        service.title               = rs.getString("title");
+        service.requesterFullName   = rs.getString("firstname").concat(" ").concat(rs.getString("lastname"));
+        service.requesterId         = rs.getInt("requester_id");
+        service.status              = rs.getString("status");
+        service.providerId          = rs.getInt("provider_id");
+
+        service.oddOrEven           = index %2 == 0 ? "odd" :"even";
+
+        return service;
+
+    }
 
 
     public static Service getService(ResultSet rs,int index) throws SQLException {
@@ -78,7 +101,7 @@ public final class Service extends ListableModel{
         service.id                  = rs.getInt("id");
         service.title               = rs.getString("title");
         service.created             = rs.getString("created");
-        service.status              = rs.getString("status");
+        service.status              = rs.getString("status");        
 
         service.oddOrEven   = index %2 == 0 ? "odd" :"even";
 
@@ -127,8 +150,40 @@ public final class Service extends ListableModel{
         return service;
 
     }
-    
-    
+
+    public static Service newRequestedService(ResultSet rs, int index) throws SQLException {
+
+        Service service = new Service();
+
+        service.id                  = rs.getInt("id");
+        service.title               = rs.getString("title");
+        service.providerId          = rs.getInt("provider_id");
+        service.providerFullName    = rs.getString("firstname").concat(" ").concat(rs.getString("lastname"));
+        service.created             = rs.getString("requested_at");
+        service.status              = rs.getString("status");
+
+        service.oddOrEven   = index %2 == 0 ? "odd" :"even";
+
+        return service;
+
+    }
+
+    public String getRequesterFullName() {
+        return requesterFullName;
+    }
+
+    public int getRequesterId() {
+        return requesterId;
+    }
+
+    public void setRequestCount(int requestCount) {
+        this.requestCount = requestCount;
+    }
+
+    public int getRequestCount() {
+        return requestCount;
+    }
+
     public int getViewCount() {
         return viewCount;
     }

@@ -71,7 +71,9 @@
                             <td></td>
                             <td>
                             #{if userId != service.providerId}
+                                #{form @Services.request(service?.id, service?.providerId, service?.title)}
                                 <input type="submit" value="Request"/>
+                                #{/form}
                             #{/if}
                             #{else}
                             	<a href="/editService/${service.id}">Edit Service</a>
@@ -89,15 +91,14 @@
     </div>
 
 
-
-    <!-- New Post -->
+    <!-- New Comment Post -->
     <div id="post_comment">
 
         <!-- Title & Add Comment-->
         <table width=100% id="table_comments_header">
             <tr>
                 <td>
-                    <p id="title_service_comments">${comments.size() > 1 ? comments.size() + ' ' : ''}Comments</p>
+                    <p id="title_service_comments">${comments.size() > 1 ? comments.size() + ' ' + "Comments" : ''}</p>
                 </td>
                 <td style="text-align:right;">
                     #{form @newComment(service?.id, service?.title)}
@@ -108,8 +109,8 @@
         </table>
 
 
-        #{if comments}
         <!-- Comment List -->
+        #{if comments}       
         <table width="100%">
             #{list comments, as:'comment'}
             <tr class="${comment.oddOrEven}">
@@ -133,14 +134,7 @@
         <p align="center">No Comments</p>
         #{/ifnot}
 
-    </div>
-
-
-
-    <!-- Latest 50 comments -->
-    <div id="comments">
-
-    </div>
+    </div>    
 
 
 </div>

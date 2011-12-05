@@ -5,7 +5,7 @@ body {
     color: #555;    
     margin:auto;
     display:block;
-    width:11    00px;
+    width:1100px;
 }
 
 
@@ -29,6 +29,21 @@ div.maincontainer {
 }
 
 
+a :link {
+    color:darkgreen;
+}
+
+a :visited {
+    color:darkgreen;
+}
+
+a:active {
+    color:darkgreen;
+}
+
+a:hover {
+    color:deepskyblue;
+}
 
 
 
@@ -288,8 +303,15 @@ textarea.new_service{
 /*
     Recent Activities
 */
+.profile_table {
+    border-radius:7px;
+    border:#2c4e4e;
+    border-style:groove;
+    width:100%;    
+}
+
 #search_criterias, #search_result, #recentActs, #service, #topratedservices, #topratedusers, #user_posted_services, #profile_basic_info, #details, #table_service_list {
-    border-radius:7px;    
+    border-radius:7px;
     border:#2c4e4e;
     border-style:groove;
     width:100%;
@@ -438,13 +460,14 @@ font#username {
     font-size:25px
 }
 
-p#rating {
+p.userrating {
     color:darkslategray;
     font-weight:bold;
     font-size:45px;
     font-style:normal;
     text-align:center;
     vertical-align:middle;
+
 }
 
 #profile_basic_info tr, td {
@@ -453,7 +476,7 @@ p#rating {
     vertical-align:top;    
 }
 
-p#title_profile, p#title_service_comments   {
+p#title_service_comments,   {
     color:#2c4e4e;
     font-weight:bold;
     font-size:14px;
@@ -463,15 +486,28 @@ p#title_profile, p#title_service_comments   {
     vertical-align:top;
 }
 
-#user_posted_services thead tr{
+p.title_profile {
+
+    color:#2c4e4e;
+    font-weight:bold;
+    font-size:14px;
+    font-style:normal;
+    text-align:left;
+    text-decoration:underline;
+    vertical-align:top;
+
+}
+
+table.profile_table thead tr {
     background:#2c4e4e;
     color:white;
     font-weight:bold;
     text-align:center;
     font-size:small;
     font-style:normal;
-
 }
+
+
 
 
 
@@ -548,6 +584,10 @@ p.footer_title{
     font-style:normal;
     font-size:30px
 
+}
+
+.profile_status_msg {
+    color:red;       
 }
 
 

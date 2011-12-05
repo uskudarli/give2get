@@ -3,10 +3,12 @@ package controllers;
 import play.mvc.Controller;
 import play.mvc.Before;
 import play.data.validation.Required;
-import models.User;
-import models.Service;
-import models.Comment;
+import models.*;
 import com.boun.give2get.db.DAO;
+import com.boun.give2get.db.ServiceDAO;
+import com.boun.give2get.mail.MailUtil;
+import com.boun.give2get.exceptions.MailException;
+import com.boun.give2get.core.Messages;
 
 import java.util.List;
 
@@ -82,15 +84,34 @@ public class Services extends Controller {
         post();
 
     }
-    
-    public static final void list() {
 
-         if (session.get("userid") == null) {
+    public static final void list(String message) {
+
+        if (session.get("userid") == null) {
 
             Application.index();
 
         }
 
+        //  Last 50 Services for now..
+        List<Service> services = DAO.getServices(Integer.valueOf(session.get("userid")).intValue());
+
+        System.out.println("messages=" + message);
+
+        if (message != null)
+            flash.error(message);
+
+        render(services);
+
+    }
+    
+    public static final void list() {
+
+        if (session.get("userid") == null) {
+
+            Application.index();
+
+        }
 
         //  Last 50 Services for now..
         List<Service> services = DAO.getServices(Integer.valueOf(session.get("userid")).intValue());       
@@ -178,4 +199,154 @@ public class Services extends Controller {
         Services.service(serviceId);
         
     }
+
+    public static final void unRequest(int serviceId) {
+
+        int userId = Integer.parseInt(session.get("userid"));
+
+        boolean requestCancelable = ServiceDAO.isServiceRequestCancellable(serviceId, userId);
+
+        if (requestCancelable) {
+
+            ServiceDAO.unrequest(serviceId, userId);
+
+            Application.profile();
+
+        } else {
+
+            flash.error(Messages.get("error.canceltoolate"));
+            
+            Application.profile();
+            
+            
+        }
+        
+    }
+
+
+    public static final void request(int serviceId, int providerId, String serviceTitle) throws MailException {
+
+        int userId = Integer.parseInt(session.get("userid"));
+        System.out.println("userId=" + userId);
+
+        System.out.println(serviceId);
+        System.out.println(providerId);
+        System.out.println(serviceTitle);
+
+
+        boolean userEligible = ServiceDAO.isUserEligibleForNewRequests(userId);
+                
+
+        if (userEligible) {
+
+            //  Create new Service Request
+            ServiceDAO.makeServiceRequest(serviceId, providerId, userId);
+
+
+            //  Inform provider about the new request
+            User provider = DAO.getUser(providerId);
+
+            User crntUser  = renderArgs.get("user", User.class);
+           
+            MailUtil.informServiceProvider(
+                    provider.getRegistration().getFullName(),
+                    provider.getEmail(),
+                    serviceTitle,
+                    crntUser.getRegistration().getFullName()
+            );
+
+            String message = Messages.get("info.request.success");
+
+            Services.list(message);
+            
+
+        } else {
+
+            Services.list(Messages.get("error.insufficientcredits"));
+
+        }
+
+    }
+
+
+    public static final void requesters(int serviceId) {
+
+        System.out.println(serviceId);                
+
+        //  Service Details
+        Service service = DAO.getServiceDetail(serviceId);
+
+        //  Service Requests
+        List<ServiceRequest> serviceRequests = ServiceDAO.getServiceRequests(serviceId);
+
+
+        //  Service Comments
+        List<Comment> comments = DAO.getServiceComments(serviceId);
+
+        render(service, serviceRequests, comments);
+
+    }
+
+    public static final void acceptConsumer(int requesterId, String requesterEmail, String requesterFullName, int serviceId, int providerId, String serviceTitle, String providerFullName) throws MailException {
+        
+        System.out.println(requesterId);
+        System.out.println(serviceId);
+        System.out.println(providerId);
+        System.out.println(requesterEmail);
+        System.out.println(requesterFullName);
+
+
+        //  bunch of actions in one transaction
+        ServiceDAO.acceptConsumer(requesterId, serviceId, providerId);
+
+
+        //  inform requester
+        MailUtil.informRequester(requesterEmail, serviceTitle, providerFullName, requesterFullName);
+
+
+        //  Initiate new service progress
+        int serviceRequestId = ServiceDAO.getServiceRequestId(serviceId, providerId, requesterId);
+
+        System.out.println("serviceRequestId=" + serviceRequestId);
+
+        ServiceDAO.initializeServiceProgress(ServiceProgress.createNew(serviceRequestId));
+
+
+        //  Return to profile
+        Application.profile();
+
+    }
+
+    public static final void resolve(int serviceId, int requesterId, int providerId) {
+
+        /*int requestId = ServiceDAO.getServiceRequestId(serviceId, providerId, requesterId);
+
+        System.out.println("requestId=" + requestId);*/
+
+        System.out.println("seviceId=" + serviceId);
+        System.out.println("requesterId=" + requesterId);
+        System.out.println("providerId= "+ providerId);
+
+
+        //  bunch of updates
+        String serviceProgressCode = ServiceDAO.resolve(serviceId, providerId, requesterId);
+
+        System.out.println("progressCode=" + serviceProgressCode);
+
+
+
+        //  mail provider
+
+        //  mail consumer
+
+
+
+
+        String status = Messages.get("info.service.resolved");
+
+        Application.profile(status);
+
+
+    }
+
 }

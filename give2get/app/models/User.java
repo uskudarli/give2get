@@ -1,10 +1,6 @@
 package models;
 
-import play.db.jpa.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -22,17 +18,26 @@ public final class User {
 
     private final Registration registration;
 
-    private int rating; // todo
+    private int rating;
 
     private int numOfPostedServices;
     private int numOfComments;
+        
+    private final int credits;
 
 
     public User (ResultSet rs) throws SQLException {
 
         id                  = rs.getInt("userId");
+        credits             = rs.getInt("credits");
+        rating              = rs.getInt("rating");
         registration        = Registration.create(rs);
 
+
+    }      
+
+    public int getCredits() {
+        return credits;
     }
 
     public int getNumOfPostedServices() {

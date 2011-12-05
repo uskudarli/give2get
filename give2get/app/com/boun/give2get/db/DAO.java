@@ -116,7 +116,7 @@ public final class DAO {
 
     }
 
-    private static void rollback(Connection conn) {
+    public static void rollback(Connection conn) {
 
         try {
 
@@ -493,12 +493,14 @@ public final class DAO {
 
         User user                       = null;
 
+        System.out.println("getting user for " + userId);
+
         try {
 
             conn = getConnection();
 
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT u.id as userId, r.* FROM users u, registrations r WHERE u.id = ?");
+            pstmt = conn.prepareStatement("SELECT u.id as userId, u.credits, u.rating, r.* FROM users u, registrations r WHERE u.id = ? AND r.id =u.reg_id");
 
             pstmt.setInt(1, userId);
 
@@ -510,6 +512,8 @@ public final class DAO {
                 user = new User(rs);
 
             }
+
+            System.out.println(user.toString());
 
             conn.commit();
 
@@ -545,7 +549,7 @@ public final class DAO {
             conn = getConnection();
 
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT u.id as userId, r.*, COUNT(c.id) as numOfComments FROM users u, registrations r, comments c WHERE u.id = ? AND c.user_id = u.id AND u.reg_id = r.id");
+            pstmt = conn.prepareStatement("SELECT u.id as userId, r.*, COUNT(c.id) as numOfComments, u.rating, u.credits FROM users u, registrations r, comments c WHERE u.id = ? AND c.user_id = u.id AND u.reg_id = r.id");
 
             pstmt.setInt(1, userId);
             
@@ -698,7 +702,7 @@ public final class DAO {
             conn = getConnection();
 
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT u.id as userId, r.* FROM users u, registrations r WHERE u.reg_id = r.id AND r.email = ? AND r.password = ?");
+            pstmt = conn.prepareStatement("SELECT u.id as userId, u.rating, u.credits, r.* FROM users u, registrations r WHERE u.reg_id = r.id AND r.email = ? AND r.password = ?");
 
             pstmt.setString(1,      email);
             pstmt.setString(2,      password);
@@ -1046,6 +1050,59 @@ public final class DAO {
 
     }
 
+    public static final List<TopRatedUser> getTopRatedUsers() {
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        List<TopRatedUser> topRatedUsers;
+
+        try {
+
+            conn = getConnection();
+           
+            pstmt = conn.prepareStatement("SELECT u.id, u.rating, r.firstname, r.lastname FROM users u, registrations r WHERE u.reg_id = r.id ORDER BY u.rating DESC LIMIT 5");
+
+            rs = pstmt.executeQuery();
+
+            topRatedUsers  = new ArrayList<TopRatedUser>();
+
+            TopRatedUser topRatedUser;
+
+            int index = 0;
+
+            while (rs.next()) {
+
+                topRatedUser = new TopRatedUser(rs, index);
+
+                topRatedUsers.add(topRatedUser);
+
+                index ++;
+
+            }
+
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(rs);
+            close(pstmt);
+            close(conn);
+
+        }
+
+        return topRatedUsers;
+
+    }
+
     public static final List<TopRatedService> getTopRatedServices() {
 
         Connection conn                 = null;
@@ -1164,6 +1221,71 @@ public final class DAO {
 
         }
     }
+
+    public static final List<Service> getUserOnRollServices(int userId) {
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        List<Service> services;
+
+        try {
+
+            conn = getConnection();                        
+
+            String sql = new StringBuilder().
+                    append("SELECT s.id, s.title, r.firstname, r.lastname, u.id as requester_id, s.status, s.provider_id  ").
+                    append("FROM services s, registrations r, users u ").
+                    append("WHERE s.provider_id = ? AND s.status = ? AND r.id = u.reg_id AND u.id = s.requester_id").
+                    toString();
+
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1,     userId);
+            pstmt.setString(2,  ServiceStatus.WAITING_TO_BE_RESOLVED.name());
+
+            rs = pstmt.executeQuery();
+
+            services = new ArrayList<Service>();
+
+            Service service;
+
+            int index = 0;
+
+            while(rs.next()) {
+
+                service = Service.newOnRollService(rs, index);
+
+                services.add(service);
+
+                index ++;
+                
+            }
+
+
+            return services;
+
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(rs);
+            close(pstmt);
+            close(conn);
+
+        }
+
+        
+
+    }
     
     
     public static final List<Service> getUserPostedServices(int userId) {
@@ -1177,11 +1299,19 @@ public final class DAO {
         try {
 
             conn = getConnection();
+                          
+            
+            String sql = new StringBuilder().
+                    append("SELECT s.id, s.title, s.created, s.status FROM services s ").
+                    append("WHERE s.provider_id = ? AND status = ?").
+                    append("ORDER BY s.created DESC LIMIT 15").                            
+                    toString();
 
-            //  Control registration
-            pstmt = conn.prepareStatement("SELECT id, title, created, status FROM services WHERE provider_id = ? ORDER BY created DESC LIMIT 15");
 
-            pstmt.setInt(1, userId);
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1,     userId);
+            pstmt.setString(2,  ServiceStatus.WAITING_FOR_REQUESTS.name());
 
             rs = pstmt.executeQuery();
 
@@ -1195,6 +1325,9 @@ public final class DAO {
             while (rs.next()) {
 
                 service = Service.newMyService(rs, index);
+
+                service.setRequestCount(getServiceCurrentRequestCount(conn, service.getId()));
+                service.setProviderId(userId);
 
                 services.add(service);
 
@@ -1220,6 +1353,45 @@ public final class DAO {
         }
 
         return services;
+
+    }
+
+    public static final int getServiceCurrentRequestCount(Connection conn, int serviceId) {
+
+        PreparedStatement pstmt     = null;
+        ResultSet rs                = null;
+
+        int count = 0;
+
+        try {
+
+            pstmt = conn.prepareStatement("SELECT COUNT(id) FROM serviceRequests WHERE service_id = ?");
+
+            pstmt.setInt(1, serviceId);
+
+            rs = pstmt.executeQuery();
+
+            while(rs.next()) {
+
+                count = rs.getInt(1);
+                
+            }
+
+        } catch(Exception e) {
+
+            log.warn(e,e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(rs);
+            close(pstmt);
+        }
+
+        return count;
 
     }
 
@@ -1252,8 +1424,10 @@ public final class DAO {
             int index = 0;
 
             while (rs.next()) {
-
+                                              
                 service = Service.newProvidedService(rs, index);
+
+                service.setRequestCount(getServiceCurrentRequestCount(conn, service.getId()));
 
                 services.add(service);
 
@@ -1369,6 +1543,31 @@ public final class DAO {
 
     }
 
+    public static final List<Comment> getServiceComments(int serviceId) {
+
+        Connection conn = null;
+
+        List<Comment> comments = null;
+
+        try {
+
+            conn = DAO.getConnection();
+
+            comments = getServiceComments(conn, serviceId);
+
+        } catch (Exception e){
+
+            log.warn(e,e);
+
+        } finally {
+
+            close(conn);
+        }
+
+        return comments;
+
+    }
+
     public static final List<Comment> getServiceComments(Connection conn, int serviceId) {
 
         PreparedStatement pstmt         = null;
@@ -1477,5 +1676,6 @@ public final class DAO {
 
 
     }
+    
 
 }

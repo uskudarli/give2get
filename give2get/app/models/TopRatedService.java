@@ -10,28 +10,20 @@ import java.sql.SQLException;
  * Time: 4:01:04 PM
  * To change this template use File | Settings | File Templates.
  */
-public final class TopRatedService {
+public final class TopRatedService extends ListableModel{
 
-    private final int id;
     private final int providerId;
     private final String title;
     private final int viewCount;
 
-    private final String oddOrEven;
-
     public TopRatedService(ResultSet rs, int index) throws SQLException {
 
-        id              = rs.getInt("id");
         providerId      = rs.getInt("provider_id");
         title           = rs.getString("title");
         viewCount       = rs.getInt("viewCount");
 
         oddOrEven       = index %2 == 0 ? "odd" :"even";
 
-    }
-
-    public String getOddOrEven() {
-        return oddOrEven;
     }
 
     public String getTitle() {
@@ -44,10 +36,6 @@ public final class TopRatedService {
 
     public int getViewCount() {
         return viewCount;
-    }
-
-    public int getId() {
-        return id;
     }
 
     @Override

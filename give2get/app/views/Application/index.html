@@ -57,10 +57,10 @@
 
                        <tbody>
 
-                       #{list topRatedServices, as:'topRatedService'}
-                       <tr class="${topRatedService.oddOrEven}">
-                           <td><a href="/service/${topRatedService.id}">Can Elmas</a></td>
-                           <td style="text-align:center;">150</td>
+                       #{list topRatedUsers, as:'topRatedUser'}
+                       <tr class="${topRatedUser.oddOrEven}">
+                           <td><a href="/user/${topRatedUser.id}">${topRatedUser.fullName}</a></td>
+                           <td style="text-align:center;">${topRatedUser.rating}</td>
                        </tr>
                        #{/list}
                        </tbody>
