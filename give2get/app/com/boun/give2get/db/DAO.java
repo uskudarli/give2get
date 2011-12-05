@@ -12,13 +12,14 @@ import com.boun.give2get.exceptions.DataStoreException;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Queue;
 
 import play.db.DB;
 import models.*;
 
 /**
  * Created by IntelliJ IDEA.
- * User: canelmas
+ * User: canelmas,orcunguducu
  * Date: Nov 8, 2011
  * Time: 9:45:33 PM
  * To change this template use File | Settings | File Templates.
@@ -921,12 +922,65 @@ public final class DAO {
 
             if (serviceId == -1) throw new Exception("Can't store the service! Sorry!");
 
-            System.out.println("serviceId=" + serviceId);
-
-
             //  Log Activity
             logActivity(conn, ActivityType.NEW_SERVICE, userId, serviceId);
 
+            conn.commit();
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(rs);
+            close(pstmt);
+            close(conn);
+        }
+
+    }
+    
+    
+    public static final void addSkills(Queue<Skill> skills) {
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+
+        try {
+
+            conn = getConnection();
+
+            while(!skills.isEmpty()) {
+            	
+            	Skill skill = skills.poll();
+            	
+	            pstmt = conn.prepareStatement("INSERT INTO skills (title, description,user_id) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+	
+	
+	            pstmt.setString(1,         skill.getTitle());
+	            pstmt.setString(2,      skill.getDescription());
+	            pstmt.setInt(3,      skill.getUserId());
+	
+	
+	            pstmt.executeUpdate();
+	            
+	            rs = pstmt.getGeneratedKeys();
+	            
+	            int skillId = -1;
+	
+	            while(rs.next()) {
+	                skillId = rs.getInt(1);
+	            }
+	
+	            if (skillId == -1) throw new Exception("Can't store the skills! Sorry!");
+            }
+            
             conn.commit();
 
         } catch (Exception e) {
@@ -1167,7 +1221,6 @@ public final class DAO {
 
             conn = getConnection();
 
-            System.out.println("userIdddd:"+userId);
             pstmt = conn.prepareStatement("UPDATE registrations r,users u SET r.email='"+email+"', r.firstname='"+firstName+"', r.lastname='"+lastName+"' WHERE u.id="+userId+" and u.reg_id = r.id;");
 
             pstmt.executeUpdate();
@@ -1353,6 +1406,62 @@ public final class DAO {
         }
 
         return services;
+
+    }
+    
+    public static final List<Skill> getUserSkills(int userId) {
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        List<Skill> skills          = null;
+
+        try {
+
+            conn = getConnection();
+
+            //  Control registration
+            pstmt = conn.prepareStatement("SELECT title,description FROM skills WHERE user_id = ? LIMIT 15");
+
+            pstmt.setInt(1, userId);
+
+            rs = pstmt.executeQuery();
+
+            skills = new ArrayList<Skill>();
+
+            Skill skill;
+
+            int index = 0;
+
+            while (rs.next()) {
+
+                skill = new Skill(rs, userId, index);
+
+                skills.add(skill);
+
+                index ++;
+
+            }
+
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(rs);
+            close(pstmt);
+            close(conn);
+
+        }
+
+        return skills;
 
     }
 

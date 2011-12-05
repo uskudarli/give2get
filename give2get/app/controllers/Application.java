@@ -4,6 +4,7 @@ import play.mvc.*;
 import play.data.validation.Required;
 
 import models.*;
+
 import com.boun.give2get.registration.RegistrationController;
 import com.boun.give2get.db.DAO;
 import com.boun.give2get.db.ServiceDAO;
@@ -11,7 +12,11 @@ import com.boun.give2get.mail.MailUtil;
 import com.boun.give2get.exceptions.MailException;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Scanner;
 
 public class Application extends Controller {
 
@@ -248,6 +253,10 @@ public class Application extends Controller {
 
             //  Latest Comments
             List<Comment> userComments = DAO.getUserLatestComments(userId);
+            
+            
+            //  User Skills
+            List<Skill> userSkills = DAO.getUserSkills(userId);
 
 
             //  My Requested Services
@@ -261,9 +270,10 @@ public class Application extends Controller {
 
 
             //  Unreated Services
-            List<ServiceProgress> unratedServicesProgresses  = ServiceDAO
+            //todo : List<ServiceProgress> unratedServicesProgresses  = ServiceDAO.
 
-            render(user, username, userProvidedServices, userComments, requestedServices, providedRollingServices, postedServiceOnRollError);
+            render(user, username, userProvidedServices, userComments, requestedServices, providedRollingServices, postedServiceOnRollError, userSkills);
+
 
         }
 
@@ -313,20 +323,39 @@ public class Application extends Controller {
         index();
     }
     
-    public static final void completeEditProfile(String email,String firstName,String lastName) {
+    public static final void completeEditProfile(String email,String firstName,String lastName,String skillList) {
 
         if (session.get("userid") != null) {
-
-            System.out.println("completeProfileEdit()");
+        	Scanner scanner = new Scanner(skillList);
+        	Queue<String> lineQueue = new LinkedList();
+        	while (scanner.hasNextLine()) {
+        	  String line = scanner.nextLine();
+        	  if(line.trim().length() != 0)
+        		  lineQueue.add(line);
+        	}
+        	
+        	int count=0;
+        	
+        	Skill skill;
+        	String title;
+        	String description;
+        	Queue<Skill> skillQueue = new LinkedList();
+        	
+        	while (!lineQueue.isEmpty()) {
+        		title = lineQueue.poll().substring(7);
+        		description = lineQueue.poll().substring(13);
+        		skill = new Skill(title, description,Integer.parseInt(session.get("userid")));
+        		skillQueue.add(skill);
+          	}
+        	
+        	DAO.addSkills(skillQueue);
 
             int userId = Integer.valueOf(session.get("userid")).intValue();
-            System.out.println("userId=" + userId);
 
             String username = session.get("username");
-            System.out.println(username);
 
             DAO.completeEditProfile(userId,email,firstName,lastName);
-            System.out.println("userId:"+userId+ " email:"+email+" firstname:"+firstName+" lastname:"+lastName);
+
             profile();
 
         }
