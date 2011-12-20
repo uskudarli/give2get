@@ -25,9 +25,16 @@ public final class MailUtil {
 
     private static final Logger log = Logger.getLogger(MailUtil.class);
 
-    //private static final String HOST = "http://192.168.1.68:9000/complete?reg=";
 
-    private static final String HOST = "http://176.34.245.162:9000/complete?reg=";
+    private static final String COMPLETE_REGISTRATION_URL   = "http://176.34.245.162:9000/complete?reg=";
+    private static final String RATE_SERVICE_URL            = "http://176.34.245.162:9000/rate?sId=%1$s&c=%2$s&t=%3$s";
+
+    //private static final String RATE_SERVICE_URL            = "http://192.168.1.67:9000/rate?sId=%1$s&c=%2$s&t=%3$s";
+
+
+
+    private static final int PROVIDER    = 1;
+    private static final int CONSUMER    = 2;
 
 
     public static final void sendRegistrationEmail(Registration registration) throws MailException {
@@ -47,7 +54,7 @@ public final class MailUtil {
             //  Registration Complete Url
             StringBuilder sb = new StringBuilder();
 
-            sb.append(HOST);
+            sb.append(COMPLETE_REGISTRATION_URL);
             sb.append(registration.getCode());
 
             msg.setText(String.format(MailFactory.getRegistrationContent(), new String[] {registration.getFirstname().concat(" ").concat(registration.getLastname()), sb.toString()}));
@@ -173,6 +180,123 @@ public final class MailUtil {
                     String.format(
                             MailFactory.getNewRequestContent(),
                             new String[] {providerName, requesterName, serviceTitle, })
+            );
+
+
+            msg.saveChanges();
+
+
+            // Reuse one Transport object for sending all your messages
+            // for better performance
+            Transport t = new AWSJavaMailTransport(session, null);
+            t.connect();
+            t.sendMessage(msg, null);
+
+
+            // Close your transport when you're completely done sending
+            // all your messages
+            t.close();
+
+        } catch(AddressException e) {
+
+            log.warn(e);
+
+            throw new MailException(e);
+
+
+        } catch(MessagingException e) {
+
+            log.warn(e);
+
+            throw new MailException(e);
+        }
+
+    }
+
+
+    public static final void sendProviderRatingMail(String code, int serviceId, String serviceTitle, String requesterName, String providerEmail, String providerName) throws MailException {
+        
+        Session session = Session.getInstance(MailFactory.getMailProperties());
+
+        try {
+
+            // Create a new Message
+            Message msg = new MimeMessage(session);
+
+            msg.setFrom(new InternetAddress(MailFactory.getFrom()));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(providerEmail));
+
+            //  subject
+            msg.setSubject(MailFactory.getRateForConsumerSubject());
+
+
+            String url = String.format(RATE_SERVICE_URL, new String[]{String.valueOf(serviceId), code, String.valueOf(PROVIDER)});
+            System.out.println("url=" + url);
+
+
+            //  content
+            msg.setText(
+                    String.format(
+                            MailFactory.getRateForConsumerContent(),
+                            new String[] {providerName, serviceTitle, requesterName, url})
+            );
+
+
+            msg.saveChanges();
+
+
+            // Reuse one Transport object for sending all your messages
+            // for better performance
+            Transport t = new AWSJavaMailTransport(session, null);
+            t.connect();
+            t.sendMessage(msg, null);
+
+
+            // Close your transport when you're completely done sending
+            // all your messages
+            t.close();
+
+        } catch(AddressException e) {
+
+            log.warn(e);
+
+            throw new MailException(e);
+
+
+        } catch(MessagingException e) {
+
+            log.warn(e);
+
+            throw new MailException(e);
+        }
+
+    }
+
+    public static final void sendConsumerRatingMail(String code, int serviceId, String consumerEmail, String consumerName, String serviceTitle) throws MailException {
+
+        Session session = Session.getInstance(MailFactory.getMailProperties());
+
+        try {
+
+            // Create a new Message
+            Message msg = new MimeMessage(session);
+
+            msg.setFrom(new InternetAddress(MailFactory.getFrom()));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(consumerEmail));
+
+            //  subject
+            msg.setSubject(MailFactory.getRateForProviderSubject());
+
+            
+            String url = String.format(RATE_SERVICE_URL, new String[]{String.valueOf(serviceId), code, String.valueOf(CONSUMER)});
+            System.out.println("url=" + url);
+
+
+            //  content
+            msg.setText(
+                    String.format(
+                            MailFactory.getRateForProviderContent(),
+                            new String[] {consumerName, serviceTitle, url })
             );
 
 

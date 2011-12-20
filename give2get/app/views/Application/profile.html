@@ -70,7 +70,6 @@
 
     </div>
 
-<<<<<<< HEAD
     <!-- Posted Service on Roll Status-->
     #{if flash.error}
         <p align="center" class="profile_status_msg">
@@ -84,13 +83,12 @@
         </p>
     #{/if}
 
-=======
 	<!-- My Skills -->
-    <div id="user_services">
+    <div id="user_skills">
 
-        <p id="title_profile">My Skills</p>
+        <p class="title_profile">My Skills</p>
 
-        <table width="100%" id="user_posted_services">
+        <table width="100%" class="profile_table">
 
             <thead>
             <tr>
@@ -113,7 +111,6 @@
         </table>
 
     </div>
->>>>>>> 176fd0dcc02773562b6da3b288945f23c34a5af6
 
     <!-- My Posted Services -->
     <div id="user_services">
@@ -187,7 +184,7 @@
                 <td><a href="/user/${service.requesterId}">${service.requesterFullName}</a></td>
                 <td style="text-align:center;">${service.status}</td>
                 <td>
-                    #{form @Services.resolve(service?.id, service?.requesterId, service?.providerId)}
+                    #{form @Services.resolve(service?.id, service?.requesterId, service?.providerId, service?.title, service?.requesterFullName)}
                     <input type="submit" value="Resolve" />
                     #{/form}
                 </td>
@@ -305,10 +302,40 @@
 
         </table>
 
-
-
     </div>
     #{/if}
+
+
+    <!-- User Ratings-->
+    <div id="user_ratings">
+
+        <p class="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Ratings</p>
+
+        #{if serviceRatings}
+        <table width="100%">
+            #{list serviceRatings, as:'rating'}
+            <tr class="${rating.oddOrEven}">
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td width="80%" class="comment_text">${rating.comment}</td>
+                        </tr>
+                        <tr>
+                            <td class="comment_date">${rating.created}, for service <i>'${rating.serviceTitle}'</i></td>
+                            <td class="comment_owner">rated <b>${rating.value}</b> by <i>${rating.givenBy}</i></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            #{/list}
+
+        </table>
+        #{/if}
+        #{else}
+        <p align="center">No Rating or Comment Posted</p>
+        #{/else}
+
+    </div>
 
 
 </div>

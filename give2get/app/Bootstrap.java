@@ -2,7 +2,9 @@ import play.jobs.OnApplicationStart;
 import play.jobs.Job;
 import com.boun.give2get.mail.MailFactory;
 import com.boun.give2get.db.DAO;
+import com.boun.give2get.db.SearchDAO;
 import com.boun.give2get.core.Messages;
+import com.boun.give2get.core.Cache;
 import org.apache.log4j.Logger;
 
 
@@ -31,8 +33,13 @@ public class Bootstrap extends Job {
         Messages.init();
         log.info("Messages initialized!");
 
+
+        Cache.setSehirler(SearchDAO.getSehirler());
+        log.info("Cities initialized!");
+
         
         log.info("Give2Get Started!");
+        System.out.println("Give2Get Started!");
 
     }
 }

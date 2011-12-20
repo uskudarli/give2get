@@ -1,0 +1,111 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Advanced Search' /}
+
+
+<div id="div_adv_search">
+
+    <div id="search_menu">
+
+        <p class="table_title">Advanced Search</p>
+
+        #{form @AdvancedSearch.search()}
+        <table id="search_criterias">
+
+            <tr>
+                <td><label class="table_title">Keyword:</label></td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <input type="text" name="keyword" alt="search_menu" title="Keyword" value="${keyword}"/>
+                    <input type="checkbox" id="cBoxTitle" name="searchInTitle">Title</input>
+                    <input type="checkbox" id="cBoxDescription" name="searchInDescription">Description</input>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="signupelement"><input onclick="copy();" type="submit" value="Search"/></div>
+                </td>
+            </tr>
+
+
+
+        </table>
+        #{/form}
+    </div>
+
+</div>
+
+
+#{if services}
+<!-- Search Results -->
+        <br/>
+<div id="search_result">
+
+    <p id="title_profile">${services.size()} ${services.size() == 1 ? 'service' : 'services'} found for keyword <i>'${keyword}'</i></p>
+
+    <table width="100%" id="services_found">
+
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Provider</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th>View Count</th>
+            <th>User Rating</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        #{list services, as:'service'}
+        <tr class="${service.oddOrEven}">
+
+            <td>
+                <a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a>
+            </td>
+
+            <td>
+                <a href="/user/${service.providerId}">${service.providerFullName}</a>
+            </td>
+
+            <td style="text-align:center;">${service.created}</td>
+
+            <td style="text-align:center;">
+                ${service.requestCount != 0 ? (service.requestCount + (service.requestCount > 1 ? ' Requests' : ' Request')) : service.status}
+            </td>
+
+            <td>
+                ${service.viewCount}
+            </td>
+
+            <td>
+                ${service.providerRating}
+            </td>
+
+            <td style="text-align:center;">
+                #{form @Services.request(service?.id, service?.providerId, service?.title)}
+                <input type="submit" value="Request" class="btnRequest" id="${service.id}"
+                       providerId="${service.providerId}" serviceTitle="${service.title}"/>
+                #{/form}
+            </td>
+        </tr>
+        #{/list}
+
+        </tbody>
+
+    </table>
+
+</div>
+#{/if}
+
+#{ifnot services}
+        <p align="center">No Service Found for '${keyword}'</p>
+#{/ifnot}
+
+

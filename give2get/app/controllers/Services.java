@@ -2,13 +2,14 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Before;
-import play.data.validation.Required;
 import models.*;
 import com.boun.give2get.db.DAO;
 import com.boun.give2get.db.ServiceDAO;
+import com.boun.give2get.db.SearchDAO;
 import com.boun.give2get.mail.MailUtil;
 import com.boun.give2get.exceptions.MailException;
 import com.boun.give2get.core.Messages;
+import com.boun.give2get.core.Cache;
 
 import java.util.List;
 
@@ -41,9 +42,32 @@ public class Services extends Controller {
             Application.index();
 
         }
-                 
-        render();
+
+        List<Sehir> sehirler = Cache.getSehirler();
+
+        render(sehirler);
         
+    }
+
+    public static void getIlceler(int sehirId) {
+       
+        List<Ilce> ilceler = SearchDAO.getIlceler(sehirId);
+
+        renderJSON(ilceler);
+
+    }
+
+    public static void getSemtler(int ilceId) {
+
+        List<Semt> semtler = SearchDAO.getSemtler(ilceId);
+
+        renderJSON(semtler);
+
+    }
+
+    public static void getSehirler() {
+
+        renderJSON(Cache.getSehirler());
     }
 
 
@@ -52,33 +76,66 @@ public class Services extends Controller {
             String description,
             String startdate,
             String enddate,
-            String duration,
-            String location) {
+            int city,
+            int ilce,
+            int semt,
+            String fromDay,
+            String toDay,
+            String betweenFrom,
+            String betweenTo) {
 
         validation.required(title);
         validation.required(description);
-        validation.required(startdate);
-        validation.required(enddate);
-        validation.required(duration);
-        validation.required(location);
 
-        if (validation.hasErrors()) {
+        System.out.println(title);
+        System.out.println(description);
+        System.out.println(startdate);
+        System.out.println(enddate);
+        System.out.println(city);
+        System.out.println(ilce);
+        System.out.println(semt);
+        System.out.println(fromDay);
+        System.out.println(toDay);
+        System.out.println(betweenFrom);
+        System.out.println(betweenTo);
 
-            params.flash();
-            validation.keep();
+        if (startdate.length() != 0) {
 
-            post();
+            startdate = startdate.substring(startdate.lastIndexOf("/") + 1) + "-" +
+                    startdate.substring(0, startdate.indexOf("/")) + "-" +
+                    startdate.substring(3, 5);
+            
         }
 
-        //  post it
-        Service service = new Service(title, description, startdate, enddate, duration, location, "1");
+        if (enddate.length() != 0) {
 
-        System.out.println(service.toString());
+            enddate = enddate.substring(enddate.lastIndexOf("/") + 1) + "-" +
+                    enddate.substring(0, enddate.indexOf("/")) + "-" +
+                    enddate.substring(3, 5);
+
+        }
+
+        //  todo
+
+        /*if (validation.hasErrors()) {
+
+            System.out.println("validation errors!");
+
+            params.flash();
+            validation.keep();           
+
+            post();
+
+        } */
+
+
+        //  post it
+        Service service = new Service(title, description, startdate, enddate, city, ilce, semt, fromDay, toDay, betweenFrom, betweenTo);
 
         DAO.postNewService(service, Integer.valueOf(session.get("userid")).intValue());
 
         flash.success(
-                "You've just posted a new service! Congratulations! "               
+                "You've just posted a new service! Congratulations! "
         );
 
         post();
@@ -305,11 +362,13 @@ public class Services extends Controller {
 
 
         //  Initiate new service progress
-        int serviceRequestId = ServiceDAO.getServiceRequestId(serviceId, providerId, requesterId);
-
-        System.out.println("serviceRequestId=" + serviceRequestId);
+        int serviceRequestId = ServiceDAO.getServiceRequestId(serviceId, providerId, requesterId);        
 
         ServiceDAO.initializeServiceProgress(ServiceProgress.createNew(serviceRequestId));
+
+
+        //  Increment user providedCount
+        DAO.incrementUserProvidedCount(providerId);
 
 
         //  Return to profile
@@ -317,15 +376,15 @@ public class Services extends Controller {
 
     }
 
-    public static final void resolve(int serviceId, int requesterId, int providerId) {
+    public static final void resolve(int serviceId, int requesterId, int providerId, String serviceTitle, String requesterFullName) throws MailException {
 
         /*int requestId = ServiceDAO.getServiceRequestId(serviceId, providerId, requesterId);
 
         System.out.println("requestId=" + requestId);*/
 
-        System.out.println("seviceId=" + serviceId);
-        System.out.println("requesterId=" + requesterId);
-        System.out.println("providerId= "+ providerId);
+        System.out.println("seviceId=" + serviceId);        //25
+        System.out.println("requesterId=" + requesterId);   //14
+        System.out.println("providerId= "+ providerId);     //13
 
 
         //  bunch of updates
@@ -334,12 +393,16 @@ public class Services extends Controller {
         System.out.println("progressCode=" + serviceProgressCode);
 
 
+        User provider = DAO.getUser(providerId);
+        User consumer = DAO.getUser(requesterId);
+        
 
-        //  mail provider
+        //  mail provider about ServiceRating
+        MailUtil.sendProviderRatingMail(serviceProgressCode, serviceId, serviceTitle, requesterFullName, provider.getEmail(), provider.getRegistration().getFullName());
 
-        //  mail consumer
 
-
+        //  mail consumer about ServiceRating
+        MailUtil.sendConsumerRatingMail(serviceProgressCode, serviceId, consumer.getEmail(), consumer.getRegistration().getFullName(), serviceTitle);
 
 
         String status = Messages.get("info.service.resolved");

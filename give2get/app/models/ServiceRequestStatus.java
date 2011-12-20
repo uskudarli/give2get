@@ -9,5 +9,5 @@ package models;
  */
 public enum ServiceRequestStatus {
 
-    PENDING, ACCEPTED, DECLINED;
+    PENDING, ACCEPTED, DECLINED, RESOLVED;
 }

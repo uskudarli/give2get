@@ -31,48 +31,195 @@
         </div>
     #{/field}
 
+    <input type="checkbox" name="date" id="cBoxAddDate">Add Date</input>
 
     #{field 'startdate'}
-        <div class="signupelement">
+        <div class="signupelement" id="div_startdate">
             <label class="signuptitle">Start Date</label><br>
             <input name="startdate" class="dateClass" type="text" id="postStartDate" value="${flash.startdate}">
             <script>$( "#postStartDate" ).datepicker();</script>
             </input>
-            <span class="error">#{error 'startdate' /}</span>
         </div>
     #{/field}
 
 
     #{field 'enddate'}
-        <div class="signupelement">
+        <div class="signupelement" id="div_enddate">
             <label class="signuptitle">End Date</label><br>
-            <input name="enddate" class="dateClass" value="${flash.enddate}" id="postEndDate" type="text">
+            <input name="${field.name}" class="dateClass" value="${flash.enddate}" id="postEndDate" type="text">
             <script>$( "#postEndDate" ).datepicker();</script>
             </input>
-            <span class="error">#{error 'enddate' /}</span>
         </div>
     #{/field}
 
-    #{field 'duration'}
-        <div class="signupelement">
-            <label class="signuptitle">Duration</label><br>
-            <input type="text" name="${field.name}" size="30" tabindex="2" class="new_service" value="${flash.duration}"/>
-            <span class="error">#{error 'duration' /}</span>
+    
+    <!-- Location -->
+    <br/>
+    <input type="checkbox" id="cBoxAddLocation">Add Location</input>
+
+    
+    #{field 'city'}
+        <div class="signupelement" id="div_sehir">
+            <label class="signuptitle">City</label><br>
+            <select id="sehirler" name="${field.name}" onchange="javascript:fetchIlceler()">
+                #{list sehirler, as:'sehir'}
+                <option value="${sehir.id}">${sehir.name}</option>
+                #{/list}
+            </select>            
         </div>
     #{/field}
-   
-    #{field 'location'}
-        <div class="signupelement">
-            <label class="signuptitle">Location</label><br>
-            <input type="text" name="${field.name}" size="30" tabindex="2" class="new_service" value="${flash.location}"/>
+
+
+    #{field 'ilce'}
+        <div class="signupelement" id="div_ilce">
+            <label class="signuptitle">District</label><br>
+
+            <select id="ilceler" name="${field.name}" onchange="javascript:fetchSemtler(ilceler.selectedIndex)">
+                #{list ilceler, as:'ilce'}
+                <option value="${ilce.id}">${ilce.name}</option>
+                #{/list}
+            </select>            
+        </div>
+    #{/field}
+
+
+    #{field 'semt'}
+        <div class="signupelement" id="div_semt">
+            <label class="signuptitle">Neighborhood</label><br>
+
+            <select id="semtler" name="${field.name}">
+                #{list semtler, as:'semt'}
+                <option value="${semt.id}">${semt.name}</option>
+                #{/list}
+            </select>            
+        </div>
+    #{/field}
+
+
+    <!-- Periyodik Info -->
+    <br/>
+    <input type="checkbox" id="cBoxPeriodicalInfo">Add Periodical Information</input>
+
+    #{field 'fromDay'}
+        <div class="signupelement" id="div_fromDay">
+
+            <label class="signuptitle">Please choose day range for your service</label><br>
+
+            <select id="from_days" name="${field.name}">
+                <option value="Anyday">-</option>
+                <option value="Anyday">Anyday</option>
+                <option value="Everyday">Everyday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+
+            <span class="error">#{error 'location' /}</span>
+        </div>
+    #{/field}
+
+    #{field 'toDay'}
+        <div class="signupelement" id="div_toDay">
+
+            <!--<label class="signuptitle">To</label><br>-->
+
+            <select id="to_days" name="${field.name}">
+                <option value="-">-</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+
+            <span class="error">#{error 'location' /}</span>
+        </div>
+    #{/field}
+
+    #{field 'betweenFrom'}
+        <div class="signupelement" id="div_between_from">
+
+            <label class="signuptitle">Please choose time range for your service</label><br>
+
+            <select id="fromBetween" name="${field.name}">
+                <option value="-">-</option>
+                <option value="06:00">06:00</option>
+                <option value="07:00">07:00</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+                <option value="24:00">24:00</option>
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+                <option value="03:00">03:00</option>
+                <option value="04:00">04:00</option>
+                <option value="05:00">05:00</option>
+            </select>
+
+            <span class="error">#{error 'location' /}</span>
+        </div>
+    #{/field}
+
+    #{field 'betweenTo'}
+        <div class="signupelement" id="div_between_to">
+
+            <!--<label class="signuptitle">And</label><br>-->
+
+            <select id="toBetween" name="${field.name}">
+                <option value="-">-</option>
+                <option value="06:00">06:00</option>
+                <option value="07:00">07:00</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+                <option value="24:00">24:00</option>
+                <option value="01:00">01:00</option>
+                <option value="02:00">02:00</option>
+                <option value="03:00">03:00</option>
+                <option value="04:00">04:00</option>
+                <option value="05:00">05:00</option>
+            </select>
+
             <span class="error">#{error 'location' /}</span>
         </div>
     #{/field}
 
 
-        <div class="signupelement">
-            <input type="submit" value="Post"/>
-        </div>
+    <div class="signupelement">
+        <input type="submit" value="Post"/>
+    </div>
 
     #{/form}
 
@@ -80,9 +227,167 @@
 
 #{if flash.success}
 <div class="container">
-    <p id="status">
-        ${flash.success}
+    <p id="status" align="center">
+        <b>${flash.success}</b>
     </p>
 </div>
 #{/if}
+
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+       
+        $("#cBoxAddDate").click(handleDates);
+        $("#cBoxAddLocation").click(handleLocation);
+        $("#cBoxPeriodicalInfo").click(handlePeriodicalInfo);
+
+        handleDates();
+        handleLocation();
+        handlePeriodicalInfo();
+
+    });
+
+    function handleDates() {
+
+        if (  $('#cBoxAddDate').attr('checked') ) {
+
+            $('#div_startdate').show();
+            $('#div_enddate').show();            
+
+        } else {
+
+            $('#div_startdate').hide();
+            $('#div_enddate').hide();
+
+
+            $("#postStartDate").text("");
+            $('#postEndDate').text("");
+
+        }
+
+    }
+
+    function handleLocation () {
+
+        if (  $('#cBoxAddLocation').attr('checked') ) {
+
+            $('#div_sehir').show();
+            $('#div_ilce').show();
+            $('#div_semt').show();
+
+            fetchSehirler();
+
+        } else {
+
+            $('#div_sehir').hide();
+            $('#div_ilce').hide();
+            $('#div_semt').hide();
+
+            $("#sehirler").empty();
+            $("#ilceler").empty();
+            $("#semtler").empty();
+
+        }
+
+    }
+
+    function handlePeriodicalInfo() {
+
+        if ( $('#cBoxPeriodicalInfo').attr('checked') ) {
+
+            $('#div_fromDay').show();
+            $('#div_toDay').show();
+            $('#div_between_from').show();
+            $('#div_between_to').show();
+
+        } else {
+
+            $('#div_fromDay').hide();
+            $('#div_toDay').hide();
+            $('#div_between_from').hide();
+            $('#div_between_to').hide();
+
+            $('#div_fromDay.select').val('-');
+            
+
+            
+        }
+
+    }
+
+    function fetchSehirler() {
+
+        $("#sehirler").empty();
+
+        $.getJSON("@{Services.getSehirler()}", function(sehirler) {
+
+            var index = 0;
+
+            $('#sehirler').append("<option>-</option>");
+
+            $.each(sehirler, function(id, name) {
+
+                $('#sehirler').append("<option value='" + sehirler[index].id + "'>" + sehirler[index].name + "</option>");
+
+                index++;
+
+            });
+
+        });
+
+    }
+
+    function fetchIlceler() {
+
+        var selectedSehirId = $("#sehirler").val();
+       
+        $("#ilceler").empty();
+                
+        $.getJSON("@{Services.getIlceler()}", {sehirId : selectedSehirId}, function(ilceler) {
+
+            var index = 0;
+
+            $('#ilceler').append("<option>-</option>");
+
+            $.each(ilceler, function(id, name) {
+
+                $('#ilceler').append("<option value='" + ilceler[index].id + "'>" + ilceler[index].name + "</option>");
+
+                index++;
+
+            });
+
+        });
+
+    }
+
+    function fetchSemtler() {
+
+        var selectedIlceId = $("#ilceler").val();
+
+        $("#semtler").empty();
+        
+        $.getJSON("@{Services.getSemtler()}", {ilceId: selectedIlceId}, function(semtler) {
+
+            var index = 0;
+
+            $('#semtler').append("<option>-</option>");
+
+            $.each(semtler, function(id, name) {
+
+                $('#semtler').append("<option value='" + semtler[index].id + "'>" + semtler[index].name + "</option>");
+
+                index++;
+
+            });
+
+        });
+
+    }
+
+
+</script>
 

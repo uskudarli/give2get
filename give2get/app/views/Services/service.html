@@ -33,12 +33,20 @@
                             <td>${service.status}</td>
                         </tr>
                         <tr class="odd">
-                            <td>View Count</td>
-                            <td>${service.viewCount}</td>
-                        </tr>
-                        <tr class="even">
                             <td>Provider</td>
                             <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>
+                        </tr>
+                        <tr class="even">
+                            <td>City</td>
+                            <td>${service.sehirName}</a></td>
+                        </tr>
+                        <tr class="odd">
+                            <td>District</td>
+                            <td>${service.ilceName}</a></td>
+                        </tr>
+                        <tr class="even">
+                            <td>Neighborhood</td>
+                            <td>${service.semtName}</a></td>
                         </tr>
                     </table>
 
@@ -56,16 +64,16 @@
                             <td>${service.endDate}</td>
                         </tr>
                         <tr class="odd">
-                            <td>Location</td>
-                            <td>${service.location}</td>
+                            <td>Weekly Plan</td>
+                            <td>${service.fromDay} - ${service.toDay}</td>
                         </tr>
                         <tr class="even">
-                            <td>Duration</td>
-                            <td>${service.duration}</td>
+                            <td>Daily Plan</td>
+                            <td>${service.fromTime} - ${service.toTime}</td>
                         </tr>
                         <tr class="odd">
-                            <td>Period</td>
-                            <td>${service.period}</td>
+                            <td>View Count</td>
+                            <td>${service.viewCount}</td>
                         </tr>
                         <tr class="even">
                             <td></td>

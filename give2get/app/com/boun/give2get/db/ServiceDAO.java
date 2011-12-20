@@ -174,8 +174,9 @@ public final class ServiceDAO {
 
             conn = DAO.getConnection();
 
-            String sql = new StringBuilder("SELECT sr.id, sr.requester_id, sr.created, r.email, r.firstname, r.lastname, u.rating, u.credits, s.title from serviceRequests sr, registrations r, users u, services s ").
-                    append("WHERE sr.service_id = ? AND u.id = sr.requester_id AND r.id = u.reg_id AND s.id = sr.service_id").
+            String sql = new StringBuilder("SELECT sr.id, sr.requester_id, sr.created, r.email, r.firstname, r.lastname, u.rating, u.credits, i.title ").
+                    append("FROM serviceRequests sr, registrations r, users u, services s, serviceInfos i ").
+                    append("WHERE sr.service_id = ? AND u.id = sr.requester_id AND r.id = u.reg_id AND s.id = sr.service_id AND i.service_id = s.id").
                     toString();
 
 
@@ -236,13 +237,14 @@ public final class ServiceDAO {
 
 
             String sql = new StringBuilder().
-                    append("SELECT r.firstname, r.lastname, s.title, s.id, sr.provider_id, sr.created AS requested_at, sr.status ").
-                    append("FROM serviceRequests sr, registrations r, services s, users u ").
-                    append("WHERE sr.requester_id = ? AND s.id = sr.service_id AND u.id = sr.provider_id AND r.id = u.reg_id ORDER BY sr.created").toString();
+                    append("SELECT r.firstname, r.lastname, i.title, s.id, sr.provider_id, sr.created AS requested_at, sr.status ").
+                    append("FROM serviceRequests sr, registrations r, services s, users u, serviceInfos i ").
+                    append("WHERE sr.requester_id = ? AND sr.status != ? AND s.id = sr.service_id AND u.id = sr.provider_id AND r.id = u.reg_id AND i.service_id = s.id ORDER BY sr.created").toString();
 
             pstmt = conn.prepareStatement(sql);
 
-            pstmt.setInt(1, userId);
+            pstmt.setInt(1,         userId);
+            pstmt.setString(2,      ServiceRequestStatus.RESOLVED.name());
 
             rs = pstmt.executeQuery();
 
@@ -466,7 +468,6 @@ public final class ServiceDAO {
             pstmt.setInt(2,     progress.getServiceRequestId());
             pstmt.setString(3,  progress.getStatus());
 
-
             pstmt.executeUpdate();
 
             rs = pstmt.getGeneratedKeys();
@@ -571,9 +572,11 @@ public final class ServiceDAO {
 
             pstmt.executeUpdate();
 
+            System.out.println("services updated!");
+
 
             // update serviceProgress
-            String updateServiceProgress = "UPDATE serviceProgress set status = ? WHERE servicerequest_id =(SELECT id FROM serviceRequests where service_id = ? AND requester_id = ? AND provider_id = ?)";
+            String updateServiceProgress = "UPDATE serviceProgress set status = ? WHERE servicerequest_id = (SELECT id FROM serviceRequests where service_id = ? AND requester_id = ? AND provider_id = ?)";
 
             pstmt = conn.prepareStatement(updateServiceProgress);
 
@@ -583,6 +586,23 @@ public final class ServiceDAO {
             pstmt.setInt(4,     providerId);
 
             pstmt.executeUpdate();
+
+            System.out.println("service Progress updated!");
+
+
+            //  Update Service Request
+            String updateServiceRequest = "UPDATE serviceRequests SET status = ? WHERE service_id = ? AND provider_id = ? AND requester_id = ?";
+
+            pstmt = conn.prepareStatement(updateServiceRequest);
+
+            pstmt.setString(1,      ServiceRequestStatus.RESOLVED.name());
+            pstmt.setInt(2,         serviceId);
+            pstmt.setInt(3,         providerId);
+            pstmt.setInt(4,         consumerId);
+
+            pstmt.executeUpdate();
+
+            System.out.println("service request updated!");
 
 
             //  Progress Code
@@ -600,6 +620,7 @@ public final class ServiceDAO {
                 progressCode = rs.getString("code");
             }
 
+            System.out.println("Progress code received!");            
 
             conn.commit();
 
@@ -624,6 +645,219 @@ public final class ServiceDAO {
 
     }
 
+
+    public static final void giveConsumerRating(ServiceRating rating, int providerId) {
+
+        //  rating given by consumer as providerRating
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        try {
+
+            conn = DAO.getConnection();
+
+            //  Persist new Rating
+            String sql = "INSERT INTO serviceRatings (serviceId, userId, value, comment) VALUES (?, ?, ?, ?)";
+
+            pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            pstmt.setInt(1,     rating.getServiceId());
+            pstmt.setInt(2,     providerId);
+            pstmt.setInt(3,     rating.getValue());
+            pstmt.setString(4,  rating.getComment());
+
+            pstmt.executeUpdate();
+
+            rs = pstmt.getGeneratedKeys();
+
+            int ratingId = -1;
+
+            while(rs.next()) {
+                ratingId = rs.getInt(1);
+            }
+
+
+            //  update Service Progress
+            String update = "UPDATE serviceProgress SET providerRating_id = ?, status = CASE WHEN consumerRating_id IS NULL THEN 'READY_TO_BE_RATED' ELSE 'RATED' END WHERE code = ?";
+
+            pstmt = conn.prepareStatement(update);
+
+
+            pstmt.setInt(1,         ratingId);
+            pstmt.setString(2,      rating.getCode());
+
+            pstmt.executeUpdate();
+
+
+
+
+            //  update user rating
+            String userRating = "UPDATE users SET rating = rating + ? WHERE id = ?";            
+
+            pstmt = conn.prepareStatement(userRating);
+
+            pstmt.setInt(1,     rating.getValue());
+            pstmt.setInt(2,     rating.getUserId());
+
+            pstmt.executeUpdate();
+                      
+
+
+            conn.commit();
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            DAO.rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            DAO.close(rs);
+            DAO.close(pstmt);
+            DAO.close(conn);
+
+        }
+
+    }
+
+    public static final void giveProviderRating(ServiceRating rating, int consumer_id) {
+
+        //  rating given by provider as consumerRating
+
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        try {
+
+            conn = DAO.getConnection();
+
+            //  Persist new Rating
+            String sql = "INSERT INTO serviceRatings (serviceId, userId, value, comment) VALUES (?, ?, ?, ?)";
+
+            pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            pstmt.setInt(1,     rating.getServiceId());
+            pstmt.setInt(2,     consumer_id);
+            pstmt.setInt(3,     rating.getValue());
+            pstmt.setString(4,  rating.getComment());
+
+            pstmt.executeUpdate();
+
+            rs = pstmt.getGeneratedKeys();
+
+            int ratingId = -1;
+
+            while(rs.next()) {
+                ratingId = rs.getInt(1);
+            }
+
+
+            //  update Service Progress
+            String update = "UPDATE serviceProgress SET consumerRating_id = ?, status = CASE WHEN providerRating_id IS NULL THEN 'READY_TO_BE_RATED' ELSE 'RATED' END WHERE code = ?";
+
+            pstmt = conn.prepareStatement(update);
+
+            pstmt.setInt(1,         ratingId);
+            pstmt.setString(2,      rating.getCode());
+
+            pstmt.executeUpdate();
+
+
+            //  update user rating
+            String userRating = "UPDATE users SET rating = rating + ? WHERE id = ?";
+
+            pstmt = conn.prepareStatement(userRating);
+
+            pstmt.setInt(1,     rating.getValue());
+            pstmt.setInt(2,     consumer_id);
+
+            pstmt.executeUpdate();
+            
+
+            conn.commit();
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            DAO.rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            DAO.close(rs);
+            DAO.close(pstmt);
+            DAO.close(conn);
+
+        }
+
+    }
+
+    public static final List<ServiceRating> getServiceRatings(int userId) {
+
+        Connection conn                     = null;
+        PreparedStatement pstmt             = null;
+        ResultSet rs                        = null;
+        List<ServiceRating> serviceRatings  = null;
+
+        try {
+
+            conn = DAO.getConnection();
+
+            String sql = "SELECT sr.value, sr.created, sr.comment, i.title, r.firstname, r.lastname " +
+                    "FROM serviceRatings sr, serviceInfos i, services s, users u, registrations r " +
+                    "WHERE sr.userId = ? AND s.id = sr.serviceId AND  i.service_id = sr.serviceId " +
+                    "AND r.id = u.reg_id AND u.id = s.provider_id";
+
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, userId);
+
+            rs = pstmt.executeQuery();
+
+            ServiceRating rating;
+
+            serviceRatings = new ArrayList<ServiceRating>();
+
+            int index = 0;
+            while(rs.next()) {
+
+                rating = new ServiceRating(rs, index++);
+
+                serviceRatings.add(rating);
+
+            }
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            DAO.rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            DAO.close(rs);
+            DAO.close(pstmt);
+            DAO.close(conn);
+
+        }
+
+        return serviceRatings;
+
+
+    }
+
+
+
     public static final List<ServiceProgress> getUnratedServiceProgressesByProvider(int providerId) {
         return null;
     }
@@ -631,5 +865,6 @@ public final class ServiceDAO {
     public static final List<ServiceProgress> getUnratedServiceProgressesByConsumer(int consumerId) {
         return null;
     }
+   
 
 }

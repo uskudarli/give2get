@@ -39,6 +39,12 @@ public final class MailFactory {
     private static String acceptedRequestSubject;
     private static String acceptedRequestContent;
 
+    private static String rateForProviderSubject;
+    private static String rateForProviderContent;
+
+    private static String rateForConsumerSubject;
+    private static String rateForConsumerContent;
+
 
     //  AWS Credentials
     private static final String ACCESS_KEY = "AKIAJGSRHPNJSO7SWAGQ";
@@ -78,6 +84,14 @@ public final class MailFactory {
         acceptedRequestContent  = otherProps.getProperty("acceptedrequest.content");
         acceptedRequestSubject  = otherProps.getProperty("acceptedrequest.subject");
 
+        //  Rate for Provider
+        rateForProviderContent  = otherProps.getProperty("rateprovider.content");
+        rateForProviderSubject  = otherProps.getProperty("rateprovider.subject");
+
+        //  Rate for Consumer
+        rateForConsumerContent  = otherProps.getProperty("rateconsumer.content");
+        rateForConsumerSubject  = otherProps.getProperty("rateconsumer.subject");
+
     }
 
     public static AmazonSimpleEmailServiceClient getNewInstance() {
@@ -93,6 +107,22 @@ public final class MailFactory {
 
     public static String getFrom() {
         return from;
+    }
+
+    public static String getRateForProviderSubject() {
+        return rateForProviderSubject;
+    }
+
+    public static String getRateForProviderContent() {
+        return rateForProviderContent;
+    }
+
+    public static String getRateForConsumerSubject() {
+        return rateForConsumerSubject;
+    }
+
+    public static String getRateForConsumerContent() {
+        return rateForConsumerContent;
     }
 
     public static String getAcceptedRequestSubject() {

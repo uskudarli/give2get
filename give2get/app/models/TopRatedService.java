@@ -18,6 +18,7 @@ public final class TopRatedService extends ListableModel{
 
     public TopRatedService(ResultSet rs, int index) throws SQLException {
 
+        id              = rs.getInt("id");
         providerId      = rs.getInt("provider_id");
         title           = rs.getString("title");
         viewCount       = rs.getInt("viewCount");

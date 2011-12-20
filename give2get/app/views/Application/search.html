@@ -43,10 +43,7 @@
                     	<thead>
                            <tr>
                                <th>Title</th>  
-                                <th>Description</th>    
-                                <th>Location</th>
-                                <th>Period</th>   
-                                <th>Duration</th>
+                                <th>Description</th>                                    
                                 <th>StartDate</th>
                                 <th>EndDate</th>
                                 <th>Status</th>
@@ -57,10 +54,7 @@
                         #{list services, as:'service'}
                         <tr class="${service.oddOrEven}">
                             <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
-                            <td style="text-align:center;">${service.description.length() > 200 ? service.description[0..200] + '..' : service.description}</td>
-                            <td style="text-align:center;">${service.location}</td>
-                            <td style="text-align:center;">${service.period}</td>
-                            <td style="text-align:center;">${service.duration}</td>
+                            <td style="text-align:center;">${service.description.length() > 200 ? service.description[0..200] + '..' : service.description}</td>                            
                             <td style="text-align:center;">${service.startDate}</td>
                             <td style="text-align:center;">${service.endDate}</td>
                             <td style="text-align:center;">${service.status}</td>

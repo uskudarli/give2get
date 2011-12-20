@@ -1,0 +1,206 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Rating' /}
+
+
+<div id="service_detail">
+
+    <p id="title_service_detail">${ratingTitle}</p>
+
+
+    <!-- Service or User Detail -->
+    <div id="detail">
+
+        #{if consumer}
+        <table width="100%">
+            <tr>
+
+                <!-- Basic User Info -->
+                <td width="50%">
+
+                    <table id="profile_basic_info" width="100%" border="1">
+                        <tr class="even">
+                            <td>First Name</td>
+                            <td>${consumer.getRegistration().getFirstname()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Last Name</td>
+                            <td>${consumer.getRegistration().getLastname()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Member Since</td>
+                            <td>${consumer.getRegistration().getActivated()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td># of Posted Services</td>
+                            <td>${consumer.getNumOfPostedServices()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td># of Comments</td>
+                            <td>${consumer.getNumOfComments()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Rating</td>
+                            <td>${consumer.getRating()}</td>
+                        </tr>
+
+                    </table>
+
+                </td>
+
+
+                <!-- Rating -->
+                <td valign="middle" style="vertical-align:middle;" width="50%">
+                    <p>Rating</p>
+                    <p class="userrating">${consumer.getRating()}</p>
+                </td>
+
+            </tr>
+        </table>
+        #{/if}
+        #{else}
+        <table width="100%" id="details">
+            <tr>
+
+                <!-- First Set of Data -->
+                <td>
+                    <table width="100%">
+                        <tr class="odd">
+                            <td>Title</td>
+                            <td>${service.title}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Description</td>
+                            <td>${service.description}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Created at</td>
+                            <td>${service.created}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Status</td>
+                            <td>${service.status}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>View Count</td>
+                            <td>${service.viewCount}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Provider</td>
+                            <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>
+                        </tr>
+                    </table>
+
+                </td>
+
+                <!-- Second Set of Data -->
+                <td>
+                    <table width="100%">
+                        <tr class="odd">
+                            <td>Start Date</td>
+                            <td>${service.startDate}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>End Date</td>
+                            <td>${service.endDate}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Weekly Schedule</td>
+                            <td>${service.fromDay}  - ${service.toDay}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Daily Schedule</td>
+                            <td>${service.fromTime} - ${service.toTime}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>City</td>
+                            <td>${service.sehirName}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>District</td>
+                            <td>${service.ilceName}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Neighborhood</td>
+                            <td>${service.semtName}</td>
+                        </tr>
+                    </table>
+                </td>
+
+            </tr>
+
+        </table>
+        #{/else}
+
+    </div>
+
+
+    <!-- New Comment Post -->
+    <div id="post_comment" align="center">
+
+        #{if consumer}
+        <p>Please rate how strongly you'll recommend or accept another service request from ${consumer.getRegistration().getFirstname() + ' '  + consumer.getRegistration().getLastname()}</p>
+        #{/if}
+        #{else}
+        <p>Please rate how strongly you'll recommend or request another service from ${service.providerFullName}</p>
+        #{/else}
+
+        <form action="/Rating/giveRating">
+            <input type="hidden" value="${c}" name="code">
+            <input type="hidden" value="${service.id}" name="serviceId">
+            <input type="hidden" value="${t}" name="t">
+            <input type="hidden" value="${consumer?.id}" name="consumer_id"/>
+            <input type="hidden" value="${service.providerId}" name="provider_id"/>
+            <select name="rating_int">
+                <option value="50">I'll strongly reconsider and recommend
+                    #{if consumer}
+                    ${consumer.getRegistration().getFirstname() + ' '  + consumer.getRegistration().getLastname()}
+                    #{/if}
+                    #{else}
+                    ${service.providerFullName}'s services
+                    #{/else}
+                </option>
+                <option value="35">I might reconsider
+                    #{if consumer}
+                    ${consumer.getRegistration().getFirstname() + ' '  + consumer.getRegistration().getLastname()}
+                    #{/if}
+                    #{else}
+                    ${service.providerFullName}'s services
+                    #{/else}
+                </option>
+                <option value="25">Undecided about
+                    #{if consumer}
+                    ${consumer.getRegistration().getFirstname() + ' '  + consumer.getRegistration().getLastname()}
+                    #{/if}
+                    #{else}
+                    ${service.providerFullName} and  his/her services
+                    #{/else}
+                </option>
+                <option value="15">I'll try not to
+                    #{if consumer}
+                    accept ${consumer.getRegistration().getFirstname() + ' '  + consumer.getRegistration().getLastname()} 's requests for my services
+                    #{/if}
+                    #{else}
+                    choose any service provided by ${service.providerFullName}
+                    #{/else}
+                </option>
+                <option value="5">I will strongly not consider and recommend again
+                    #{if consumer}
+                    ${consumer.getRegistration().getFirstname() + ' '  + consumer.getRegistration().getLastname()}
+                    #{/if}
+                    #{else}
+                    ${service.providerFullName}'s services
+                    #{/else}
+                </option>
+            </select>
+
+            <p>Any Comment?</p>
+            <textarea name="comment" class="new_service"></textarea>
+            <br/>
+            <input type="submit" value="Rate"/>
+        </form>
+
+
+    </div>
+
+
+</div>

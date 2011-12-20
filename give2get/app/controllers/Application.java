@@ -10,9 +10,7 @@ import com.boun.give2get.db.DAO;
 import com.boun.give2get.db.ServiceDAO;
 import com.boun.give2get.mail.MailUtil;
 import com.boun.give2get.exceptions.MailException;
-import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -245,10 +243,9 @@ public class Application extends Controller {
             //  Posted Services
             List<Service> userProvidedServices = DAO.getUserPostedServices(userId);
 
-            //  Posted Rolling Services
-            List<Service> providedRollingServices = DAO.getUserOnRollServices(userId);
 
-            System.out.println(providedRollingServices.size());
+            //  Posted Rolling Services
+            List<Service> providedRollingServices = DAO.getUserOnRollServices(userId);            
 
 
             //  Latest Comments
@@ -268,11 +265,14 @@ public class Application extends Controller {
                 renderArgs.put("profile_status",    message);
             }
 
+            //  Service Ratings
+            List<ServiceRating> serviceRatings = ServiceDAO.getServiceRatings(userId);
+
 
             //  Unreated Services
             //todo : List<ServiceProgress> unratedServicesProgresses  = ServiceDAO.
 
-            render(user, username, userProvidedServices, userComments, requestedServices, providedRollingServices, postedServiceOnRollError, userSkills);
+            render(user, username, userProvidedServices, userComments, requestedServices, providedRollingServices, postedServiceOnRollError, userSkills, serviceRatings);
 
 
         }
@@ -302,7 +302,7 @@ public class Application extends Controller {
             System.out.println(username);
 
 
-            //   Rating Info
+            //   ServiceRating Info
 
             // Basic Info
             User user = DAO.getUserDetailedInfo(userId);
@@ -383,8 +383,11 @@ public class Application extends Controller {
         //  Services
         List<Service> userServices = DAO.getUserPostedServices(id);
 
+        //  Service Ratings
+        List<ServiceRating> serviceRatings = ServiceDAO.getServiceRatings(id);
+
         
-        render(user, userServices);
+        render(user, userServices, serviceRatings);
 
     }
 

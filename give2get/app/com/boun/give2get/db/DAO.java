@@ -652,9 +652,10 @@ public final class DAO {
 
             conn = getConnection();
 
-            pstmt = conn.prepareStatement("SELECT s.*,r.* FROM services s,registrations r,users u WHERE " +
+            pstmt = conn.prepareStatement("SELECT s.id AS SERVICE_ID, s.created, s.status, s.provider_id, s.viewCount,r.*,i.* " +
+                    "FROM services s,registrations r,users u, serviceInfos i WHERE " +
             							  "s.provider_id = u.id and u.reg_id = r.id and " +
-            							  "(s.title like '%"+keyword+"%' or s.description like '%"+keyword+"%') and " +
+            							  "(i.title like '%"+keyword+"%' or i.description like '%"+keyword+"%') and " +
             							  "r.firstname like '%" +provider+ "%'" + dateSql);
             
 
@@ -852,7 +853,7 @@ public final class DAO {
         try {
 
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT title from services WHERE id = ?");
+            pstmt = conn.prepareStatement("SELECT title from serviceInfos WHERE service_id = ?");
 
             pstmt.setInt(1,      serviceId);
 
@@ -897,19 +898,12 @@ public final class DAO {
 
             conn = getConnection();
 
-            pstmt = conn.prepareStatement("INSERT INTO services (provider_id, title, description, location, period, duration, start, end) VALUES (?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            //  Create Service
+            pstmt = conn.prepareStatement("INSERT INTO services (provider_id) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
 
 
             pstmt.setInt(1,         userId);
-            pstmt.setString(2,      service.getTitle());
-            pstmt.setString(3,      service.getDescription());
-            pstmt.setString(4,      service.getLocation());
-            pstmt.setString(5,      service.getPeriod());
-            pstmt.setString(6,      service.getDuration());
-            pstmt.setString(7,      service.getStartDate());
-            pstmt.setString(8,      service.getEndDate());
-
-
+            
             pstmt.executeUpdate();
 
             rs = pstmt.getGeneratedKeys();
@@ -920,7 +914,86 @@ public final class DAO {
                 serviceId = rs.getInt(1);
             }
 
-            if (serviceId == -1) throw new Exception("Can't store the service! Sorry!");
+
+            boolean startDateExists     = service.getStartDate().length() != 0;
+            boolean endDateExists       = service.getEndDate().length() != 0;
+            boolean sehirInfoExists     = service.getSehirId() != 0;
+            boolean ilceInfoExists      = service.getIlceId() != 0;
+            boolean semtInfoExists      = service.getSemtId() != 0;
+
+            String insert = "INSERT INTO serviceInfos (service_id, title, description, fromDay, toDay, fromTime, toTime " +
+                    (startDateExists ? ", start" : "") +
+                    (endDateExists ? ", end" : "") +
+                    (sehirInfoExists ? ", sehir_id" : "") +
+                    (ilceInfoExists ? ", ilce_id" : "") +
+                    (semtInfoExists ? ", semt_id" : "") +
+                    ") " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?" +
+                    (startDateExists ? ", ?" : "") +
+                    (endDateExists ? ", ?" : "") +
+                    (sehirInfoExists ? ", ?" :"") +
+                    (ilceInfoExists ? ", ?" : "") +
+                    (semtInfoExists ? ", ?" : "") +
+                    ")";
+
+
+            //  Create User Info
+            pstmt = conn.prepareStatement(insert);
+
+            pstmt.setInt(1,         serviceId);
+            pstmt.setString(2,      service.getTitle());
+            pstmt.setString(3,      service.getDescription());
+
+            pstmt.setString(4,      service.getFromDay());
+            pstmt.setString(5,      service.getToDay());
+
+            pstmt.setString(6,      service.getFromTime());
+            pstmt.setString(7,      service.getToTime());
+
+            int index = 8;
+
+            if (startDateExists) {
+
+                pstmt.setString(index,  service.getStartDate());
+
+                index ++;
+            }
+
+            if (endDateExists) {
+
+                pstmt.setString(index,      service.getEndDate());
+
+                index++;
+            }
+
+            if (sehirInfoExists) {
+
+                pstmt.setInt(index,     service.getSehirId());
+                index++;
+
+            }
+
+            if (ilceInfoExists) {
+
+                pstmt.setInt(index,     service.getIlceId());
+                index++;
+
+            }
+
+            if (semtInfoExists) {
+
+                pstmt.setInt(index,     service.getSemtId());
+                index++;
+
+            }
+
+          
+            pstmt.executeUpdate();
+
+
+            //  Increment user's postedCount            
+            incrementUserPostedCount(conn, userId);
+        
 
             //  Log Activity
             logActivity(conn, ActivityType.NEW_SERVICE, userId, serviceId);
@@ -943,6 +1016,74 @@ public final class DAO {
         }
 
     }
+
+    public static final void incrementUserProvidedCount(int userId) {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection conn = null;
+
+        try {
+
+            conn = DAO.getConnection();
+
+            String sql = "UPDATE users SET providedCount = providedCount+ 1, postedCount = postedCount - 1 WHERE id = ?";
+
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, userId);
+
+            pstmt.executeUpdate();
+
+            conn.commit();
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(pstmt);
+            close(conn);
+
+        }
+
+    }
+
+    private static final void incrementUserPostedCount(Connection conn, int userId) {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            String sql = "UPDATE users SET postedCount = postedCount + 1 WHERE id = ?";
+
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setInt(1, userId);
+
+            pstmt.executeUpdate();            
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(pstmt);
+
+        }
+
+
+    }
+    
     
     
     public static final void addSkills(Queue<Skill> skills) {
@@ -1059,8 +1200,8 @@ public final class DAO {
             conn = getConnection();
 
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT u.id,r.firstName,r.lastName,a.type,a.service_id,a.created " +
-            		"FROM activities a,users u,registrations r WHERE u.id = a.user_id and " +
+            pstmt = conn.prepareStatement("SELECT u.id, r.firstName, r.lastName, a.type, a.service_id, a.created " +
+            		"FROM activities a, users u, registrations r WHERE u.id = a.user_id and " +
             		"u.reg_id = r.id ORDER BY CREATED DESC LIMIT 15");
 
             rs = pstmt.executeQuery();
@@ -1170,7 +1311,7 @@ public final class DAO {
             conn = getConnection();
 
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT id, provider_id, title, viewcount FROM services ORDER BY viewcount DESC LIMIT 5");
+            pstmt = conn.prepareStatement("SELECT s.id, s.provider_id, i.title, s.viewcount FROM services s, serviceInfos i WHERE i.service_id = s.id ORDER BY s.viewcount DESC LIMIT 5");
 
             rs = pstmt.executeQuery();
 
@@ -1253,8 +1394,8 @@ public final class DAO {
 
             System.out.println("userIdddd:"+userId);
             pstmt = conn.prepareStatement("UPDATE services SET title='"+service.getTitle()+"', " +
-            				"description='"+service.getDescription()+"', location='"+service.getLocation()+"', " +
-            				"duration='"+service.getDuration()+"' WHERE id='"+serviceId+"' and " +
+            				"description='"+service.getDescription() +
+            				"WHERE id='"+serviceId+"' and " +
             				"provider_id = '"+userId+"';");
 
             pstmt.executeUpdate();
@@ -1288,9 +1429,9 @@ public final class DAO {
             conn = getConnection();                        
 
             String sql = new StringBuilder().
-                    append("SELECT s.id, s.title, r.firstname, r.lastname, u.id as requester_id, s.status, s.provider_id  ").
-                    append("FROM services s, registrations r, users u ").
-                    append("WHERE s.provider_id = ? AND s.status = ? AND r.id = u.reg_id AND u.id = s.requester_id").
+                    append("SELECT s.id, i.title, r.firstname, r.lastname, u.id as requester_id, s.status, s.provider_id  ").
+                    append("FROM services s, registrations r, users u, serviceInfos i ").
+                    append("WHERE s.provider_id = ? AND s.status = ? AND r.id = u.reg_id AND u.id = s.requester_id AND i.service_id = s.id").
                     toString();
 
             pstmt = conn.prepareStatement(sql);
@@ -1355,8 +1496,8 @@ public final class DAO {
                           
             
             String sql = new StringBuilder().
-                    append("SELECT s.id, s.title, s.created, s.status FROM services s ").
-                    append("WHERE s.provider_id = ? AND status = ?").
+                    append("SELECT s.id, s.created, s.status, i.title FROM services s, serviceInfos i ").
+                    append("WHERE s.provider_id = ? AND status = ? AND i.service_id = s.id ").
                     append("ORDER BY s.created DESC LIMIT 15").                            
                     toString();
 
@@ -1516,8 +1657,8 @@ public final class DAO {
 
             conn = getConnection();
 
-            pstmt = conn.prepareStatement("SELECT s.id, s.title, s.created, s.status, s.provider_id, r.firstname, r.lastname FROM services s, registrations r, users u " +
-                    "WHERE s.provider_id != ? AND s.status = ? AND r.id = u.reg_id AND u.id = s.provider_id " +
+            pstmt = conn.prepareStatement("SELECT s.id, s.created, s.status, s.provider_id, r.firstname, r.lastname, i.title FROM services s, registrations r, users u, serviceInfos i " +
+                    "WHERE s.provider_id != ? AND s.status = ? AND r.id = u.reg_id AND u.id = s.provider_id AND i.service_id = s.id " +
                     "ORDER BY s.created DESC LIMIT 50");
 
             pstmt.setInt(1,     userId);
@@ -1576,8 +1717,20 @@ public final class DAO {
         try {
 
             conn = getConnection();
+
+            String sql = "select s.id AS SERVICE_ID, s.created, s.provider_id, s.requester_id, s.status, s.viewCount, i.*, r.firstname, r.lastname, il.name AS SEHIR, ilc.name AS ILCE, sem.name AS SEMT " +
+                    "from services s, registrations r, users u, serviceInfos i " +
+                    "LEFT JOIN iller il ON il.id = i.sehir_id " +
+                    "LEFT JOIN ilceler ilc ON ilc.id = i.ilce_id " +
+                    "LEFT JOIN semtler sem ON sem.id = i.semt_id " +
+                    "WHERE s.id = ? AND r.id = u.reg_id AND u.id = s.provider_id AND i.service_id = s.id LIMIT 1";
             
-            pstmt = conn.prepareStatement("select s.*, r.firstname, r.lastname from services s, registrations r, users u WHERE s.id = ? AND r.id = u.reg_id AND u.id = s.provider_id LIMIT 1");
+            /*pstmt = conn.prepareStatement("select s.created, s.provider_id, s.requester_id, s.status, s.viewCount, i.*, r.firstname, r.lastname, il.name AS SEHIR, ilc.name AS ILCE, sem.name AS SEMT " +
+                    "from services s, registrations r, users u, serviceInfos i, iller il, ilceler ilc, semtler sem " +
+                    "WHERE s.id = ? AND r.id = u.reg_id AND u.id = s.provider_id AND i.service_id = s.id AND il.id = i.sehir_id AND ilc.id = i.ilce_id AND sem.id = i.semt_id LIMIT 1");
+              */
+
+            pstmt = conn.prepareStatement(sql);
 
             pstmt.setInt(1, serviceId);
 
@@ -1585,17 +1738,19 @@ public final class DAO {
 
 
             while (rs.next()) {
-
-                service = Service.newDetailedService(rs);     
+                
+                service = Service.newDetailedService(rs);
 
                 service.setComments(getServiceComments(conn, serviceId));
-
+               
             }
 
 
 
             //  Increment View count
             incrementViewCount(conn, service);
+
+            System.out.println(3);
 
 
             conn.commit();
@@ -1627,13 +1782,11 @@ public final class DAO {
 
         try {
 
-            pstmt = conn.prepareStatement("UPDATE services SET viewCount = ? WHERE id = ?");
+            pstmt = conn.prepareStatement("UPDATE services SET viewCount = viewCount+1 WHERE id = ?");            
 
-            pstmt.setInt(1, service.getViewCount() + 1);
-            pstmt.setInt(2, service.getId());
+            pstmt.setInt(1, service.getId());
 
-            pstmt.executeUpdate();           
-
+            pstmt.executeUpdate();            
 
         } catch (Exception e) {
 
@@ -1741,7 +1894,7 @@ public final class DAO {
 
             conn = getConnection();
            
-            pstmt = conn.prepareStatement("SELECT c.*, s.title FROM comments c, services s WHERE c.service_id = s.id AND c.user_id = ? ORDER BY c.created DESC LIMIT 5");
+            pstmt = conn.prepareStatement("SELECT c.*, i.title FROM comments c, serviceInfos i WHERE c.service_id = i.id AND c.user_id = ? ORDER BY c.created DESC LIMIT 5");
 
             pstmt.setInt(1, userId);
 

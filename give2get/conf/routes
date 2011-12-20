@@ -34,8 +34,15 @@ POST	/editprofile							Application.editProfile
 GET     /user/{id}                              Application.user
 
 
+#   Rating
+GET    /rate                                       Rating.rate
+
+
 #   Search
 POST	/search					Application.search
+
+#   Advanced Search
+GET /advancedSearch                             AdvancedSearch.index
 
 
 #   Footer

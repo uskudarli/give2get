@@ -101,4 +101,36 @@
 
     </div>
 
+
+    <!-- User Ratings-->
+    <div id="user_ratings">
+
+        <p class="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Ratings</p>
+
+        #{if serviceRatings}
+        <table width="100%">
+            #{list serviceRatings, as:'rating'}
+            <tr class="${rating.oddOrEven}">
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td width="80%" class="comment_text">${rating.comment}</td>
+                        </tr>                        
+                        <tr>
+                            <td class="comment_date">${rating.created}, for service <i>'${rating.serviceTitle}'</i></td>
+                            <td class="comment_owner">rated <b>${rating.value}</b> by <i>${rating.givenBy}</i></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            #{/list}
+
+        </table>
+        #{/if}
+        #{else}
+        <p align="center">No Rating or Comment Posted</p>
+        #{/else}
+
+    </div>
+
 </div>

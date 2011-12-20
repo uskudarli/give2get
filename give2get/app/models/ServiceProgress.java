@@ -24,9 +24,9 @@ public final class ServiceProgress {
 
     public static ServiceProgress createNew(int servicRequestId) {
 
-        ServiceProgress serviceProgres = new ServiceProgress();
+        ServiceProgress serviceProgres      = new ServiceProgress();
 
-        serviceProgres.code                 = UUID.randomUUID().toString();
+        serviceProgres.code                 = UUID.randomUUID().toString();        
         serviceProgres.serviceRequestId     = servicRequestId;
         serviceProgres.status               = ServiceProgressStatus.NOT_RESOLVED.name();
 
@@ -61,4 +61,5 @@ public final class ServiceProgress {
     public String getCreated() {
         return created;
     }
+
 }
