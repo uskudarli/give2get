@@ -1,0 +1,148 @@
+01:52:05,236 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+01:52:05,891 WARN  ~ You're running Play! in DEV mode
+01:52:06,078 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+01:52:21,881 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+01:52:21,959 INFO  ~ Application 'Give2Get' is now started !
+01:55:29,671 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+01:55:30,248 WARN  ~ You're running Play! in DEV mode
+01:55:30,388 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+01:55:50,497 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+01:55:50,512 INFO  ~ Application 'Give2Get' is now started !
+02:03:49,434 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:03:50,054 WARN  ~ You're running Play! in DEV mode
+02:03:50,194 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:04:03,145 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:04:03,161 INFO  ~ Application 'Give2Get' is now started !
+02:21:39,145 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:21:39,785 WARN  ~ You're running Play! in DEV mode
+02:21:39,925 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:21:59,061 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:21:59,101 INFO  ~ Application 'Give2Get' is now started !
+02:22:15,377 ERROR ~ 
+
+@68g911a5m
+Internal Server Error (500) for request POST /signup
+
+Execution exception (In /app/com/boun/give2get/mail/MailUtil.java around line 79)
+MailException occured : javax.mail.SendFailedException: Unable to send email;   nested exception is: 	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+
+play.exceptions.JavaExecutionException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.MailException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:79)
+	at controllers.Application.saveUser(Application.java:130)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:279)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendMessage(AWSJavaMailTransport.java:97)
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:61)
+	... 7 more
+Caused by: Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.http.AmazonHttpClient.handleErrorResponse(AmazonHttpClient.java:500)
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:262)
+	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:166)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.invoke(AmazonSimpleEmailServiceClient.java:447)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.sendRawEmail(AmazonSimpleEmailServiceClient.java:329)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:266)
+	... 9 more
+02:24:02,353 ERROR ~ 
+
+@68g911a5n
+Internal Server Error (500) for request POST /signup
+
+Execution exception (In /app/com/boun/give2get/mail/MailUtil.java around line 79)
+MailException occured : javax.mail.SendFailedException: Unable to send email;   nested exception is: 	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+
+play.exceptions.JavaExecutionException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.MailException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:79)
+	at controllers.Application.saveUser(Application.java:130)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:279)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendMessage(AWSJavaMailTransport.java:97)
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:61)
+	... 7 more
+Caused by: Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.http.AmazonHttpClient.handleErrorResponse(AmazonHttpClient.java:500)
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:262)
+	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:166)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.invoke(AmazonSimpleEmailServiceClient.java:447)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.sendRawEmail(AmazonSimpleEmailServiceClient.java:329)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:266)
+	... 9 more
+02:32:23,738 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:32:24,428 WARN  ~ You're running Play! in DEV mode
+02:32:24,608 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:32:37,024 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:32:37,055 INFO  ~ Application 'Give2Get' is now started !
+02:38:33,000 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:38:33,640 WARN  ~ You're running Play! in DEV mode
+02:38:33,790 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:38:43,458 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:38:43,479 INFO  ~ Application 'Give2Get' is now started !
+02:43:46,274 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:43:46,934 WARN  ~ You're running Play! in DEV mode
+02:43:47,074 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:43:57,934 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:43:57,962 INFO  ~ Application 'Give2Get' is now started !
+02:46:40,167 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:46:40,857 WARN  ~ You're running Play! in DEV mode
+02:46:41,027 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:46:54,335 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:46:54,367 INFO  ~ Application 'Give2Get' is now started !
+02:52:45,214 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:52:45,864 WARN  ~ You're running Play! in DEV mode
+02:52:46,014 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:52:58,059 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:52:58,089 INFO  ~ Application 'Give2Get' is now started !
+02:59:09,202 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:59:09,862 WARN  ~ You're running Play! in DEV mode
+02:59:10,012 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:59:23,089 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:59:23,115 INFO  ~ Application 'Give2Get' is now started !
+03:03:19,034 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:03:19,684 WARN  ~ You're running Play! in DEV mode
+03:03:19,824 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:03:36,302 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:03:36,328 INFO  ~ Application 'Give2Get' is now started !
+03:05:21,750 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:05:22,460 WARN  ~ You're running Play! in DEV mode
+03:05:22,600 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:05:36,004 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:05:36,034 INFO  ~ Application 'Give2Get' is now started !
+03:07:37,867 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:07:38,577 WARN  ~ You're running Play! in DEV mode
+03:07:38,698 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:07:48,330 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:07:48,362 INFO  ~ Application 'Give2Get' is now started !
+03:08:56,201 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:08:56,881 WARN  ~ You're running Play! in DEV mode
+03:08:57,041 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:09:12,085 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:09:12,110 INFO  ~ Application 'Give2Get' is now started !
