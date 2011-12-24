@@ -1,14 +1,9 @@
 #{extends 'main.html' /}
 #{set title:'Give2Get - New Comment' /}
 
-
 <div id="service_list">
 
     <p id="title_profile">${services.size()} Available Services</p>
-
-    #{if flash.error}
-        <p class="profile_status_msg" align="center">${flash.error}</p>
-    #{/if}
 
     <table width="100%" id="table_service_list">
 
@@ -43,35 +38,3 @@
     </table>
 
 </div>
-
-
-<script>
-
-    $(function() {
-
-        $('#dialog-message').dialog({
-            autoOpen:false,
-            show:"blind",
-            hide:"explode"
-        });
-
-    });
-</script>
-
-
-<div class="demo">
-
-    <div id="dialog-message" title="Download complete">
-        <p>
-            <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-            Your files have downloaded successfully into the My Downloads folder.
-        </p>
-
-        <p>
-            Currently using <b>36% of your storage space</b>.
-        </p>
-    </div>
-
-</div>
-
-

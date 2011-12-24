@@ -1,115 +1,82 @@
 #{extends 'main.html' /}
 #{set title:'Give2Get' /}
 
-
 <div class="maincontainer">
 
-   <table id="main" width="100%">
-
-       <tr>
-
-           <td id="table_data_left">
-               
                <!-- Recent Activities -->
-               <div id="activities">
+               <div id="activities" class="round">
 
-                   <p class="table_title">Recent Activities</p>
+                    <p class="table_title">Recent Activities</p>
 
-                   <table id="recentActs">
-                       <thead>
-                       <tr>
-                           <th>Activity</th>
-                           <th>Date</th>
-                       </tr>
-                       </thead>
+                    #{list recentActivities, as:'activity'}
+                        <div id="recent_activities">
+                            <div id="user_photo" class="round"><img width="50" height="50"  src="/public/images/char_1.png" /></div>
+                            <div id="activity_details">
+                                <span id="activity_name">
+                                   <a href="/user/${activity.userId}">${activity.name}</a>
+                                   has ${activity.text}
+                                </span>
 
-                       <tbody>
+                                <span id="activity_date">
+                                    <span id="timeago" title="${activity.created}">${activity.created}</span>
 
-                       #{list recentActivities, as:'activity'}
-                       <tr class="${activity.oddOrEven}">
-                           <td><a href="/user/${activity.userId}">${activity.name}</a>${activity.text}
-                           <a href="/service/${activity.serviceId}">${activity.title}</a></td>
-                           <td>${activity.created}</td>
-                       </tr>
-                       #{/list}
-                       </tbody>
+                                </span>
 
-                   </table>
+                                <br />
+                                <a href="/service/${activity.serviceId}">${activity.title}</a>
+                            </div>
+
+                        </div>
+                   #{/list}
 
                </div>
 
-           </td>
-
-           <td id="table_data_right" valign="top">
 
                <!-- Top Rated Users -->
-               <div id="topusers">
+               <div id="topusers" class="round">
+
+                   <div id="crown"><img width="123" height="100" src="/public/images/crown.png" /></div>
 
                    <p class="table_title">Top Rated Users</p>
 
-                   <table id="topratedusers" width="100%">
-                       <thead>
-                       <tr>
-                           <th>User</th>
-                           <th>Rating</th>
-                       </tr>
-                       </thead>
-
-                       <tbody>
-
                        #{list topRatedUsers, as:'topRatedUser'}
-                       <tr class="${topRatedUser.oddOrEven}">
-                           <td><a href="/user/${topRatedUser.id}">${topRatedUser.fullName}</a></td>
-                           <td style="text-align:center;">${topRatedUser.rating}</td>
-                       </tr>
+
+                       <div class="top_user">
+
+                            <div id="top_user_photo" class="round"><img width="50" height="50"  src="/public/images/char_1.png" /></div>
+                           <a class="top_user_name" href="/user/${topRatedUser.id}">${topRatedUser.fullName}</a>
+                           <span class="top_user_rating">
+                               ${topRatedUser.rating}
+                           </span>
+                           <span class="top_user_text">points</span>
+                        </div>
                        #{/list}
-                       </tbody>
-
-                   </table>
-
                </div>
 
 
                <!-- Top Rated Services -->
-               <div id="topservices">
+               <div id="topservices" class="round">
 
                    <p class="table_title">Top Rated Services</p>
 
-                   <table id="topratedservices" width="100%">
-                       <thead>
-                       <tr>
-                           <th>Service</th>
-                           <th>View Count</th>
-                       </tr>
-                       </thead>
-
-                       <tbody>
-
                        #{list topRatedServices, as:'topRatedService'}
-                       <tr class="${topRatedService.oddOrEven}">
-                           <td><a href="/service/${topRatedService.id}" >${topRatedService.title.length() > 20 ? topRatedService.title[0..20] + '..' : topRatedService.title}</a></td>
-                           <td style="text-align:center;">${topRatedService.viewCount}</td>
-                       </tr>
+
+                       <div class="top_service">
+
+                           <span class="top_service_name">
+                               <a href="/service/${topRatedService.id}">${topRatedService.title}</a>
+                           </span>
+                           <span class="top_service_view">
+                               ${topRatedService.viewCount}
+                           </span>
+                           <span class="top_service_text">views</span>
+                        </div>
+ 
+
+
+
+
                        #{/list}
-                       </tbody>
-
-                   </table>
-                   
                </div>
-
-           </td>
-           
-       </tr>
-
-   </table>
-
-
-    <!--<div id="rightSide" width="30%">
-        
-    </div>-->
-
-
-
-
 
 </div>

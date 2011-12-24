@@ -27,6 +27,19 @@
         <script src="@{'/public/javascripts/sessvars.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/datepicker.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/timerpicker.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery.timeago.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
+<script>
+    //Renan's fancy stuff
+
+    $(document).ready(function() {
+        $("span#timeago").timeago();
+
+        $('div#messages_console').delay(5000).slideUp(); 
+    });
+
+</script>
+
 
 
     <!--
@@ -43,63 +56,121 @@
     </head>
 
     <body>
-
-        #{topbanner /}
+<br/>
+<br/>
+<br/>
+<br/>
+denem
+    #{if flash.error}
+        <div id="messages_console" class="notification">
+            ${flash.error}
+        </div>
+    #{/if}
 
         <!-- Menu Bar-->
-        <div id="menubar">
+        <div id="top_bar">
+            <div id="top_bar_content">
 
-            <ul id="menubar-navigation">
+                        <!-- Search -->
+                        #{form @Application.search()}
+                        <input id="search_text" type="text" placeholder="Quick Search" name="keyword" alt="Search" title="Search"/>
+                        #{/form}
 
                 #{if user?.registration}
-                <li class="menuitem">
-                    <a href="@{Application.index()}">Home</a>
-                </li>
+                <div id="menu">
+                    <div class="menu_item">
+                        <a href="@{Application.index()}">Home</a>
+                    </div>
 
-                <li class="menuitem">
-                    <a href="@{Application.profile()}">Profile</a>
-                </li>
+                    <div class="menu_item">
+                        <a href="@{Application.profile()}">Profile</a>
+                    </div>
 
-                <li class="menuitem">
-                    <a href="@{Services.post()}">Post New Service</a>
-                </li>
+                    <span class="menu_item">
+                        <a href="@{Services.post()}">New Service</a>
+                    </span>
 
-                <li class="menuitem">
-                    <a href="@{Services.list()}">List Services</a>
-                </li>
+                    <span class="menu_item">
+                        <a href="@{Services.list()}">List Services</a>
+                    </span>
 
-                <li class="menuitem">
-                    <a href="@{AdvancedSearch.index()}">Advanced Search</a>
-                </li>
+                    <span class="menu_item">
+                        <a href="@{AdvancedSearch.index()}">Advanced Search</a>
+                    </span>
+                </div>
                 #{/if}
-            </ul>
 
+            </div>
 
-            #{if user?.registration}
-
-            #{logoutbar /}
-
-            #{/if}
-            #{else}
-
-            #{loginbar /}
-
-            #{/else}
 
 
         </div>
+
+
+        <!-- Login Box floating! -->
+        #{if user?.registration}
+            #{logoutbar /}
+        #{/if}
+        #{else}
+            #{loginbar /}
+        #{/else}
+
+
+
+
+
+
+    <div id="master_container">
+
+        <div id="header">
+
+            <div id="logo">
+                <a class="nolink" href="@{Application.index()}">
+                    <img class="nolink" src="/public/images/give_2_get_logo.png" />
+                </a>
+            </div>
+
+            <div id="char_1">
+                <img src="/public/images/teach_piano.png" />
+            </div>
+
+            <div id="char_2">
+                <img src="/public/images/give_books.png" />
+            </div>
+
+            <div id="char_3">
+                <img src="/public/images/walk_dogs.png" />
+            </div>
+
+            <div id="char_4">
+                <img src="/public/images/need_books.png" />
+            </div>
+
+            <div id="char_5">
+                <img src="/public/images/want_toys.png" />
+            </div>
+
+            <div id="char_6">
+                <img src="/public/images/teach_me.png" />
+            </div>
+        <div/>
+
+
 
 
         <!-- Content -->
         <div id="content">
 
+            <div>
             #{doLayout /}
-
+            </div>
+            <div>
+            #{footer /}
+            </div>
         </div>
 
-        
-        <!-- Footer -->
-        #{footer /}                   
+    </div>
+
 
     </body>
 
