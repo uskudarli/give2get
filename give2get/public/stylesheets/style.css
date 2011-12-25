@@ -716,12 +716,17 @@ th {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .75);
 }
 
+td {
+    text-align: left !important;
+    padding: 2px;
+}
+
 .odd {
     background-color: #f0f0f0;
 }
 
 .even {
-    background-color: #d8d8d8;
+    background-color: #e0e0e0;
 }
 
 #user_rating_grand {
@@ -839,7 +844,7 @@ th {
     top: 0px;
     left: 0px;
 
-    z-index:55;
+    z-index:50;
 
 
     -webkit-border-top-right-radius: 4px;
