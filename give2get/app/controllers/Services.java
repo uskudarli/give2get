@@ -86,18 +86,7 @@ public class Services extends Controller {
 
         validation.required(title);
         validation.required(description);
-
-        System.out.println(title);
-        System.out.println(description);
-        System.out.println(startdate);
-        System.out.println(enddate);
-        System.out.println(city);
-        System.out.println(ilce);
-        System.out.println(semt);
-        System.out.println(fromDay);
-        System.out.println(toDay);
-        System.out.println(betweenFrom);
-        System.out.println(betweenTo);
+        
 
         if (startdate.length() != 0) {
 
@@ -151,9 +140,7 @@ public class Services extends Controller {
         }
 
         //  Last 50 Services for now..
-        List<Service> services = DAO.getServices(Integer.valueOf(session.get("userid")).intValue());
-
-        System.out.println("messages=" + message);
+        List<Service> services = DAO.getServices(Integer.valueOf(session.get("userid")).intValue());        
 
         if (message != null)
             flash.error(message);
@@ -235,7 +222,6 @@ public class Services extends Controller {
         
         Service service = new Service(title, description, startdate, enddate, duration, location, period);
         
-        System.out.println("title:"+service.getTitle());
         
         DAO.completeEditService(service,userId,serviceId);
         
@@ -250,10 +236,13 @@ public class Services extends Controller {
 
     public static final void postComment(int serviceId, String content) {
 
-
         DAO.postNewComment(serviceId, Integer.valueOf(session.get("userid")).intValue(), content);
 
-        Services.service(serviceId);
+        List<Comment> comments = DAO.getServiceComments(serviceId);
+
+        renderJSON(comments);
+
+        //Services.service(serviceId);
         
     }
 
@@ -283,13 +272,8 @@ public class Services extends Controller {
 
     public static final void request(int serviceId, int providerId, String serviceTitle) throws MailException {
 
-        int userId = Integer.parseInt(session.get("userid"));
-        System.out.println("userId=" + userId);
-
-        System.out.println(serviceId);
-        System.out.println(providerId);
-        System.out.println(serviceTitle);
-
+        int userId = Integer.parseInt(session.get("userid"));        
+        
 
         boolean userEligible = ServiceDAO.isUserEligibleForNewRequests(userId);
                 
@@ -326,9 +310,7 @@ public class Services extends Controller {
     }
 
 
-    public static final void requesters(int serviceId) {
-
-        System.out.println(serviceId);                
+    public static final void requesters(int serviceId) {                        
 
         //  Service Details
         Service service = DAO.getServiceDetail(serviceId);
@@ -346,13 +328,7 @@ public class Services extends Controller {
 
     public static final void acceptConsumer(int requesterId, String requesterEmail, String requesterFullName, int serviceId, int providerId, String serviceTitle, String providerFullName) throws MailException {
         
-        System.out.println(requesterId);
-        System.out.println(serviceId);
-        System.out.println(providerId);
-        System.out.println(requesterEmail);
-        System.out.println(requesterFullName);
-
-
+       
         //  bunch of actions in one transaction
         ServiceDAO.acceptConsumer(requesterId, serviceId, providerId);
 
@@ -381,16 +357,10 @@ public class Services extends Controller {
         /*int requestId = ServiceDAO.getServiceRequestId(serviceId, providerId, requesterId);
 
         System.out.println("requestId=" + requestId);*/
-
-        System.out.println("seviceId=" + serviceId);        //25
-        System.out.println("requesterId=" + requesterId);   //14
-        System.out.println("providerId= "+ providerId);     //13
-
+       
 
         //  bunch of updates
-        String serviceProgressCode = ServiceDAO.resolve(serviceId, providerId, requesterId);
-
-        System.out.println("progressCode=" + serviceProgressCode);
+        String serviceProgressCode = ServiceDAO.resolve(serviceId, providerId, requesterId);        
 
 
         User provider = DAO.getUser(providerId);

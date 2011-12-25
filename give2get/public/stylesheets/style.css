@@ -1060,3 +1060,25 @@ td {
     top: -54px;
 }
 
+.addCommentPanel {
+    color:black;
+    font-weight:bold;
+    margin:0px;
+    padding:5px 5px 5px 5px;
+    text-align:center;
+    background:lightskyblue;
+    border:solid 1px #c3c3c3;
+}
+
+.commentEntryPanel {    
+    border:solid 1px #c3c3c3;
+    display:none;
+    margin:0px;
+    padding:5px;
+    text-align:center;
+    background:lightskyblue;
+}
+
+.comment_area {
+    width:500px;
+}

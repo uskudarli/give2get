@@ -9,6 +9,17 @@ package models;
  */
 public enum ServiceStatus {
 
-    WAITING_FOR_REQUESTS, WAITING_TO_BE_RESOLVED, RESOLVED;
+    WAITING_FOR_REQUESTS ("Waiting for requests"),
+    WAITING_TO_BE_RESOLVED ("Resolving"),
+    RESOLVED ("Resolved");
 
+    private final String name;
+
+    ServiceStatus(String name) {
+        this.name =  name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

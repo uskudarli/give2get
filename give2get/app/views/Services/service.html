@@ -102,7 +102,7 @@
     <div id="post_comment">
 
         <!-- Title & Add Comment-->
-        <table width=100% id="table_comments_header">
+        <!--<table width=100% id="table_comments_header">
             <tr>
                 <td>
                     <p id="title_service_comments">${comments.size() > 1 ? comments.size() + ' ' + "Comments" : ''}</p>
@@ -113,12 +113,33 @@
                     #{/form}
                 </td>
             </tr>
-        </table>
+        </table>-->
+
+
+        <p class="addCommentPanel">Make a Comment</p>
+
+
+        <div class="commentEntryPanel">
+
+            <div class="signupelement">                
+                <textarea name="comment" id="comment" class="comment_area">${flash.content}</textarea>
+            </div>
+
+
+            <div class="signupelement">
+                <input type="submit" value="Post" onclick="javascript:postComment()"/>
+            </div>            
+
+        </div>
+
+        <br/>
 
 
         <!-- Comment List -->
-        #{if comments}       
-        <table width="100%">
+        #{if comments}
+        <table width="100%" border="1" id="commentList">        
+
+
             #{list comments, as:'comment'}
             <tr class="${comment.oddOrEven}">
                 <td>
@@ -145,3 +166,52 @@
 
 
 </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $(".addCommentPanel").click(function() {
+
+            toggleCommentPanel();
+
+        });
+    });
+
+    function toggleCommentPanel() {
+
+        $(".commentEntryPanel").slideToggle("slow");
+
+    }
+
+    function postComment() {
+
+        var comment     = $("#comment").val();
+        var serviceId   = ${service.id};
+
+        $("#comment").text("");
+
+        toggleCommentPanel();
+
+        $.getJSON("@{Services.postComment()}", {serviceId : serviceId , content : comment}, function(comments) {
+
+            $("#commentList tr").remove();
+
+            var index = 0;
+
+            $.each(comments, function(id, name) {
+
+                $("#commentList").append("<tr class='" + comments[index].oddOrEven + "'><td><table width='100%'><tr><td width='80%' class='comment_text'>" + comments[index].text + "</td></tr><tr><td class='comment_date'>" + comments[index].created + "</td><td class='comment_owner'><a href='/user/" +  comments[index].ownerId + "'>" + comments[index].ownerFullName + "</a></td></tr></td></tr>");
+
+                index++;
+
+            });                       
+
+
+        });
+        
+        
+    }
+
+</script>

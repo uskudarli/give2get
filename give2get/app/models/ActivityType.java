@@ -31,8 +31,6 @@ public enum ActivityType {
 
         raw = String.format(raw, new String[] {username});
 
-        System.out.println("actName=" + raw);
-
         return raw;
 
     }
@@ -41,9 +39,7 @@ public enum ActivityType {
 
         String raw = getRawTextBody(type);
 
-        raw = String.format(raw, new String[] {username, serviceName});
-
-        System.out.println("actName=" + raw);
+        raw = String.format(raw, new String[] {username, serviceName});        
 
         return raw;
 
