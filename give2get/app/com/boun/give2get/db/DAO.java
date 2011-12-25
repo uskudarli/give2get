@@ -676,8 +676,7 @@ public final class DAO {
             log.warn(e);
 
             rollback(conn);
-            
-            System.out.println(e);
+
             throw new DataStoreException(e);
 
         } finally {
@@ -804,13 +803,10 @@ public final class DAO {
 
             String userName = getUserFullName(conn, userId);
 
-            System.out.println("username=" + userName);
 
             if (provideServiceId) {
 
                 String serviceName = getServiceFullName(conn, serviceId);
-
-                System.out.println("serviceName=" + serviceName);
 
                 pstmt.setString(3,  ActivityType.getText(type, userName, serviceName));
                 pstmt.setInt(4,     serviceId);
@@ -822,8 +818,6 @@ public final class DAO {
 
 
             pstmt.executeUpdate();
-
-            System.out.println("Log completed!");
 
 
         } catch (Exception e) {
@@ -1165,7 +1159,7 @@ public final class DAO {
 
             //  Log Activity
             logActivity(conn, ActivityType.NEW_COMMENT, userId, serviceId);
-            
+                     
 
             conn.commit();
 
@@ -1392,7 +1386,6 @@ public final class DAO {
 
             conn = getConnection();
 
-            System.out.println("userIdddd:"+userId);
             pstmt = conn.prepareStatement("UPDATE services SET title='"+service.getTitle()+"', " +
             				"description='"+service.getDescription() +
             				"WHERE id='"+serviceId+"' and " +
@@ -1748,10 +1741,7 @@ public final class DAO {
 
 
             //  Increment View count
-            incrementViewCount(conn, service);
-
-            System.out.println(3);
-
+            incrementViewCount(conn, service);            
 
             conn.commit();
 

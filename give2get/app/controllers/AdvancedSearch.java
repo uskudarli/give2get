@@ -32,9 +32,7 @@ public class AdvancedSearch extends Controller {
 
     }
 
-    public static void index() {
-
-        System.out.println("here!");
+    public static void index() {        
 
         render();
         
@@ -42,10 +40,7 @@ public class AdvancedSearch extends Controller {
 
     public static void search(String keyword, boolean searchInTitle, boolean searchInDescription) {
 
-        System.out.println(keyword);
-        System.out.println(searchInTitle);
-        System.out.println(searchInDescription);
-
+       
         if (!searchInTitle  && !searchInDescription) {
 
             searchInTitle           = true;

@@ -35,7 +35,8 @@ public class Application extends Controller {
 
     }
 
-    public static final User isUserConnected() {
+    public static User  isUserConnected() {
+
 
         
         //  Check render Args
@@ -60,7 +61,7 @@ public class Application extends Controller {
 
             return user;
 
-        }         
+        }
 
         //  Not Logged in
         return null;
@@ -130,9 +131,7 @@ public class Application extends Controller {
             signup();
 
         }
-        
-
-        System.out.println("Registering...");
+                
 
         //  New Registration
         Registration registration = Registration.create(email, firstname, lastname, password);
@@ -281,9 +280,7 @@ public class Application extends Controller {
 
     }
 
-    public static final void profile() {
-
-        System.out.println("here!");
+    public static final void profile() {        
 
         profile(null);
         

@@ -36,7 +36,7 @@ public final class SearchDAO {
 
             conn = DAO.getConnection();
 
-            pstmt = conn.prepareStatement("SELECT id, name FROM iller");
+            pstmt = conn.prepareStatement("SELECT id, name FROM iller ORDER BY name");
 
 
             rs = pstmt.executeQuery();
@@ -87,7 +87,7 @@ public final class SearchDAO {
 
             conn = DAO.getConnection();
 
-            pstmt = conn.prepareStatement("SELECT * FROM ilceler WHERE il_id = ?");
+            pstmt = conn.prepareStatement("SELECT * FROM ilceler WHERE il_id = ? ORDER BY name");
 
             pstmt.setInt(1, sehirId);
 
@@ -137,7 +137,7 @@ public final class SearchDAO {
 
             conn = DAO.getConnection();
 
-            pstmt = conn.prepareStatement("SELECT * FROM semtler WHERE ilce_id = ?");
+            pstmt = conn.prepareStatement("SELECT * FROM semtler WHERE ilce_id = ? ORDER BY name");
 
             pstmt.setInt(1,     ilceId);
 
@@ -189,20 +189,43 @@ public final class SearchDAO {
 
             conn = DAO.getConnection();
 
-            String sql =
-                    "SELECT i.service_id, i.title, i.description, s.provider_id, s.created, s.viewCount, u.id as PROVIDER_ID, u.rating, u.postedCount, u.providedCount, r.firstname, r.lastname " +
-                            "FROM serviceInfos i " +
-                            "INNER JOIN services s ON s.id = i.service_id " +
-                            "INNER JOIN users u ON u.id = s.provider_id " +
-                            "INNER JOIN registrations r ON u.reg_id = r.id " +                           
-                            "WHERE MATCH (" + (lookInTitle ? "title" : "") + (lookInDescription ? (lookInTitle ? ",description) " : "description) ") : ") ") +
-                            "AGAINST (? IN NATURAL LANGUAGE MODE) ORDER BY u.postedCount ASC, u.providedCount ASC, u.rating DESC";
+            String sql;
 
-            System.out.println(sql);
+            if (keyword.length() < 4) {
 
-            pstmt = conn.prepareStatement(sql);
+                sql = "SELECT i.service_id, i.title, i.description, s.provider_id, s.created, s.viewCount, u.id as PROVIDER_ID, u.rating, u.postedCount, u.providedCount, r.firstname, r.lastname " +
+                        "FROM serviceInfos i " +
+                        "INNER JOIN services s ON s.id = i.service_id " +
+                        "INNER JOIN users u ON u.id = s.provider_id " +
+                        "INNER JOIN registrations r ON u.reg_id = r.id " +
+                        "WHERE " + (lookInTitle ? "title LIKE (?)" :"") +
+                        (lookInDescription ? (!lookInTitle ? "description LIKE (?) " : "OR description LIKE (?) ") : "" ) +                         
+                        "ORDER BY u.postedCount ASC, u.providedCount ASC, u.rating DESC";                
 
-            pstmt.setString(1,  keyword);
+                pstmt = conn.prepareStatement(sql);
+
+                pstmt.setString(1,  "%" + keyword + "%");
+
+                if (lookInTitle && lookInDescription)
+                    pstmt.setString(2,  "%" + keyword + "%");
+
+            } else {
+
+                sql =
+                        "SELECT i.service_id, i.title, i.description, s.provider_id, s.created, s.viewCount, u.id as PROVIDER_ID, u.rating, u.postedCount, u.providedCount, r.firstname, r.lastname " +
+                                "FROM serviceInfos i " +
+                                "INNER JOIN services s ON s.id = i.service_id " +
+                                "INNER JOIN users u ON u.id = s.provider_id " +
+                                "INNER JOIN registrations r ON u.reg_id = r.id " +
+                                "WHERE MATCH (" + (lookInTitle ? "title" : "") + (lookInDescription ? (lookInTitle ? ",description) " : "description) ") : ") ") +
+                                "AGAINST (? IN BOOLEAN MODE) ORDER BY u.postedCount ASC, u.providedCount ASC, u.rating DESC";                
+
+                pstmt = conn.prepareStatement(sql);
+
+                pstmt.setString(1,  "+" + keyword);
+                
+            }
+
 
             rs = pstmt.executeQuery();
 
