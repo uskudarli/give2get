@@ -1574,3 +1574,117 @@ play.exceptions.NoRouteFoundException: No route found
 02:27:03,830 INFO  ~ Listening for HTTP at /192.168.1.34:9000 (Waiting a first request to start) ...
 02:27:07,338 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
 02:27:07,353 INFO  ~ Application 'Give2Get' is now started !
+11:59:26,149 ERROR ~ 
+
+@68oellk6f
+Internal Server Error (500) for request GET /
+
+No route found (In /app/views/main.html around line 103)
+No route able to invoke action Application.postNewService was found.
+
+play.exceptions.NoRouteFoundException: No route found
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:80)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:237)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:262)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+13:24:38,303 ERROR ~ 
+
+@68oellk6g
+post.@{Services.getSehirler()} action not found
+
+Action not found
+Action post.@{Services.getSehirler()} could not be found. Error raised is Controller controllers.post.@{Services not found
+
+play.exceptions.ActionNotFoundException: Action post.@{Services.getSehirler()} not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.@{Services not found
+	... 3 more
+13:24:49,244 ERROR ~ 
+
+@68oellk6h
+post.Services.getSehirler() action not found
+
+Action not found
+Action post.Services.getSehirler() could not be found. Error raised is Controller controllers.post.Services not found
+
+play.exceptions.ActionNotFoundException: Action post.Services.getSehirler() not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.Services not found
+	... 3 more
+13:24:52,951 ERROR ~ 
+
+@68oellk6i
+post.Services.getSehirler action not found
+
+Action not found
+Action post.Services.getSehirler could not be found. Error raised is Controller controllers.post.Services not found
+
+play.exceptions.ActionNotFoundException: Action post.Services.getSehirler not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.Services not found
+	... 3 more
+13:25:07,563 ERROR ~ 
+
+@68oellk6j
+post.Services.getSehirler() action not found
+
+Action not found
+Action post.Services.getSehirler() could not be found. Error raised is Controller controllers.post.Services not found
+
+play.exceptions.ActionNotFoundException: Action post.Services.getSehirler() not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.Services not found
+	... 3 more
+13:25:08,311 ERROR ~ 
+
+@68oellk6k
+post.@{Services.getSehirler()} action not found
+
+Action not found
+Action post.@{Services.getSehirler()} could not be found. Error raised is Controller controllers.post.@{Services not found
+
+play.exceptions.ActionNotFoundException: Action post.@{Services.getSehirler()} not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.@{Services not found
+	... 3 more
+14:25:33,161 ERROR ~ 
+
+@68oellk6l
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
