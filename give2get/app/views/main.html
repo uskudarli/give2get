@@ -517,6 +517,10 @@
                     <span class="menu_item">
                         <a href="@{AdvancedSearch.index()}">Advanced Search</a>
                     </span>
+                    
+                    <span class="menu_item">
+                        <a href="@{MessageController.inbox(session.get("userid"))}">Inbox</a>
+                    </span>
 
                 #{/if}
                 </div>

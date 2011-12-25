@@ -1,0 +1,38 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Inbox' /}
+
+ <div class="maincontainer">
+
+	 <!-- Inbox -->
+	 <div id="messageBox" class="round">
+	    	#{list inboxMessages, as:'message'}
+	      <div id="message" onclick="getLink('${message.userId}')">
+	      	<div id="user_photo"><img src="/public/images/char_1.png" /></div>
+	        <div id="message_details">
+                <span id="activity_name">
+                   <a href="/user/${message.userId}">${message.firstName+' '+message.lastName}</a>
+                </span>
+
+                <span id="message_date">
+                    <span id="timeago">${message.replyStatus.equals('notreplied') ? 'received at ' : 'send at '}${message.sendDate}</span>
+                	<span id="delete"><img width="7" height="7"  src="/public/images/delete.png" /></span>
+                	<span id="unread"><img width="7" height="7"  src="/public/images/unread.png" /></span>
+                </span>
+                <br />
+                <span id="messageText">${message.message.length() > 70 ? message.message[0..70] + '..' : message.message}</span>
+            </div>
+	        
+	      </div>
+	      #{/list}
+	</div>
+</div>
+
+<script type="text/javascript">
+	function getLink(userId)
+	{
+		window.location.href = '/getMessage/'+userId;
+	}
+</script>
+
+
+

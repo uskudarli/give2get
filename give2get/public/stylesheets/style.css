@@ -921,3 +921,64 @@ td {
 .comment_area {
     width:500px;
 }
+
+#messageBox {
+    float: left;
+    padding: 20px;
+    width: 600px;
+    background-color: #f0f0f0;
+    margin-right: 10px;
+}
+
+#message {
+	height: 50px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    border-bottom: 1px solid #d0d0d0;
+    cursor: pointer;
+}
+
+#message:hover{
+	text-decoration:underline;
+}
+
+#message_details {
+    position: relative;
+    float: left;
+    width: 530px;
+}
+
+#userName {
+	float: left;
+	position:relative;
+	width: 439px;
+	height: 20px;
+	margin-top: 8px;
+	vertical-align:bottom;
+}
+
+#message_date {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 180px;
+    font-size: 7pt;
+    text-align: right;
+    color: #ff4400;
+}
+
+#sembols{
+	float:left;
+	position:relative;
+	margin-left: 7px;
+	margin-top: 6px;
+	width: 18px;
+}
+
+#messageText {
+	float: left;
+	position:relative;
+	width: 645px;
+	height: 25px;
+}
