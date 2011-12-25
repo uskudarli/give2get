@@ -36,6 +36,7 @@
         <script src="@{'/public/javascripts/jquery.timeago.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/new_service.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/new_service.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
 <script>
     //Renan's fancy stuff
 
@@ -52,7 +53,12 @@
             $('#edit_profile_form').submit();
         });
 
+        // SOME KIND OF AN EASTER EGG
 
+        $('#the_team').click(function() {
+            $('.people').fadeToggle();
+            $('.no_people').fadeToggle();
+        });
 
 
         $('#toggle_add_new_service_panel').click(function() {
@@ -602,8 +608,12 @@ $('#postEndDate2').datetimepicker({
                     </span>
 
                     <span class="menu_item">
-                        <a href="@{AdvancedSearch.index()}">Advanced Search</a>
+                        <a id="the_team" href="#">The Team</a>
                     </span>
+
+                    <!--span class="menu_item">
+                        <a href="@{AdvancedSearch.index()}">Advanced Search</a>
+                    </span-->
 
                 #{/if}
                 </div>
@@ -613,9 +623,6 @@ $('#postEndDate2').datetimepicker({
 
 
         </div>
-
-
-
 
 
     <div id="master_container">
@@ -628,29 +635,57 @@ $('#postEndDate2').datetimepicker({
                 </a>
             </div>
 
-            <div id="char_1">
+            <div id="char_1" class="no_people">
                 <img src="/public/images/teach_piano.png" />
             </div>
 
-            <div id="char_2">
+            <div id="char_2" class="no_people">
                 <img src="/public/images/give_books.png" />
             </div>
 
-            <div id="char_3">
+            <div id="char_3" class="no_people">
                 <img src="/public/images/walk_dogs.png" />
             </div>
 
-            <div id="char_4">
+            <div id="char_4" class="no_people">
                 <img src="/public/images/need_books.png" />
             </div>
 
-            <div id="char_5">
+            <div id="char_5" class="no_people">
                 <img src="/public/images/want_toys.png" />
             </div>
 
-            <div id="char_6">
+            <div id="char_6" class="no_people">
                 <img src="/public/images/teach_me.png" />
             </div>
+
+            <!-- THE TEAM -->
+            <div id="char_1" class="people">
+                <img src="/public/images/can.png" />
+            </div>
+
+            <div id="char_2" class="people">
+                <a href="http://cakirerk.org">
+                <img src="/public/images/renan.png" />
+                </a>
+            </div>
+
+            <div id="char_3" class="people">
+                <img src="/public/images/beril.png" />
+            </div>
+
+            <div id="char_4" class="people">
+                <img src="/public/images/orcun.png" />
+            </div>
+
+            <div id="char_5" class="people">
+                <img src="/public/images/cem.png" />
+            </div>
+
+            <div id="char_6" class="people">
+                <img src="/public/images/durukan.png" />
+            </div>
+
         <div/>
 
 
@@ -662,14 +697,15 @@ $('#postEndDate2').datetimepicker({
             <div>
             #{doLayout /}
             </div>
-            <div>
-            #{footer /}
-            </div>
         </div>
 
     </div>
 
 
     </body>
+
+    <script>
+    </script>
+
 
 </html>

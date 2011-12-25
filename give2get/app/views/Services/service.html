@@ -3,97 +3,77 @@
 
 <div id="service_detail">
 
-    <p id="title_service_detail">${service.title}</p>
+    <div id="service_information" class="white">
+    <p id="username_text" style="line-height: 40px;">${service.title}</p>
 
 
     <!-- Service Detail -->
     <div id="detail">
+        <div id="service_information_1">
 
-        <table width="100%" id="details">
-            <tr>
-
-                <!-- First Set of Data -->
-                <td>
                     <table width="100%">
-                        <tr class="odd">
-                            <td>Title</td>
-                            <td>${service.title}</td>
-                        </tr>
-                        <tr class="even">
-                            <td>Description</td>
+                        <tr class="">
+                            <td valign="top"><b>Description</b></td>
                             <td>${service.description}</td>
                         </tr>
-                        <tr class="odd">
-                            <td>Created at</td>
+                        <tr class="">
+                            <td><b>Creation Date</b></td>
                             <td>${service.created}</td>
                         </tr>
-                        <tr class="even">
-                            <td>Status</td>
+                        <tr class="">
+                            <td><b>Status</b></td>
                             <td>${service.status}</td>
                         </tr>
-                        <tr class="odd">
-                            <td>Provider</td>
+                        <tr class="">
+                            <td><b>Provider</b></td>
                             <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>
                         </tr>
-                        <tr class="even">
-                            <td>City</td>
+                        <tr class="">
+                            <td><b>City</b></td>
                             <td>${service.sehirName}</a></td>
                         </tr>
-                        <tr class="odd">
-                            <td>District</td>
+                        <tr class="">
+                            <td><b>District</b></td>
                             <td>${service.ilceName}</a></td>
                         </tr>
-                        <tr class="even">
-                            <td>Neighborhood</td>
+                        <td><b>Neighborhood</b></td>
                             <td>${service.semtName}</a></td>
                         </tr>
                     </table>
-
-                </td>
-
-                <!-- Second Set of Data -->
-                <td>
-                    <table width="100%">
-                        <tr class="odd">
-                            <td>Start Date</td>
-                            <td>${service.startDate}</td>
-                        </tr>
-                        <tr class="even">
-                            <td>End Date</td>
-                            <td>${service.endDate}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td>Weekly Plan</td>
-                            <td>${service.fromDay} - ${service.toDay}</td>
-                        </tr>
-                        <tr class="even">
-                            <td>Daily Plan</td>
-                            <td>${service.fromTime} - ${service.toTime}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td>View Count</td>
-                            <td>${service.viewCount}</td>
-                        </tr>
-                        <tr class="even">
-                            <td></td>
-                            <td>
+        </div>
+        <div id="service_information_2">
+            <span><b>Start Date - </b></span>
+                            <span>${service.startDate}</span>
+                            <br/>
+                            <br/>
+                            <span><b>End Date - </b></span>
+                            <span>${service.endDate}</span>
+                            <br/>
+                            <br/>
+                            <span><b>Weekly Plan - </b></span>
+                            <span>${service.fromDay} - ${service.toDay}</span>
+                            <br/>
+                            <br/>
+                            <span><b>Daily Plan - </b></span>
+                            <span>${service.fromTime} - ${service.toTime}</span>
+                            <br/>
+                            <br/>
+                            <span><b>View Count - </b></span>
+                            <span>${service.viewCount}</span>
+                            <br/>
+                            <br/>
+                            <span>
                             #{if userId != service.providerId}
                                 #{form @Services.request(service?.id, service?.providerId, service?.title)}
-                                <input type="submit" value="Request"/>
+                                <input type="image" src="@{'/public/images/request.png'}" name="request" value="request"/>
                                 #{/form}
                             #{/if}
                             #{else}
-                            	<a href="/editService/${service.id}">Edit Service</a>
+                            <a href="/editService/${service.id}"><img src="@{'/public/images/edit.png'}"></a>
                             #{/else}
-                            </td>
+                            </span>
 
-                        </tr>
-                    </table>
-                </td>
-
-            </tr>
-
-        </table>
+            </div>
 
     </div>
 
@@ -116,7 +96,39 @@
         </table>-->
 
 
-        <p class="addCommentPanel">Make a Comment</p>
+
+        <br/>
+        <br/>
+        <p class="table_title">People Talking About This Service</p>
+        <!-- Comment List -->
+        #{if comments}
+        <table width="100%" id="commentList">        
+
+            #{list comments, as:'comment'}
+            <tr class="${}">
+                <td>
+                    <table id="one_comment" width="100%">
+                        <tr>
+                            <td class="comment_text">${comment.text}</td>
+                        </tr>
+                        <tr>
+                            <td class="comment_owner">Posted by <a href="/user/${comment.ownerId}">${comment.ownerFullName}</a> at ${comment.created}</td>
+                        </tr>
+                    </table>
+                </td>                               
+            </tr>
+            #{/list}
+
+        </table>
+        #{/if}
+        #{ifnot comments}
+        <p>No Comments</p>
+        #{/ifnot}
+
+
+        <br/>
+        <br/>
+        <p class="table_title">Say Something About This Service</p>
 
 
         <div class="commentEntryPanel">
@@ -127,7 +139,7 @@
 
 
             <div class="signupelement">
-                <input type="submit" value="Post" onclick="javascript:postComment()"/>
+                <input type="submit" value="Say It" onclick="javascript:postComment()"/>
             </div>            
 
         </div>
@@ -135,64 +147,22 @@
         <br/>
 
 
-        <!-- Comment List -->
-        #{if comments}
-        <table width="100%" border="1" id="commentList">        
-
-
-            #{list comments, as:'comment'}
-            <tr class="${comment.oddOrEven}">
-                <td>
-                    <table width="100%">
-                        <tr>
-                            <td width="80%" class="comment_text">${comment.text}</td>
-                        </tr>
-                        <tr>
-                            <td class="comment_date">${comment.created}</td>
-                            <td class="comment_owner"><a href="/user/${comment.ownerId}">${comment.ownerFullName}</a></td>
-                        </tr>
-                    </table>
-                </td>                               
-            </tr>
-            #{/list}
-
-        </table>
-        #{/if}
-        #{ifnot comments}
-        <p align="center">No Comments</p>
-        #{/ifnot}
-
     </div>    
 
 
 </div>
+</div>
 
 
 <script type="text/javascript">
-
-    $(document).ready(function() {
-
-        $(".addCommentPanel").click(function() {
-
-            toggleCommentPanel();
-
-        });
-    });
-
-    function toggleCommentPanel() {
-
-        $(".commentEntryPanel").slideToggle("slow");
-
-    }
 
     function postComment() {
 
         var comment     = $("#comment").val();
         var serviceId   = ${service.id};
 
-        $("#comment").text("");
+        $("#comment").val('');
 
-        toggleCommentPanel();
 
         $.getJSON("@{Services.postComment()}", {serviceId : serviceId , content : comment}, function(comments) {
 
@@ -202,16 +172,12 @@
 
             $.each(comments, function(id, name) {
 
-                $("#commentList").append("<tr class='" + comments[index].oddOrEven + "'><td><table width='100%'><tr><td width='80%' class='comment_text'>" + comments[index].text + "</td></tr><tr><td class='comment_date'>" + comments[index].created + "</td><td class='comment_owner'><a href='/user/" +  comments[index].ownerId + "'>" + comments[index].ownerFullName + "</a></td></tr></td></tr>");
+                $("#commentList").append("<tr class='" + comments[index].OrEven + "'><td><table width='100%'><tr><td width='80%' class='comment_text'>" + comments[index].text + "</td></tr><tr><td class='comment_date'>" + comments[index].created + "</td><td class='comment_owner'><a href='/user/" +  comments[index].ownerId + "'>" + comments[index].ownerFullName + "</a></td></tr></td></tr>");
 
                 index++;
 
             });                       
-
-
         });
-        
-        
     }
 
 </script>
