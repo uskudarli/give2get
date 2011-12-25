@@ -1688,3 +1688,22 @@ Caused by: java.lang.NullPointerException
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
 	... 1 more
+18:18:30,401 ERROR ~ 
+
+@68oellk6m
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more

@@ -24,6 +24,7 @@
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
 
         <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+
         <script src="@{'/public/javascripts/jquery.validationEngine-en.js'}" type="text/javascript" charset="utf-8"></script>
         <script src="@{'/public/javascripts/jquery.validationEngine.js'}" type="text/javascript" charset="utf-8"></script>
 
@@ -45,6 +46,12 @@
         $('#logout_button').click(function() {
             $('#logout_form').submit();
         });
+
+        $('#submit_edit_profile_form').click(function() {
+            $('#edit_profile_form').submit();
+        });
+
+
 
 
         $('#toggle_add_new_service_panel').click(function() {
@@ -108,7 +115,6 @@
         var prettyDate =(myDate.getMonth()+1) + '/' + myDate.getDate() + '/' +
                 myDate.getFullYear();
         $("#date_pretty").val(prettyDate);
-
 
 
 </script>
@@ -396,6 +402,13 @@
                         <div id="user_options">
                             <div class="user_menu_item">
                                 <a href="@{Application.profile()}">Profile</a>
+                            </div>
+
+                            <div class="user_menu_item">
+                                <form id="edit_profile_form" action="/editprofile" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded"> 
+                                <a href="#" id="submit_edit_profile_form">Edit Profile</a>
+
+                                </form>
                             </div>
 
                             <div class="user_menu_item">
