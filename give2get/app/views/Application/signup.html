@@ -1,0 +1,67 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Sign Up' /}
+
+
+<h2>Sign Up</h2>
+
+#{ifErrors}
+<p class="error">
+    Please correct these errors!
+</p>
+#{/ifErrors}
+
+<div id="signup_container">
+
+    #{form @saveUser()}
+
+    #{field 'email'}
+        <div class="signupelement">
+            <label class="signuptitle">Email</label><br>
+            <input type="text" name="${field.name}" size="30" value="${flash.email}"/>
+            <span class="error">#{error 'email' /}</span>
+        </div>
+    #{/field}
+
+    
+    #{field 'firstname'}
+        <div class="signupelement">
+            <label class="signuptitle">First Name</label><br>
+            <input type="text" name="${field.name}" size="30" value="${flash.firstname}"/>
+            <span class="error">#{error 'firstname' /}</span>
+        </div>
+    #{/field}
+
+
+    #{field 'lastname'}
+        <div class="signupelement">
+            <label class="signuptitle">Last Name</label><br>
+            <input type="text" name="${field.name}" size="30" value="${flash.lastname}"/>
+            <span class="error">#{error 'lastname' /}</span>
+        </div>
+    #{/field}
+
+
+    #{field 'password'}
+        <div class="signupelement">
+            <label class="signuptitle">Password</label><br>
+            <input type="password" name="${field.name}" size="30"/>
+            <span class="error">#{error 'password' /}</span>
+        </div>
+    #{/field}
+
+
+        <div class="signupelement">
+            <input type="submit" name="SignUp" value="Sign Up"/>
+        </div>
+
+    #{/form}
+
+</div>
+
+#{if flash.success}
+    <div class="container">
+        <p id="status">
+            ${flash.success}
+        </p>
+    </div>
+#{/if}

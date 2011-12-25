@@ -1,0 +1,23 @@
+<form id="login_form" action="/login" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
+<div id="login_box">
+    <p class="table_title_2">Sign In</p>
+
+    <div class="loginelement">
+        <label class="logintitle">Email</label>
+        <br/>
+        <input id="login_email" type="text" name="email" class="validate[required,custom[email]]" tabindex="1"/>
+    </div>
+
+
+    <div class="loginelement">
+        <label class="logintitle">Password</label>
+        <br/>
+        <input id="login_password" type="password" name="password" class="validate[required,minSize[6]]" tabindex="2"/>
+    </div>
+
+    <div class="loginelement float_right">
+        <input id="login_submit" type="image" src="@{'/public/images/sign_in.png'}" class="login-button" value="Login" tabindex="4"/>
+    </div>
+
+</div>
+</form>

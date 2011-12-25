@@ -1,0 +1,1690 @@
+01:52:05,236 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+01:52:05,891 WARN  ~ You're running Play! in DEV mode
+01:52:06,078 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+01:52:21,881 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+01:52:21,959 INFO  ~ Application 'Give2Get' is now started !
+01:55:29,671 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+01:55:30,248 WARN  ~ You're running Play! in DEV mode
+01:55:30,388 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+01:55:50,497 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+01:55:50,512 INFO  ~ Application 'Give2Get' is now started !
+02:03:49,434 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:03:50,054 WARN  ~ You're running Play! in DEV mode
+02:03:50,194 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:04:03,145 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:04:03,161 INFO  ~ Application 'Give2Get' is now started !
+02:21:39,145 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:21:39,785 WARN  ~ You're running Play! in DEV mode
+02:21:39,925 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:21:59,061 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:21:59,101 INFO  ~ Application 'Give2Get' is now started !
+02:22:15,377 ERROR ~ 
+
+@68g911a5m
+Internal Server Error (500) for request POST /signup
+
+Execution exception (In /app/com/boun/give2get/mail/MailUtil.java around line 79)
+MailException occured : javax.mail.SendFailedException: Unable to send email;   nested exception is: 	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+
+play.exceptions.JavaExecutionException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.MailException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:79)
+	at controllers.Application.saveUser(Application.java:130)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:279)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendMessage(AWSJavaMailTransport.java:97)
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:61)
+	... 7 more
+Caused by: Status Code: 400, AWS Request ID: b4b0306f-17c4-11e1-b534-0986474bfe31, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.http.AmazonHttpClient.handleErrorResponse(AmazonHttpClient.java:500)
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:262)
+	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:166)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.invoke(AmazonSimpleEmailServiceClient.java:447)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.sendRawEmail(AmazonSimpleEmailServiceClient.java:329)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:266)
+	... 9 more
+02:24:02,353 ERROR ~ 
+
+@68g911a5n
+Internal Server Error (500) for request POST /signup
+
+Execution exception (In /app/com/boun/give2get/mail/MailUtil.java around line 79)
+MailException occured : javax.mail.SendFailedException: Unable to send email;   nested exception is: 	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+
+play.exceptions.JavaExecutionException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.MailException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:79)
+	at controllers.Application.saveUser(Application.java:130)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:279)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendMessage(AWSJavaMailTransport.java:97)
+	at com.boun.give2get.mail.MailUtil.sendRegistrationEmail(MailUtil.java:61)
+	... 7 more
+Caused by: Status Code: 400, AWS Request ID: f4b161e9-17c4-11e1-ac01-e5e921fceb44, AWS Error Code: InvalidParameterValue, AWS Error Message: Missing final '@domain'
+	at com.amazonaws.http.AmazonHttpClient.handleErrorResponse(AmazonHttpClient.java:500)
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:262)
+	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:166)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.invoke(AmazonSimpleEmailServiceClient.java:447)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.sendRawEmail(AmazonSimpleEmailServiceClient.java:329)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:266)
+	... 9 more
+02:32:23,738 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:32:24,428 WARN  ~ You're running Play! in DEV mode
+02:32:24,608 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:32:37,024 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:32:37,055 INFO  ~ Application 'Give2Get' is now started !
+02:38:33,000 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:38:33,640 WARN  ~ You're running Play! in DEV mode
+02:38:33,790 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:38:43,458 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:38:43,479 INFO  ~ Application 'Give2Get' is now started !
+02:43:46,274 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:43:46,934 WARN  ~ You're running Play! in DEV mode
+02:43:47,074 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:43:57,934 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:43:57,962 INFO  ~ Application 'Give2Get' is now started !
+02:46:40,167 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:46:40,857 WARN  ~ You're running Play! in DEV mode
+02:46:41,027 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:46:54,335 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:46:54,367 INFO  ~ Application 'Give2Get' is now started !
+02:52:45,214 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:52:45,864 WARN  ~ You're running Play! in DEV mode
+02:52:46,014 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:52:58,059 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:52:58,089 INFO  ~ Application 'Give2Get' is now started !
+02:59:09,202 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+02:59:09,862 WARN  ~ You're running Play! in DEV mode
+02:59:10,012 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+02:59:23,089 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+02:59:23,115 INFO  ~ Application 'Give2Get' is now started !
+03:03:19,034 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:03:19,684 WARN  ~ You're running Play! in DEV mode
+03:03:19,824 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:03:36,302 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:03:36,328 INFO  ~ Application 'Give2Get' is now started !
+03:05:21,750 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:05:22,460 WARN  ~ You're running Play! in DEV mode
+03:05:22,600 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:05:36,004 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:05:36,034 INFO  ~ Application 'Give2Get' is now started !
+03:07:37,867 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:07:38,577 WARN  ~ You're running Play! in DEV mode
+03:07:38,698 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:07:48,330 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:07:48,362 INFO  ~ Application 'Give2Get' is now started !
+03:08:56,201 INFO  ~ Starting C:\Users\orcun\Documents\workspace\give2get
+03:08:56,881 WARN  ~ You're running Play! in DEV mode
+03:08:57,041 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+03:09:12,085 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+03:09:12,110 INFO  ~ Application 'Give2Get' is now started !
+13:06:56,408 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+13:06:57,421 WARN  ~ You're running Play! in DEV mode
+13:06:57,679 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+13:07:15,505 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+13:07:15,601 INFO  ~ Application 'Give2Get' is now started !
+13:09:19,360 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+13:09:19,998 WARN  ~ You're running Play! in DEV mode
+13:09:20,129 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+13:11:51,162 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+13:11:51,180 INFO  ~ Application 'Give2Get' is now started !
+13:24:32,630 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+13:24:33,316 WARN  ~ You're running Play! in DEV mode
+13:24:33,451 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+13:24:41,750 ERROR ~ Cannot connected to the database : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:24:43,173 ERROR ~ 
+
+@68o0in6f3
+Internal Server Error (500) for request GET /
+
+Database error
+A database error occured : Cannot connected to the database, Communications link failure  The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+play.exceptions.DatabaseException: Cannot connected to the database, Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:132)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	... 5 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:26:06,240 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+13:26:06,955 WARN  ~ You're running Play! in DEV mode
+13:26:07,029 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+13:26:11,683 ERROR ~ Cannot connected to the database : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:26:12,650 ERROR ~ 
+
+@68o0j29g2
+Internal Server Error (500) for request GET /
+
+Database error
+A database error occured : Cannot connected to the database, Communications link failure  The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+play.exceptions.DatabaseException: Cannot connected to the database, Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:132)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	... 5 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:26:31,074 ERROR ~ Cannot connected to the database : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:26:31,150 ERROR ~ 
+
+@68o0j29g3
+Internal Server Error (500) for request GET /
+
+Database error
+A database error occured : Cannot connected to the database, Communications link failure  The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+play.exceptions.DatabaseException: Cannot connected to the database, Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:132)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	... 5 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:26:57,247 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+13:26:57,912 WARN  ~ You're running Play! in DEV mode
+13:26:58,037 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+13:27:00,680 ERROR ~ Cannot connected to the database : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:27:01,699 ERROR ~ 
+
+@68o0j542e
+Internal Server Error (500) for request GET /
+
+Database error
+A database error occured : Cannot connected to the database, Communications link failure  The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+play.exceptions.DatabaseException: Cannot connected to the database, Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:132)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	... 5 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:27:03,890 ERROR ~ Cannot connected to the database : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:27:03,967 ERROR ~ 
+
+@68o0j542f
+Internal Server Error (500) for request GET /
+
+Database error
+A database error occured : Cannot connected to the database, Communications link failure  The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+play.exceptions.DatabaseException: Cannot connected to the database, Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:132)
+	at play.plugins.PluginCollection.onApplicationStart(PluginCollection.java:425)
+	at play.Play.start(Play.java:495)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1116)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:344)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2332)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2369)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2153)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:792)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:381)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:305)
+	at java.sql.DriverManager.getConnection(DriverManager.java:582)
+	at java.sql.DriverManager.getConnection(DriverManager.java:185)
+	at play.db.DBPlugin.onApplicationStart(DBPlugin.java:87)
+	... 5 more
+Caused by: java.net.ConnectException: Connection refused
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(PlainSocketImpl.java:351)
+	at java.net.PlainSocketImpl.connectToAddress(PlainSocketImpl.java:213)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:200)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:366)
+	at java.net.Socket.connect(Socket.java:529)
+	at java.net.Socket.connect(Socket.java:478)
+	at java.net.Socket.<init>(Socket.java:375)
+	at java.net.Socket.<init>(Socket.java:218)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:257)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:294)
+	... 16 more
+13:28:07,151 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+13:28:07,958 WARN  ~ You're running Play! in DEV mode
+13:28:08,029 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+13:28:11,558 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+13:28:11,577 INFO  ~ Application 'Give2Get' is now started !
+14:12:32,744 ERROR ~ 
+
+@68o0p4f96
+Internal Server Error (500) for request GET /
+
+No route found (In /app/views/main.html around line 9)
+No route able to display file /public/stylesheets/style.css (file not found) was found.
+
+play.exceptions.NoRouteFoundException: No route found
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:78)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:237)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:262)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+12:25:43,821 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+12:25:44,588 WARN  ~ You're running Play! in DEV mode
+12:25:44,682 INFO  ~ Listening for HTTP at /192.168.1.34:9000 (Waiting a first request to start) ...
+12:26:00,896 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+12:26:00,934 INFO  ~ Application 'Give2Get' is now started !
+14:56:31,891 ERROR ~ 
+
+@68o8c0e3o
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingMethodException : No signature of method: java.lang.Long.minus() is applicable for argument types: (java.lang.String) values: [2011-12-24 14:18:12.0] Possible solutions: minus(java.lang.Character), minus(java.lang.Number), plus(java.lang.String), signum(long), find(groovy.lang.Closure), is(java.lang.Object).
+
+play.exceptions.TemplateExecutionException: No signature of method: java.lang.Long.minus() is applicable for argument types: (java.lang.String) values: [2011-12-24 14:18:12.0]
+Possible solutions: minus(java.lang.Character), minus(java.lang.Number), plus(java.lang.String), signum(long), find(groovy.lang.Closure), is(java.lang.Object)
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingMethodException: No signature of method: java.lang.Long.minus() is applicable for argument types: (java.lang.String) values: [2011-12-24 14:18:12.0]
+Possible solutions: minus(java.lang.Character), minus(java.lang.Number), plus(java.lang.String), signum(long), find(groovy.lang.Closure), is(java.lang.Object)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:56:45,108 ERROR ~ 
+
+@68o8c0e3p
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was NullPointerException : Cannot get property 'created' on null object.
+
+play.exceptions.TemplateExecutionException: Cannot get property 'created' on null object
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException: Cannot get property 'created' on null object
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:57:06,990 ERROR ~ 
+
+@68o8c0e40
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingMethodException : No signature of method: Template_1000.$() is applicable for argument types: (Template_1000$_run_closure1_closure2) values: [Template_1000$_run_closure1_closure2@da915ec] Possible solutions: _(java.lang.String), is(java.lang.Object), run(), run(), any(), get(java.lang.String).
+
+play.exceptions.TemplateExecutionException: No signature of method: Template_1000.$() is applicable for argument types: (Template_1000$_run_closure1_closure2) values: [Template_1000$_run_closure1_closure2@da915ec]
+Possible solutions: _(java.lang.String), is(java.lang.Object), run(), run(), any(), get(java.lang.String)
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingMethodException: No signature of method: Template_1000.$() is applicable for argument types: (Template_1000$_run_closure1_closure2) values: [Template_1000$_run_closure1_closure2@da915ec]
+Possible solutions: _(java.lang.String), is(java.lang.Object), run(), run(), any(), get(java.lang.String)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:57:50,260 ERROR ~ 
+
+@68o8c0e41
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingMethodException : No signature of method: Template_1000.$() is applicable for argument types: (Template_1000$_run_closure1_closure2) values: [Template_1000$_run_closure1_closure2@44e7578b] Possible solutions: _(java.lang.String), is(java.lang.Object), run(), run(), any(), get(java.lang.String).
+
+play.exceptions.TemplateExecutionException: No signature of method: Template_1000.$() is applicable for argument types: (Template_1000$_run_closure1_closure2) values: [Template_1000$_run_closure1_closure2@44e7578b]
+Possible solutions: _(java.lang.String), is(java.lang.Object), run(), run(), any(), get(java.lang.String)
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingMethodException: No signature of method: Template_1000.$() is applicable for argument types: (Template_1000$_run_closure1_closure2) values: [Template_1000$_run_closure1_closure2@44e7578b]
+Possible solutions: _(java.lang.String), is(java.lang.Object), run(), run(), any(), get(java.lang.String)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:58:23,266 ERROR ~ 
+
+@68o8c0e42
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was IllegalArgumentException : null.
+
+play.exceptions.TemplateExecutionException
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.IllegalArgumentException
+	at java.util.Date.parse(Date.java:598)
+	at java.util.Date.<init>(Date.java:255)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:58:47,949 ERROR ~ 
+
+@68o8c0e43
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was IllegalArgumentException : null.
+
+play.exceptions.TemplateExecutionException
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.IllegalArgumentException
+	at java.util.Date.parse(Date.java:598)
+	at java.util.Date.<init>(Date.java:255)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:59:36,628 ERROR ~ 
+
+@68o8c0e44
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was IllegalArgumentException : null.
+
+play.exceptions.TemplateExecutionException
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.IllegalArgumentException
+	at java.util.Date.parse(Date.java:598)
+	at java.util.Date.<init>(Date.java:255)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+14:59:52,990 ERROR ~ 
+
+@68o8c0e45
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 21)
+The template /app/views/Application/index.html does not compile : unexpected token: ) 
+
+play.exceptions.TemplateCompilationException: unexpected token: ) 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:00:25,176 ERROR ~ 
+
+@68o8c0e46
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was IllegalArgumentException : null.
+
+play.exceptions.TemplateExecutionException
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.IllegalArgumentException
+	at java.util.Date.parse(Date.java:598)
+	at java.util.Date.<init>(Date.java:255)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+15:00:41,836 ERROR ~ 
+
+@68o8c0e47
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was IllegalArgumentException : null.
+
+play.exceptions.TemplateExecutionException
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.IllegalArgumentException
+	at java.util.Date.parse(Date.java:598)
+	at java.util.Date.<init>(Date.java:255)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+15:01:51,762 ERROR ~ 
+
+@68o8c0e48
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingMethodException : No signature of method: java.lang.String.getDate() is applicable for argument types: () values: [] Possible solutions: getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range), getAt(groovy.lang.IntRange), getAt(java.util.Collection), getAt(int), getAt(java.lang.String).
+
+play.exceptions.TemplateExecutionException: No signature of method: java.lang.String.getDate() is applicable for argument types: () values: []
+Possible solutions: getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range), getAt(groovy.lang.IntRange), getAt(java.util.Collection), getAt(int), getAt(java.lang.String)
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingMethodException: No signature of method: java.lang.String.getDate() is applicable for argument types: () values: []
+Possible solutions: getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range), getAt(groovy.lang.IntRange), getAt(java.util.Collection), getAt(int), getAt(java.lang.String)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+15:01:58,861 ERROR ~ 
+
+@68o8c0e49
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingMethodException : No signature of method: java.lang.String.getDate() is applicable for argument types: () values: [] Possible solutions: getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range), getAt(groovy.lang.IntRange), getAt(java.util.Collection), getAt(int), getAt(java.lang.String).
+
+play.exceptions.TemplateExecutionException: No signature of method: java.lang.String.getDate() is applicable for argument types: () values: []
+Possible solutions: getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range), getAt(groovy.lang.IntRange), getAt(java.util.Collection), getAt(int), getAt(java.lang.String)
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingMethodException: No signature of method: java.lang.String.getDate() is applicable for argument types: () values: []
+Possible solutions: getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range), getAt(groovy.lang.IntRange), getAt(java.util.Collection), getAt(int), getAt(java.lang.String)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+15:02:07,788 ERROR ~ 
+
+@68o8c0e4a
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingMethodException : No signature of method: java.lang.String.getTime() is applicable for argument types: () values: [] Possible solutions: getBytes(), trim(), getBytes(java.lang.String), getBytes(java.nio.charset.Charset), getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range).
+
+play.exceptions.TemplateExecutionException: No signature of method: java.lang.String.getTime() is applicable for argument types: () values: []
+Possible solutions: getBytes(), trim(), getBytes(java.lang.String), getBytes(java.nio.charset.Charset), getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range)
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingMethodException: No signature of method: java.lang.String.getTime() is applicable for argument types: () values: []
+Possible solutions: getBytes(), trim(), getBytes(java.lang.String), getBytes(java.nio.charset.Charset), getAt(groovy.lang.EmptyRange), getAt(groovy.lang.Range)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+15:03:22,296 ERROR ~ 
+
+@68o8c0e4b
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 21)
+Execution error occured in template /app/views/Application/index.html. Exception raised was IllegalArgumentException : null.
+
+play.exceptions.TemplateExecutionException
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.IllegalArgumentException
+	at java.util.Date.parse(Date.java:598)
+	at java.util.Date.<init>(Date.java:255)
+	at /app/views/Application/index.html.(line:21)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+15:03:51,063 ERROR ~ 
+
+@68o8c0e4c
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 21)
+The template /app/views/Application/index.html does not compile : unable to resolve class SimpleDateFormat   
+
+play.exceptions.TemplateCompilationException: unable to resolve class SimpleDateFormat 
+ 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:04:43,980 ERROR ~ 
+
+@68o8c0e4d
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 22)
+The template /app/views/Application/index.html does not compile : unable to resolve class SimpleDateFormat   
+
+play.exceptions.TemplateCompilationException: unable to resolve class SimpleDateFormat 
+ 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:04:47,561 ERROR ~ 
+
+@68o8c0e4e
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 22)
+The template /app/views/Application/index.html does not compile : unable to resolve class SimpleDateFormat   
+
+play.exceptions.TemplateCompilationException: unable to resolve class SimpleDateFormat 
+ 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:04:51,985 ERROR ~ 
+
+@68o8c0e4f
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 22)
+The template /app/views/Application/index.html does not compile : unable to resolve class SimpleDateFormat   
+
+play.exceptions.TemplateCompilationException: unable to resolve class SimpleDateFormat 
+ 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:04:54,265 ERROR ~ 
+
+@68o8c0e4g
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 22)
+The template /app/views/Application/index.html does not compile : unable to resolve class SimpleDateFormat   
+
+play.exceptions.TemplateCompilationException: unable to resolve class SimpleDateFormat 
+ 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:05:05,659 ERROR ~ 
+
+@68o8c0e4h
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 3)
+The template /app/views/Application/index.html does not compile : unexpected token: import 
+
+play.exceptions.TemplateCompilationException: unexpected token: import 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+15:11:28,199 ERROR ~ 
+
+@68o8c0e4i
+Internal Server Error (500) for request GET /
+
+Template compilation error (In /app/views/Application/index.html around line 3)
+The template /app/views/Application/index.html does not compile : unexpected token: import 
+
+play.exceptions.TemplateCompilationException: unexpected token: import 
+	at play.templates.GroovyTemplate.compile(GroovyTemplate.java:171)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:192)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+20:39:24,377 ERROR ~ 
+
+@68o8c0e4j
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1233)
+DataStoreException occured : com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+
+play.exceptions.JavaExecutionException: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getRecentActivities(DAO.java:1233)
+	at controllers.Application.index(Application.java:73)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getServiceDetail(DAO.java:1765)
+	at models.Activity.<init>(Activity.java:31)
+	at com.boun.give2get.db.DAO.getRecentActivities(DAO.java:1218)
+	... 7 more
+Caused by: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.incrementViewCount(DAO.java:1797)
+	at com.boun.give2get.db.DAO.getServiceDetail(DAO.java:1751)
+	... 9 more
+Caused by: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.incrementViewCount(DAO.java:1787)
+	... 10 more
+20:39:30,238 ERROR ~ 
+
+@68o8c0e4k
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1233)
+DataStoreException occured : com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+
+play.exceptions.JavaExecutionException: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getRecentActivities(DAO.java:1233)
+	at controllers.Application.index(Application.java:73)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getServiceDetail(DAO.java:1765)
+	at models.Activity.<init>(Activity.java:31)
+	at com.boun.give2get.db.DAO.getRecentActivities(DAO.java:1218)
+	... 7 more
+Caused by: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.incrementViewCount(DAO.java:1797)
+	at com.boun.give2get.db.DAO.getServiceDetail(DAO.java:1751)
+	... 9 more
+Caused by: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.incrementViewCount(DAO.java:1787)
+	... 10 more
+20:44:27,971 ERROR ~ 
+
+@68o8c0e4l
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: provider for class: models.TopRatedService Possible solutions: providerId.
+
+play.exceptions.TemplateExecutionException: No such property: provider for class: models.TopRatedService
+Possible solutions: providerId
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: provider for class: models.TopRatedService
+Possible solutions: providerId
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+20:44:39,073 ERROR ~ 
+
+@68o8c0e4m
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: provider_id for class: models.TopRatedService Possible solutions: providerId.
+
+play.exceptions.TemplateExecutionException: No such property: provider_id for class: models.TopRatedService
+Possible solutions: providerId
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: provider_id for class: models.TopRatedService
+Possible solutions: providerId
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+20:45:01,352 ERROR ~ 
+
+@68o8c0e4n
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: description for class: models.TopRatedService.
+
+play.exceptions.TemplateExecutionException: No such property: description for class: models.TopRatedService
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: description for class: models.TopRatedService
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+20:45:41,670 ERROR ~ 
+
+@68o8c0e4o
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: duration for class: models.TopRatedService.
+
+play.exceptions.TemplateExecutionException: No such property: duration for class: models.TopRatedService
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: duration for class: models.TopRatedService
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+20:45:43,494 ERROR ~ 
+
+@68o8c0e4p
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: duration for class: models.TopRatedService.
+
+play.exceptions.TemplateExecutionException: No such property: duration for class: models.TopRatedService
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: duration for class: models.TopRatedService
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+20:45:52,063 ERROR ~ 
+
+@68o8c0e50
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: end for class: models.TopRatedService Possible solutions: id.
+
+play.exceptions.TemplateExecutionException: No such property: end for class: models.TopRatedService
+Possible solutions: id
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: end for class: models.TopRatedService
+Possible solutions: id
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+20:48:59,334 ERROR ~ 
+
+@68o8c0e51
+Internal Server Error (500) for request GET /
+
+Template execution error (In /app/views/Application/index.html around line 65)
+Execution error occured in template /app/views/Application/index.html. Exception raised was MissingPropertyException : No such property: end for class: models.TopRatedService Possible solutions: id.
+
+play.exceptions.TemplateExecutionException: No such property: end for class: models.TopRatedService
+Possible solutions: id
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: end for class: models.TopRatedService
+Possible solutions: id
+	at /app/views/Application/index.html.(line:65)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+23:23:42,888 ERROR ~ 
+
+@68o8c0e52
+Internal Server Error (500) for request POST /signup
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 272)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'asd@asd.com' for key 'email_UNIQUE'
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'asd@asd.com' for key 'email_UNIQUE'
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'asd@asd.com' for key 'email_UNIQUE'
+	at com.boun.give2get.db.DAO.saveRegistration(DAO.java:272)
+	at controllers.Application.saveUser(Application.java:141)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'asd@asd.com' for key 'email_UNIQUE'
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1039)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2427)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2345)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2330)
+	at com.boun.give2get.db.DAO.saveRegistration(DAO.java:262)
+	... 7 more
+00:54:23,931 ERROR ~ 
+
+@68o8c0e55
+Internal Server Error (500) for request GET /
+
+Template not found (In /app/views/main.html around line 102)
+The template tags/signup.html or tags/signup.tag does not exist.
+
+play.exceptions.TemplateNotFoundException: Template not found : tags/signup.html or tags/signup.tag
+	at play.templates.GroovyTemplate$ExecutableTemplate.invokeTag(GroovyTemplate.java:351)
+	at /app/views/main.html.(line:102)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:262)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+01:52:18,484 ERROR ~ 
+
+@68o8c0e57
+Internal Server Error (500) for request GET /
+
+No route found (In /app/views/main.html around line 31)
+No route able to display file /public/javascripts/jquery.validationEngine-en.js (file not found) was found.
+
+play.exceptions.NoRouteFoundException: No route found
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:78)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:237)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:262)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+02:27:02,866 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+02:27:03,679 WARN  ~ You're running Play! in DEV mode
+02:27:03,830 INFO  ~ Listening for HTTP at /192.168.1.34:9000 (Waiting a first request to start) ...
+02:27:07,338 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+02:27:07,353 INFO  ~ Application 'Give2Get' is now started !
+11:59:26,149 ERROR ~ 
+
+@68oellk6f
+Internal Server Error (500) for request GET /
+
+No route found (In /app/views/main.html around line 103)
+No route able to invoke action Application.postNewService was found.
+
+play.exceptions.NoRouteFoundException: No route found
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:80)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:237)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:262)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.index(Application.java:91)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+13:24:38,303 ERROR ~ 
+
+@68oellk6g
+post.@{Services.getSehirler()} action not found
+
+Action not found
+Action post.@{Services.getSehirler()} could not be found. Error raised is Controller controllers.post.@{Services not found
+
+play.exceptions.ActionNotFoundException: Action post.@{Services.getSehirler()} not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.@{Services not found
+	... 3 more
+13:24:49,244 ERROR ~ 
+
+@68oellk6h
+post.Services.getSehirler() action not found
+
+Action not found
+Action post.Services.getSehirler() could not be found. Error raised is Controller controllers.post.Services not found
+
+play.exceptions.ActionNotFoundException: Action post.Services.getSehirler() not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.Services not found
+	... 3 more
+13:24:52,951 ERROR ~ 
+
+@68oellk6i
+post.Services.getSehirler action not found
+
+Action not found
+Action post.Services.getSehirler could not be found. Error raised is Controller controllers.post.Services not found
+
+play.exceptions.ActionNotFoundException: Action post.Services.getSehirler not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.Services not found
+	... 3 more
+13:25:07,563 ERROR ~ 
+
+@68oellk6j
+post.Services.getSehirler() action not found
+
+Action not found
+Action post.Services.getSehirler() could not be found. Error raised is Controller controllers.post.Services not found
+
+play.exceptions.ActionNotFoundException: Action post.Services.getSehirler() not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.Services not found
+	... 3 more
+13:25:08,311 ERROR ~ 
+
+@68oellk6k
+post.@{Services.getSehirler()} action not found
+
+Action not found
+Action post.@{Services.getSehirler()} could not be found. Error raised is Controller controllers.post.@{Services not found
+
+play.exceptions.ActionNotFoundException: Action post.@{Services.getSehirler()} not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.post.@{Services not found
+	... 3 more
+14:25:33,161 ERROR ~ 
+
+@68oellk6l
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more

@@ -1,0 +1,76 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Choose Requester' /}
+
+
+<!-- Choose Requester -->
+<div id="chooseRequester">
+
+    <p class="title_profile">Please Choose a Consumer for your service, <i>${service.title}</i></p>
+
+    <table width="100%" class="profile_table">
+
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Rating</th>
+            <th>Requested At</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        #{list serviceRequests, as:'serviceRequest'}
+        <tr class="${serviceRequest.oddOrEven}">
+            <td><a href="/user/${serviceRequest.requesterId}">${serviceRequest.requesterFullName}</a></td>
+            <td style="text-align:center;">${serviceRequest.requesterRating}</a></td>
+            <td style="text-align:center;">${serviceRequest.requestedAt}</td>
+            <td>
+            #{form @Services.acceptConsumer(serviceRequest?.requesterId, serviceRequest?.requesterEmail, serviceRequest?.requesterFullName, service.id, service.providerId, service.title, service.providerFullName)}
+                <input type="submit" value="Accept"/>
+                #{/form}
+            </td>
+        </tr>
+        #{/list}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<!--    Comments about the service -->
+<div id="serviceComments">
+
+    <!-- Comment List -->
+        #{if comments}
+        <table width="100%">
+            <tr>
+                <td>
+                    <p class="title_profile">Comments</p>
+                </td>
+            </tr>
+            #{list comments, as:'comment'}
+            <tr class="${comment.oddOrEven}">
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td width="80%" class="comment_text">${comment.text}</td>
+                        </tr>
+                        <tr>
+                            <td class="comment_date">${comment.created}</td>
+                            <td class="comment_owner"><a href="/user/${comment.ownerId}">${comment.ownerFullName}</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            #{/list}
+
+        </table>
+        #{/if}
+        #{ifnot comments}
+        <p align="center">No Comments</p>
+        #{/ifnot}
+    
+</div>

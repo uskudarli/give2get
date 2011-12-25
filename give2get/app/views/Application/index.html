@@ -1,0 +1,82 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get' /}
+
+<div class="maincontainer">
+
+               <!-- Recent Activities -->
+               <div id="activities" class="round">
+
+                    <p class="table_title">Recent Activities</p>
+
+                    #{list recentActivities, as:'activity'}
+                        <div id="recent_activities">
+                            <div id="user_photo" class="round"><img width="50" height="50"  src="/public/images/char_1.png" /></div>
+                            <div id="activity_details">
+                                <span id="activity_name">
+                                   <a href="/user/${activity.userId}">${activity.name}</a>
+                                   has ${activity.text}
+                                </span>
+
+                                <span id="activity_date">
+                                    <span id="timeago" title="${activity.created}">${activity.created}</span>
+
+                                </span>
+
+                                <br />
+                                <a href="/service/${activity.serviceId}">${activity.title}</a>
+                            </div>
+
+                        </div>
+                   #{/list}
+
+               </div>
+
+
+               <!-- Top Rated Users -->
+               <div id="topusers" class="round">
+
+                   <div id="crown"><img width="123" height="100" src="/public/images/crown.png" /></div>
+
+                   <p class="table_title">Top Rated Users</p>
+
+                       #{list topRatedUsers, as:'topRatedUser'}
+
+                       <div class="top_user">
+
+                            <div id="top_user_photo" class="round"><img width="50" height="50"  src="/public/images/char_1.png" /></div>
+                           <a class="top_user_name" href="/user/${topRatedUser.id}">${topRatedUser.fullName}</a>
+                           <span class="top_user_rating">
+                               ${topRatedUser.rating}
+                           </span>
+                           <span class="top_user_text">points</span>
+                        </div>
+                       #{/list}
+               </div>
+
+
+               <!-- Top Rated Services -->
+               <div id="topservices" class="round">
+
+                   <p class="table_title">Top Rated Services</p>
+
+                       #{list topRatedServices, as:'topRatedService'}
+
+                       <div class="top_service">
+
+                           <span class="top_service_name">
+                               <a href="/service/${topRatedService.id}">${topRatedService.title}</a>
+                           </span>
+                           <span class="top_service_view">
+                               ${topRatedService.viewCount}
+                           </span>
+                           <span class="top_service_text">views</span>
+                        </div>
+ 
+
+
+
+
+                       #{/list}
+               </div>
+
+</div>

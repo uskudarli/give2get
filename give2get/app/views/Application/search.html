@@ -1,0 +1,77 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Advanced Search' /}
+
+<div class="maincontainer">
+   <table id="main" width="100%">
+		<tr>
+			<td width="15%" id="table_data_left">
+                <div id="search_menu">
+                	<p class="table_title">Advanced Search</p>
+                	#{form @Application.search()}
+                    <table id="search_criterias">
+                        <tr>
+                            <td><label class="logintitle">Keyword:</label></td>
+                        	<td><input type="text" name="keyword" alt="search_menu" title="Keyword" value="${keyword}"/></td>
+                             
+                        </tr>    
+                        <tr>
+                        	<td><label class="logintitle">Provider:</label></td>
+                            <td><input type="text" name="provider" alt="search_menu" title="Provider" value="${provider}"/></td>
+                        </tr>
+                        <tr>
+                            <td><label class="logintitle">Date:</label></td>
+                            <td>	<input type="hidden" id="date" name="date">
+                            		<input size="8" disabled="disabled" id="dateSelected" name="dateSelected" value="${flash.dateSelected}">
+						            <input type=button value="select" onclick="displayDatePicker('dateSelected', this);" >
+						            <span class="error">#{error 'startdate' /}</span></td>
+                        </tr>
+                        
+                        <tr>
+                        	<td></td>
+                            <td align="right"><div class="signupelement"><input onclick="copy();" type="submit" value="Search"/></div></td>
+                        </tr>
+
+                    </table>
+                    #{/form}
+                </div>
+            </td>
+            
+            <td width="85%" id="table_data_right">
+                <div id="result">
+                	<p class="table_title">Search Result</p>
+                    <table id="search_result">
+                    	<thead>
+                           <tr>
+                               <th>Title</th>  
+                                <th>Description</th>                                    
+                                <th>StartDate</th>
+                                <th>EndDate</th>
+                                <th>Status</th>
+                                <th>ProviderName</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                        #{list services, as:'service'}
+                        <tr class="${service.oddOrEven}">
+                            <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+                            <td style="text-align:center;">${service.description.length() > 200 ? service.description[0..200] + '..' : service.description}</td>                            
+                            <td style="text-align:center;">${service.startDate}</td>
+                            <td style="text-align:center;">${service.endDate}</td>
+                            <td style="text-align:center;">${service.status}</td>
+                            <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>
+                        </tr>
+                        #{/list}
+                        </tbody>
+                    </table>
+                </div>
+                ${services.size > 0 ? "" : "There is no result to display. Change your search criteria." }		
+			 </td>
+      </tr>
+ 	</table>
+ </div>
+ 
+ <script type="text/javascript">
+ function copy() {
+	 document.getElementById('date').value = document.getElementById('dateSelected').value ;
+	}
+</script>

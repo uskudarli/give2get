@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get' /}
+
+#{if flash.success}
+<div class="container">
+    <p id="status">
+        ${flash.success}
+    </p>
+</div>
+#{/if}
