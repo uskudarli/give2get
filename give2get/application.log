@@ -1707,3 +1707,313 @@ Caused by: java.lang.NullPointerException
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
 	... 1 more
+18:54:16,460 ERROR ~ 
+
+@68oellk6n
+Internal Server Error (500) for request POST /search
+
+Template execution error (In /app/views/Application/search.html around line 48)
+Execution error occured in template /app/views/Application/search.html. Exception raised was GroovyRuntimeException : Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'.
+
+play.exceptions.TemplateExecutionException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.search(Application.java:227)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.GroovyRuntimeException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at /app/views/Application/search.html.(line:48)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+18:54:37,351 ERROR ~ 
+
+@68oellk6o
+Internal Server Error (500) for request POST /search
+
+Template execution error (In /app/views/Application/search.html around line 48)
+Execution error occured in template /app/views/Application/search.html. Exception raised was GroovyRuntimeException : Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'.
+
+play.exceptions.TemplateExecutionException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.search(Application.java:227)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.GroovyRuntimeException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at /app/views/Application/search.html.(line:48)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+21:22:35,384 ERROR ~ 
+
+@68oellk6p
+Internal Server Error (500) for request POST /search
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 681)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+	at com.boun.give2get.db.DAO.getSearchResults(DAO.java:681)
+	at controllers.Application.search(Application.java:225)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.DAO.getSearchResults(DAO.java:662)
+	... 7 more
+21:34:16,469 ERROR ~ 
+
+@68oellk70
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:41:19,512 ERROR ~ 
+
+@68oellk71
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:41:33,414 ERROR ~ 
+
+@68oellk72
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:48:19,630 ERROR ~ 
+
+@68oellk73
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1009)
+DataStoreException occured : com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:1009)
+	at controllers.Services.postNewService(Services.java:135)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3607)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2427)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2345)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2330)
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:991)
+	... 7 more
+21:53:09,293 ERROR ~ 
+
+@68oellk74
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1009)
+DataStoreException occured : com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:1009)
+	at controllers.Services.postNewService(Services.java:135)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3607)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2427)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2345)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2330)
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:991)
+	... 7 more
+21:57:58,953 ERROR ~ 
+
+@68oellk75
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:58:57,783 ERROR ~ 
+
+@68oellk76
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+22:02:02,959 ERROR ~ 
+
+@68oellk77
+Internal Server Error (500) for request GET /editService/72
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:214)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+22:02:18,710 ERROR ~ 
+
+@68oellk78
+Internal Server Error (500) for request GET /editService/72
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:214)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more

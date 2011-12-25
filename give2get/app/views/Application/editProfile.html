@@ -2,92 +2,59 @@
 #{set title:'Give2Get - Profile' /}
 
 
-<div id="profile">
 
     <!-- User Basic Info & Rating -->
-    <div id="info_and_rating">
+    <div id="edit_user_info_container" class="white">
 
-        <!-- User Name -->
-        <font id="username">${username}</font> 
-        
-        <table width="100%">
+    #{form @Application.completeEditProfile()} 
 
-            <tr>
+        <div id="edit_user_info">
+            <p class="title_profile">User Information</p>
+            <!-- Basic User Info -->
 
-                <!-- Basic User Info -->
-                <td width="50%">
-					#{form @Application.completeEditProfile()} 
-                    <table id="profile_basic_info" width="100%" border="1">
-                        <tr class="odd">
-                            <td>Email</td>
-                            <td><input type="text" name="email" value="${user.getRegistration().getEmail()}"/></td>
-                        </tr>
-                        <tr class="even">
-                            <td>First Name</td>
-                            <td><input type="text" name="firstName" tabindex="1" value="${user.getRegistration().getFirstname()}"/></td>
-                        </tr>
-                        <tr class="odd">
-                            <td>Last Name</td>
-                            <td><input type="text" name="lastName" tabindex="1" value="${user.getRegistration().getLastname()}"/></td>
-                        </tr>
-                        <tr class="even">
-                            <td>Member Since</td>
-                            <td>${user.getRegistration().getActivated()}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td># of Posted Services</td>
-                            <td>${user.getNumOfPostedServices()}</td>
-                        </tr>
-                        <tr class="even">
-                            <td># of Comments</td>
-                            <td>${user.getNumOfComments()}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td>Rating</td>
-                            <td>270</td>
-                        </tr>
-                    </table>
-                    <p></p>
-                    <p id="title_profile">Add Skills</p>
-                    <table id="profile_basic_info" width="100%" border="1">
-                        <tr class="odd">
-                            <td>Title</td>
-                            <td><input type="text" id="title" size="60" name="title" /></td>
-                        </tr>
-                        <tr class="even">
-                            <td>Description</td>
-                            <td><input type="text" name="description" id="description" size="60" tabindex="1"/></td>
-                        </tr>
-                        <tr class="odd">
-                        	<td></td>
-                         	<td><input type="button" value="Add New Skill" onClick="addSkill();"></td>
-                        </tr>
-                        <tr class="even">
-                            <td>Skill List</td>
-                            <td><textarea id="skillList" name="skillList" cols="47" rows="6"  tabindex="1"></textarea></td>
-                        </tr>
-                    </table>
-                    <p></p>
-                    <table id="profile_basic_info" width="100%" border="1">
-                        <tr class="odd">
-                            <td></td>
-                            <td><input type="submit" value="Submit"/></td>
-                        </tr>
-                    </table>
-					#{/form}
-                </td>
+            <span>Email</span>
+            <br/>
+            <span><input type="text" name="email" value="${user.getRegistration().getEmail()}"/></span>
+            <br/>
+            <br/>
+            <span>First Name</span>
+            <br/>
+            <span><input type="text" name="firstName" tabindex="1" value="${user.getRegistration().getFirstname()}"/></span>
+            <br/>
+            <br/>
+            <span>Last Name</span>
+            <br/>
+            <span><input type="text" name="lastName" tabindex="1" value="${user.getRegistration().getLastname()}"/></span>
+            <br/>
+            <br/>
+            <input id="save_button" type="image" src="@{'/public/images/save.png'}" name="SignUp" value="Sign Up"/>
+        </div>
 
-                <td valign="middle" style="vertical-align:middle;" width="50%">
-                                   
+        <div id="edit_skills">
+            <p class="title_profile">Add Skills</p>
+            <span>Title</span>
+            <br/>
+            <span><input type="text" id="title" size="60" name="title" /></span>
+            <br/>
+            <br/>
+            <span>Description</span>
+            <br/>
+            <span><input type="text" name="description" id="description" size="60" tabindex="1"/></span>
+            <br/>
+            <br/>
+            <img id="add_skill_button" src="@{'/public/images/add_skill.png'}" onClick="addSkill();" name="SignUp" value="Sign Up"/>
+            <br/>
+            <br/>
+        </div>
+        <div id="skill_list">
+            <p class="title_profile">Skill Basket</p>
+            <br/>
+            <span><textarea id="skillList" name="skillList" cols="47" rows="6"  tabindex="1"></textarea></span>
 
-                </td>
-
-            </tr>
-        </table>
-
+        </div>
+    #{/form}
     </div>
 
-</div>
 
 <script type="text/javascript">
 

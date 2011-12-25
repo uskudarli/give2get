@@ -35,6 +35,7 @@
         <script src="@{'/public/javascripts/timerpicker.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery.timeago.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/new_service.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/new_service.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 <script>
     //Renan's fancy stuff
 
@@ -57,6 +58,7 @@
         $('#toggle_add_new_service_panel').click(function() {
             #{if user?.registration}
                 $('#add_new_service_panel').slideToggle();
+                $('#add_new_service_form').validationEngine('hideAll');
             #{/if}
         });
 
@@ -68,11 +70,15 @@
             #{/if}
             #{else}
                 $('#login_logout_panel').slideToggle();
+                $('#login_form').validationEngine('hideAll');
             #{/else}
         });
 
-        $("#login_form").validationEngine();
-        $("#signup_form").validationEngine();
+        $("#login_form").validationEngine({promptPosition : "centerRight", scroll: false});
+        $("#add_new_service_form").validationEngine({promptPosition : "centerRight", scroll: false});
+        $("#signup_form").validationEngine({promptPosition : "centerRight", scroll: false});
+        $("#advanced_search_form").validationEngine({promptPosition : "centerRight", scroll: false});
+        $("#quick_search_form").validationEngine({promptPosition : "bottomLeft", scroll: false});
     });
 
     function checkPassword(field, rules, i, options){
@@ -110,11 +116,92 @@
             $("#postStartDate2").datepicker("option", "minDate", date);
         });
 
+
+
+        // DATE PICKER WITH TIME
+/*
+    $(document).ready(function() {
+
+$('#postStartDate2').datetimepicker({
+    onClose: function(dateText, inst) {
+        var endDateTextBox = $('#postEndDate2');
+        if (endDateTextBox.val() != '') {
+            var testStartDate = new Date(dateText);
+            var testEndDate = new Date(endDateTextBox.val());
+            if (testStartDate > testEndDate)
+                endDateTextBox.val(dateText);
+        }
+        else {
+            endDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var start = $(this).datetimepicker('getDate');
+        $('#postEndDate2').datetimepicker('option', 'minDate', new Date(start.getTime()));
+    }
+});
+$('#postEndDate2').datetimepicker({
+    onClose: function(dateText, inst) {
+        var startDateTextBox = $('#postStartDate2');
+        if (startDateTextBox.val() != '') {
+            var testStartDate = new Date(startDateTextBox.val());
+            var testEndDate = new Date(dateText);
+            if (testStartDate > testEndDate)
+                startDateTextBox.val(dateText);
+        }
+        else {
+            startDateTextBox.val(dateText);
+        }
+    },
+    onSelect: function (selectedDateTime){
+        var end = $(this).datetimepicker('getDate');
+        $('#postStartDate2').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
+    }
+});
+
+        });
+
+*/
+
+
+
+
+
         // DEFAULT DATE IS TODAY
         var myDate = new Date();
         var prettyDate =(myDate.getMonth()+1) + '/' + myDate.getDate() + '/' +
                 myDate.getFullYear();
         $("#date_pretty").val(prettyDate);
+
+
+
+        // DATE RANGE FOR DETAILED SEARCH
+        $(function () {
+            var searchStartDate2 = $('#searchStartDate2');
+            var searchEndDate2 = $('#searchEndDate2');
+
+            searchStartDate2.datepicker({ onClose: clearEndDate2 });
+            searchEndDate2.datepicker({ beforeShow: setRange2 });
+
+            function setRange2() {
+                var minDate2 = searchStartDate2.datepicker('getDate');
+                var maxDate2 = searchStartDate2.datepicker('getDate');
+                minDate2.setMonth(maxDate2.getMonth() - 12 );
+
+                return {
+                    minDate: minDate2,
+                    maxDate: maxDate2
+                }
+            }
+
+            //Clears the end date textbox
+            function clearEndDate2(dateText, inst) {
+                searchEndDate2.val('');
+            }
+            var date = new Date();
+            $("#searchStartDate2").datepicker("option", "maxDate", date);
+        });
+
 
 
 </script>
@@ -159,12 +246,12 @@
                 
                 <p class="table_title_2">Add a New Service</p>
 
-                <form action="/services/postnewservice" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
+                <form id="add_new_service_form" action="/services/postnewservice" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
 
                 #{field 'title'}
                     <div class="signupelement">
                         <label class="signuptitle">Title</label><br>                                                           
-                        <input type="text" name="${field.name}" tabindex="1" class="new_post_title" value="${flash.title}"/>
+                        <input id="service_title" class="validate[required, minSize[3]]" type="text" name="${field.name}" tabindex="1" class="new_post_title" value="${flash.title}"/>
                         <span class="error">#{error 'title' /}</span>
                     </div>
                 #{/field}
@@ -173,7 +260,7 @@
                 #{field 'description'}
                     <div class="signupelement">
                         <label class="signuptitle">Description</label><br>
-                        <textarea name="${field.name}" class="new_service">${flash.description}</textarea>
+                        <textarea id="service_description" name="${field.name}" class="validate[required, minSize[3]]">${flash.description}</textarea>
                         <span class="error">#{error 'description' /}</span>
                     </div>
                 #{/field}
@@ -481,10 +568,10 @@
 
 
 
-                <!-- Search -->
-                #{form @Application.search()}
-                <input id="search_text" type="text" placeholder="Quick Search" name="keyword" alt="Search" title="Search"/>
-                #{/form}
+             <!-- Search -->
+             <form id="quick_search_form" action="/search" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
+                <input id="search_text" type="text" placeholder="Quick Search" name="keyword" alt="Search" title="Search" class="validate[custom[onlyLetterNumber], minSize[3]]"/>
+            </form>
 
 
 
