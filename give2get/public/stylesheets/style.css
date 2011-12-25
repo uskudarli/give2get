@@ -100,7 +100,6 @@ body {
 
 .notification {
     background-color: #f0f044;
-    opacity: 0.7;
     text-shadow: 0.1em 0.1em #f2f266;
 }
 
@@ -118,7 +117,7 @@ body {
     font-size: 13pt;
     position: fixed;
     top: 40px;
-    z-index: 30000;
+    z-index: 50;
 
     -webkit-border-bottom-right-radius: 4px;
     -webkit-border-bottom-left-radius: 4px;
@@ -229,13 +228,130 @@ input[type=password] {
 
 }
 
-#search_box {
-    float: right;
+#toggle_user_options {
+    cursor: pointer;
+
+    position: relative;
+    top: -4px;
+
+    float: left;
+    padding: 10px 15px 5px 15px;
+
+    color: #d0d0d0;
+
+    font-weight: bold;
+    font-size: 11pt;
+
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .75);
+    text-decoration: none;
+
+    letter-spacing: -1px;
 }
+
+#login_box {
+    /*
+    z-index: 10000;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    height: 400px;
+    width: 300px;
+    margin-left: -150px;
+
+    background-color: #f0f0f0;
+*/
+    float: left;
+    color: #f0f0f0;
+    width: 210px;
+    padding: 20px;
+    height: 260px;
+}
+
+#sign_up_box {
+    float: right;
+    color: #222222;
+    width: 210px;
+    background-color: #f0f0ff;
+    padding: 20px;
+
+   -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+
+}
+
+.loginelement, .signupelement {
+    margin-bottom: 10px;
+}
+
+
+#login_logout_panel {
+    display: none;
+    position: absolute;
+    background-color: #444444;
+    left: 14px;
+    top: 36px;
+    width: 505px;
+
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    -moz-box-shadow:0 0 15px 15px #000;
+    -webkit-box-shadow: 0 0 15px #000;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+
+
+#user_options {
+    display: none;
+    position: absolute;
+    background-color: #444444;
+    left: 14px;
+    top: 36px;
+    width: 100px;
+    padding: 8px 10px 2px 5px;
+
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.user_menu_item a{
+    position: relative;
+    top: -4px;
+
+    float: left;
+    padding: 5px 10px 5px 10px;
+
+    color: #d0d0d0;
+
+    font-weight: bold;
+    font-size: 11pt;
+
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .75);
+    text-decoration: none;
+
+    letter-spacing: -1px;
+
+}
+
 
 #search_text {
     position: absolute;
     right: 0px;
+
     font-size: 10pt;
     background: url('/public/images/search.png');
     background-position: 7px 7px;
@@ -252,7 +368,10 @@ input[type=password] {
 }
 
 
-
+.float_right{
+    margin-top: 20px;
+    float: right;
+}
 
 #master_container {
     position: relative;
@@ -261,6 +380,7 @@ input[type=password] {
 }
 
 #header {
+    margin-top: 20px;
     position: relative;
 }
 
@@ -269,7 +389,7 @@ input[type=password] {
 #top_bar {
     position: fixed;
     top: 0px;
-    z-index: 100000;
+    z-index: 51;
     width: 100%;
     -moz-box-shadow:0 0 15px 15px #000;
     -webkit-box-shadow: 0 0 15px #000;
@@ -289,6 +409,7 @@ input[type=password] {
 
 .menu_item{
 }
+
 
 .menu_item a{
     position: relative;
@@ -313,19 +434,6 @@ input[type=password] {
     color: #ffffff;
 }
 
-
-#login_box {
-    z-index: 10000;
-    position: absolute;
-    top: 200px;
-    left: 50%;
-
-    height: 400px;
-    width: 300px;
-    margin-left: -150px;
-
-    background-color: #f0f0f0;
-}
 
 
 .round {
@@ -461,9 +569,15 @@ input[type=password] {
 
 .table_title {
     font-size: 17pt;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
     text-shadow: 0 2px 0 rgba(255, 255,255, 1);
 }
+
+.table_title_2 {
+    font-size: 17pt;
+    letter-spacing: -1px;
+}
+
 
 #user_photo {
     border: 1px solid #d0d0d0;
