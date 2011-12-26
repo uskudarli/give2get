@@ -1,0 +1,52 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Send Message' /}
+
+
+<h2>Send Message</h2>
+
+<div id="message_container">
+
+    #{form @sendMessage()}
+
+    #{field 'receiverName'}
+        <div class="signupelement">
+            <label class="signuptitle">Sender</label><br>
+            <input type="text" disabled="disabled" name="name" size="71" value="${user.getRegistration().getFirstname()+' '+user.getRegistration().getLastname()}"/>
+        	<input type="hidden" name="receiverId"  value="${user.getId()}"/>
+        </div>
+    #{/field}
+
+    
+    #{field 'title'}
+        <div class="signupelement">
+            <label class="signuptitle">Title</label><br>
+            <input type="text" name="title" size="71"/>
+            <span class="error">#{error 'title' /}</span>
+        </div>
+    #{/field}
+
+
+    #{field 'message'}
+        <div class="signupelement">
+            <label class="signuptitle">Message</label><br>
+            <textarea rows="4" name="message" cols="55"></textarea>
+            <span class="error">#{error 'message' /}</span>
+        </div>
+    #{/field}
+
+
+        <div class="signupelement">
+            <input type="submit" name="Send" value="Send Message"/>
+        </div>
+
+    #{/form}
+
+</div>
+
+#{if flash.success}
+    <div class="container">
+        <p id="status">
+            ${flash.success}
+        </p>
+    </div>
+#{/if}

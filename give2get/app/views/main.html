@@ -610,6 +610,10 @@ $('#postEndDate2').datetimepicker({
                     <span class="menu_item">
                         <a id="the_team" href="#">The Team</a>
                     </span>
+                    
+                    <span class="menu_item">
+                        <a href="@{MessageController.inbox(session.get("userid"))}">Inbox</a>
+                    </span>
 
                     <!--span class="menu_item">
                         <a href="@{AdvancedSearch.index()}">Advanced Search</a>

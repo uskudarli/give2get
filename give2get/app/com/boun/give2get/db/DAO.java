@@ -749,7 +749,7 @@ public final class DAO {
         try {
             
             //  Control registration
-            pstmt = conn.prepareStatement("SELECT u.id as userId, r.firstname, r.lastname FROM users u, registrations r WHERE u.id = ?");
+            pstmt = conn.prepareStatement("SELECT u.id as userId, r.firstname, r.lastname FROM users u, registrations r WHERE u.id = ? and u.reg_id = r.id");
 
             pstmt.setInt(1,      userId);
 
