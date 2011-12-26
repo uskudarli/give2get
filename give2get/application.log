@@ -2215,3 +2215,36 @@ Caused by: java.lang.NullPointerException
 	at models.User.<init>(User.java:34)
 	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:563)
 	... 7 more
+02:01:14,494 ERROR ~ 
+
+@68oellk7g
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
