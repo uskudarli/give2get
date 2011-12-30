@@ -39,7 +39,11 @@ public class Activity extends ListableModel{
         {
         	text = " just posted a new service ";
         }
-        else
+        else if (rs.getString("type").equals("NEW_TAG"))
+        {
+        	text = " just added a new tag to the service ";
+        }
+       else
         {
         	text = " commented on the service ";
         }

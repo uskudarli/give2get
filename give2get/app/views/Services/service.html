@@ -63,6 +63,35 @@
                             <br/>
                             <br/>
                             <span>
+
+                        <div id="service_tags">
+                            <p class="table_title">Tags</p>
+                            <!-- Comment List -->
+                            #{if tags}
+                            <table width="100%" id="tagList">        
+
+                                #{list tags, as:'tag'}
+                                <tr class="${}">
+                                    <td>
+                                        <table id="one_tag" width="100%">
+                                            <tr>
+                                                <td class="tag_text">${tag.text}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tag_owner">Posted by <a href="/user/${tag.ownerId}">${tag.ownerFullName}</a> at ${tag.created}</td>
+                                            </tr>
+                                        </table>
+                                    </td>                               
+                                </tr>
+                                #{/list}
+
+                            </table>
+                            #{/if}
+                            #{ifnot tags}
+                            <p>Not Tagged</p>
+                            #{/ifnot}
+                        </div>
+
                             #{if userId != service.providerId}
                                 #{form @Services.request(service?.id, service?.providerId, service?.title)}
                                 <input type="image" src="@{'/public/images/request.png'}" name="request" value="request"/>
@@ -72,6 +101,8 @@
                             <a href="/editService/${service.id}"><img src="@{'/public/images/edit.png'}"></a>
                             #{/else}
                             </span>
+
+
 
             </div>
 
@@ -94,6 +125,7 @@
                 </td>
             </tr>
         </table>-->
+
 
 
 

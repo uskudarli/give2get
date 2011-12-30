@@ -17,7 +17,6 @@ public final class Service extends ListableModel{
 
     //public Service(String title, String description, String startDate, String endDate, int sehirId, int ilceId, int semtId,
       //             String fromDay, String toDay, String fromTime, String toTime) {
-    
     private String title;
     private String description;
     private String startDate;
@@ -37,8 +36,6 @@ public final class Service extends ListableModel{
     private String fromTime;
     private String toTime;
 
-
-        
     private String created;
     private String status;
 
@@ -55,6 +52,7 @@ public final class Service extends ListableModel{
     private String requesterEmail;
 
     private List<Comment> comments;
+    private List<Tag> tags;
 
     //  Advancded Search Results
     private int providerRating;
@@ -304,6 +302,15 @@ public final class Service extends ListableModel{
         this.comments = comments;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+
     public String getCreated() {
         return created;
     }
@@ -405,7 +412,8 @@ public final class Service extends ListableModel{
                 ", requesterId=" + requesterId +
                 ", requesterFullName='" + requesterFullName + '\'' +
                 ", requesterEmail='" + requesterEmail + '\'' +
-                ", comments=" + comments +
+                ", comments='" + comments + '\'' +
+                ", tags=" + tags +
                 '}';
     }
 }

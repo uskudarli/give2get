@@ -11,7 +11,7 @@ import com.boun.give2get.core.Messages;
  */
 public enum ActivityType {
 
-    NEW_SERVICE, NEW_COMMENT, NEW_USER;
+    NEW_SERVICE, NEW_COMMENT, NEW_TAG, NEW_USER;
 
     public static ActivityType fromString(String statusAsString) {
 
@@ -19,6 +19,8 @@ public enum ActivityType {
             return ActivityType.NEW_SERVICE;
         else if (statusAsString.equalsIgnoreCase(ActivityType.NEW_COMMENT.toString()))
             return ActivityType.NEW_COMMENT;
+        else if (statusAsString.equalsIgnoreCase(ActivityType.NEW_TAG.toString()))
+            return ActivityType.NEW_TAG;
         else
             return ActivityType.NEW_USER;
 
@@ -49,15 +51,15 @@ public enum ActivityType {
     private static final String getRawTextBody(ActivityType type) {
 
         if (type.equals(ActivityType.NEW_USER)) {
-
             return Messages.get("act.newuser");
 
         } else if (type.equals(ActivityType.NEW_COMMENT)) {
-
             return Messages.get("act.newcomment");
 
-        } else {
-
+        } else if (type.equals(ActivityType.NEW_TAG)) {
+            return Messages.get("act.newtag");
+        }
+        else {
             return Messages.get("act.newservice");
         }
     }

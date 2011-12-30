@@ -1181,6 +1181,43 @@ public final class DAO {
 
     }
 
+
+
+    public static final void postNewTag(int serviceId, int userId, String content) {
+        Connection conn                 = null;
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        try {
+            conn = getConnection();
+
+            pstmt = conn.prepareStatement("INSERT INTO tags (text, user_id, service_id) VALUES (?,?,?)");
+
+            pstmt.setString(1,          content);
+            pstmt.setInt(2,             userId);
+            pstmt.setInt(3,             serviceId);
+
+            pstmt.executeUpdate();
+
+            //  Log Activity
+            logActivity(conn, ActivityType.NEW_TAG, userId, serviceId);
+            conn.commit();
+
+        } catch (Exception e) {
+            log.warn(e);
+            rollback(conn);
+            throw new DataStoreException(e);
+
+        } finally {
+            close(rs);
+            close(pstmt);
+            close(conn);
+        }
+    }
+
+
+
+
     public static final List<Activity> getRecentActivities() {
                 
         Connection conn                 = null;
@@ -1735,6 +1772,7 @@ public final class DAO {
                 service = Service.newDetailedService(rs);
 
                 service.setComments(getServiceComments(conn, serviceId));
+                service.setTags(getServiceTags(conn, serviceId));
                
             }
 
@@ -1820,6 +1858,28 @@ public final class DAO {
 
     }
 
+
+
+    public static final List<Tag> getServiceTags(int serviceId) {
+        Connection conn = null;
+        List<Tag> tags = null;
+
+        try {
+            conn = DAO.getConnection();
+            tags = getServiceTags(conn, serviceId);
+
+        } catch (Exception e){
+            log.warn(e,e);
+
+        } finally {
+            close(conn);
+        }
+
+        return tags;
+    }
+
+
+
     public static final List<Comment> getServiceComments(Connection conn, int serviceId) {
 
         PreparedStatement pstmt         = null;
@@ -1871,6 +1931,69 @@ public final class DAO {
 
 
     }
+
+
+
+
+
+    public static final List<Tag> getServiceTags(Connection conn, int serviceId) {
+
+        PreparedStatement pstmt         = null;
+        ResultSet rs                    = null;
+
+        List<Tag> tags          = null;
+
+        try {
+
+            pstmt = conn.prepareStatement("SELECT c.id, c.text, c.created, c.user_id, r.firstname, r.lastname FROM tags c, registrations r, users u WHERE r.id = u.reg_id AND u.id = c.user_id AND c.service_id = ? ORDER BY c.created DESC LIMIT 30");
+
+            pstmt.setInt(1, serviceId);
+
+            rs = pstmt.executeQuery();
+
+            tags = new ArrayList<Tag>();
+
+            Tag tag;
+
+            int index = 0;
+
+            while (rs.next()) {
+
+                tag = Tag.newServiceTag(rs, index);
+
+                tags.add(tag);
+
+                index ++;
+
+            }
+
+
+        } catch (Exception e) {
+
+            log.warn(e);
+
+            rollback(conn);
+
+            throw new DataStoreException(e);
+
+        } finally {
+
+            close(rs);
+            close(pstmt);            
+
+        }
+
+        return tags;
+
+
+    }
+
+
+
+
+
+
+
 
     public static final List<Comment> getUserLatestComments(int userId) {
 

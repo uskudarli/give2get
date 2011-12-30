@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - New Tag' /}
+
+
+<div id="addTag">
+
+    <p id="title_add_tag">Add Tag</p>
+
+    <p id="hint_service_title"> on ${title}</p>
+
+
+    #{ifErrors}
+    <p class="error">
+        Please correct these errors!
+    </p>
+    #{/ifErrors}
+
+
+    #{form @postTag(serviceId)}
+
+    #{field 'content'}
+    <div class="signupelement">
+        <label class="signuptitle">Tag Name</label><br>
+        <textarea name="${field.name}" class="new_service">${flash.content}</textarea>
+        <span class="error">#{error 'content' /}</span>
+    </div>
+    #{/field}
+
+    <div class="signupelement">
+        <input type="submit" value="Post"/>
+    </div>
+
+    #{/form}
+
+
+</div>

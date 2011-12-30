@@ -271,6 +271,28 @@ $('#postEndDate2').datetimepicker({
                     </div>
                 #{/field}
                 <br/>
+
+
+                #{field 'tag'}
+                    <div class="signupelement">
+                        <label class="signuptitle">Tags</label><br>
+                        <input id="sercice_tag" name="${field.name}" class="validate[required, minSize[3]]">${flash.tag}</textarea>
+                        <span class="error">#{error 'tag' /}</span>
+                    </div>
+                #{/field}
+                <br/>
+
+
+
+
+
+
+
+
+
+
+
+
                 <input type="checkbox" name="date" id="cBoxAddDate"> Add Date</input>
 
                 #{field 'startdate'}
