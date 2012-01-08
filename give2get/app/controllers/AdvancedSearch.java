@@ -7,6 +7,7 @@ import models.Service;
 
 import java.util.List;
 
+import com.boun.give2get.db.MessageDAO;
 import com.boun.give2get.db.ServiceDAO;
 import com.boun.give2get.db.SearchDAO;
 
@@ -27,7 +28,10 @@ public class AdvancedSearch extends Controller {
         if (user != null) {
 
             renderArgs.put("user", user);
-
+            int unreadMessageCount = MessageDAO.getUnreadMessageCount(user.getId());
+            int unreadNotificationCount = MessageDAO.getUnreadNotificationCount(user.getId());
+            renderArgs.put("unreadNotificationCount", unreadNotificationCount);
+            renderArgs.put("unreadMessageCount", unreadMessageCount);
         }
 
     }

@@ -4,6 +4,7 @@ import play.mvc.Controller;
 import play.mvc.Before;
 import models.*;
 import com.boun.give2get.db.DAO;
+import com.boun.give2get.db.MessageDAO;
 import com.boun.give2get.db.ServiceDAO;
 import com.boun.give2get.db.SearchDAO;
 import com.boun.give2get.mail.MailUtil;
@@ -30,7 +31,10 @@ public class Services extends Controller {
         if (user != null) {
 
             renderArgs.put("user", user);
-            
+            int unreadMessageCount = MessageDAO.getUnreadMessageCount(user.getId());
+            int unreadNotificationCount = MessageDAO.getUnreadNotificationCount(user.getId());
+            renderArgs.put("unreadNotificationCount", unreadNotificationCount);
+            renderArgs.put("unreadMessageCount", unreadMessageCount);
         }
 
     } 

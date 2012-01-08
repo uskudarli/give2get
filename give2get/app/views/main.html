@@ -79,6 +79,13 @@
                 $('#login_form').validationEngine('hideAll');
             #{/else}
         });
+        
+        
+        $('#toggle_message_options').click(function() {
+            #{if user?.registration}
+                $('#messageBox_options').slideToggle();
+            #{/if}
+        });
 
         $("#login_form").validationEngine({promptPosition : "centerRight", scroll: false});
         $("#add_new_service_form").validationEngine({promptPosition : "centerRight", scroll: false});
@@ -594,7 +601,17 @@ $('#postEndDate2').datetimepicker({
                         </div>
                     #{/else}
 
+			<!-- User Options, only seen when toggled -->
+                        <div id="messageBox_options">
+                            <div class="messageBox_menu_item">
+                                <a href="@{MessageController.inbox(session.get("userid"))}">Inbox (${unreadMessageCount})</a>
+                            </div>
 
+                            <div class="messageBox_menu_item">
+                                <a href="@{MessageController.getNotificationDetail()}">Notification (${unreadNotificationCount})</a>
+                            </div>
+                        </div>
+                        
 
              <!-- Search -->
              <form id="quick_search_form" action="/search" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
@@ -630,7 +647,7 @@ $('#postEndDate2').datetimepicker({
                     </span>
 
                     <span class="menu_item">
-                        <a href="@{MessageController.inbox(session.get("userid"))}">Inbox</a>
+                        <a id="toggle_message_options" href="#">MessageBox</a>
                     </span>
 
                     <span class="menu_item">

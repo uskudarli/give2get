@@ -24,7 +24,10 @@ public class MessageController extends Controller {
         if (user != null) {
 
             renderArgs.put("user", user);
-
+            int unreadMessageCount = MessageDAO.getUnreadMessageCount(user.getId());
+            int unreadNotificationCount = MessageDAO.getUnreadNotificationCount(user.getId());
+            renderArgs.put("unreadNotificationCount", unreadNotificationCount);
+            renderArgs.put("unreadMessageCount", unreadMessageCount);
         }
 
     }
@@ -37,14 +40,12 @@ public class MessageController extends Controller {
 	        }
 
 	        //  Basic Info
-	        User user = DAO.getUserDetailedInfo(receiverId);
-	        
-	        render(user);
+	        User receiverUser = DAO.getUserDetailedInfo(receiverId);
+	        render(receiverUser);
 
 	    }
 	    
 	    public static final void sendMessage(int receiverId,
-	    		@Required(message = "Title is required") String title,
 	            @Required(message = "Message is required") String message) {
 
 	    		int senderId = Integer.parseInt(session.get("userid"));
@@ -65,11 +66,48 @@ public class MessageController extends Controller {
 
 	        }
 	        
-	        Message messageObj = new Message(receiverId,title,message);
+	        Message messageObj = new Message(receiverId,message);
 	        //  Basic Info
 	        MessageDAO.sendMessage(Integer.parseInt(session.get("userid")),messageObj);
 	        
 	        Application.index(); 
+	    }
+	    
+	    public static final void sendNotification(int receiverId,String message) {
+	        
+	        Message messageObj = new Message(receiverId,message);
+	        //  Basic Info
+	        MessageDAO.sendNotification(messageObj);
+	        
+	        Application.index(); 
+	    }
+	    
+	    public static final void replyMessage(int receiverId,
+	            @Required(message = "Message is required") String message) {
+
+	    		
+	        if (session.get("userid") == null || receiverId == Integer.parseInt(session.get("userid")) ) {
+
+	        	Application.index();
+	        }
+	        
+	        if (validation.hasErrors()) {
+
+	        	
+	            System.out.println("validation error!");
+
+	            params.flash();
+	            validation.keep();
+
+	            getMessageDetail(receiverId);
+
+	        }
+	        
+	        Message messageObj = new Message(receiverId,message);
+	        //  Basic Info
+	        MessageDAO.sendMessage(Integer.parseInt(session.get("userid")),messageObj);
+	        
+	        getMessageDetail(receiverId); 
 	    }
 	    
 	    public static final void inbox(int userId) {
@@ -80,8 +118,8 @@ public class MessageController extends Controller {
 	        }
 
 	        List<Message> inboxMessages = MessageDAO.getMessages(userId);
-	        
-	        render(inboxMessages);
+	        int countUnreadMessage = MessageDAO.getUnreadMessageCount(userId);
+	        render(inboxMessages,countUnreadMessage);
 	        
 	    }
 	        
@@ -92,9 +130,51 @@ public class MessageController extends Controller {
 	        	Application.index();
 	        }
 
-	        List<Message> inboxMessages = MessageDAO.getMessageDetails(userId,Integer.parseInt(session.get("userid")));
+	        List<Message> messageDetails = MessageDAO.getMessageDetails(userId,Integer.parseInt(session.get("userid")));
 	        
-	        render(inboxMessages);
+	        renderArgs.put("senderFullName", DAO.getUser(userId).getRegistration().getFullName());
+	        renderArgs.put("receiverFullName", DAO.getUser(Integer.parseInt(session.get("userid"))).getRegistration().getFullName());
+	        
+	        int countUnreadMessage = MessageDAO.getUnreadMessageCount(Integer.parseInt(session.get("userid")));
+	        
+	        render(messageDetails,userId,countUnreadMessage);
+	    }
+	    
+	    public static final void getNotificationDetail() {
+
+	        List<Message> messageDetails = MessageDAO.getMessageDetails(0,Integer.parseInt(session.get("userid")));
+	        
+	        renderArgs.put("senderFullName", "System");
+	        renderArgs.put("receiverFullName", DAO.getUser(Integer.parseInt(session.get("userid"))).getRegistration().getFullName());
+	        
+	        int countUnreadMessage = MessageDAO.getUnreadMessageCount(Integer.parseInt(session.get("userid")));
+	        
+	        render(messageDetails,0,countUnreadMessage);
+	    }
+	    
+	    public static final void deleteMessage(int userId) {
+	    	
+	        if (session.get("userid") == null || userId == Integer.parseInt(session.get("userid"))) {
+
+	        	Application.index();
+	        }
+
+	        MessageDAO.deleteMessageOfAUser(userId, Integer.parseInt(session.get("userid")));
+	        
+	        inbox(Integer.parseInt(session.get("userid")));
+
+	    }
+	    
+	    public static final void unreadMessage(int userId) {
+	    	
+	        if (session.get("userid") == null || userId == Integer.parseInt(session.get("userid"))) {
+
+	        	Application.index();
+	        }
+
+	        MessageDAO.unreadMessage(userId, Integer.parseInt(session.get("userid")));
+	        
+	        inbox(Integer.parseInt(session.get("userid")));
 
 	    }
 	    

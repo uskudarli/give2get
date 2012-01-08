@@ -1178,10 +1178,20 @@ td {
 #userName {
 	float: left;
 	position:relative;
-	width: 439px;
+	width: 189px;
 	height: 20px;
 	margin-top: 8px;
 	vertical-align:bottom;
+}
+
+#message_status {
+    position: relative;
+    float:left;
+    margin-top: 8px;
+    width: 250px;
+    font-size: 7pt;
+    text-align: left;
+    color: #ff4400;
 }
 
 #message_date {
@@ -1208,3 +1218,94 @@ td {
 	width: 645px;
 	height: 25px;
 }
+
+#messageTypes {
+    padding: 20px;
+    float:right;
+    width: 230px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+#messageType {
+	float: left;
+	position:relative;
+    font-size: 12pt;
+    padding-left:5px;
+    width: 230px;
+    height: 25px;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 0 rgba(255, 255,255, 1);
+}
+
+
+#toggle_message_options {
+    cursor: pointer;
+
+    position: relative;
+    top: -4px;
+
+    float: left;
+    padding: 10px 15px 5px 15px;
+
+    color: #d0d0d0;
+
+    font-weight: bold;
+    font-size: 11pt;
+
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .75);
+    text-decoration: none;
+
+    letter-spacing: -1px;
+}
+
+#messageBox_options {
+    display: none;
+    position: absolute;
+    background-color: #444444;
+    left: 370px;
+    top: 36px;
+    width: 115px;
+    padding: 8px 10px 2px 5px;
+
+    -webkit-border-bottom-right-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+
+.messageBox_menu_item a{
+    position: relative;
+    top: -4px;
+	
+    float: left;
+    padding: 5px 10px 5px 10px;
+
+    color: #d0d0d0;
+
+    font-weight: bold;
+    font-size: 11pt;
+
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .75);
+    text-decoration: none;
+
+    letter-spacing: -1px;
+
+}
+
+.replyMessage {
+    border-color: #08c;
+	outline: none;
+	outline-style: none;
+	outline-width: initial;
+	outline-color: initial;
+	overflow-y: auto !important;
+	resize: none;
+	height: 30px;
+	width: 335px;
+	max-height: 280px;
+}
+

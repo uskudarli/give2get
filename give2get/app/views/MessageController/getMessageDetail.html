@@ -2,51 +2,59 @@
 #{set title:'Give2Get - Send Message' /}
 
 
-<h2>Send Message</h2>
+<div class="maincontainer">
 
-<div id="message_container">
+	 <!-- Inbox -->
+	 <div id="messageBox" class="round">
+	 	  <p class="table_title">Messages Between You and ${senderFullName}</p>
+	    	#{list messageDetails, as:'message'}
+	    	#{if message.receiverId == user.id}
+	      <div id="message">
+	      	<div id="user_photo"><img src="/public/images/char_1.png" /></div>
+	        <div id="message_details">
+                <span id="activity_name">
+                   <a href="/user/${message.userId}">${senderFullName}</a>
+                </span>
 
-    #{form @sendMessage()}
+                <span id="message_date">
+                    <span id="timeago">received at ${message.sendDate}</span>
+                </span>
+                <br />
+                <span id="messageText">${message.message.length() > 70 ? message.message[0..70] + '..' : message.message}</span>
+            </div>
+	      </div>
+	        #{/if}
+	        
+	        #{if message.receiverId != user.id}
+	      <div id="message">
+	      	<div id="user_photo"><img src="/public/images/char_1.png" /></div>
+	        <div id="message_details">
+                <span id="activity_name">
+                   <a href="/user/${message.userId}">${receiverFullName}</a>
+                </span>
 
-    #{field 'receiverName'}
-        <div class="signupelement">
-            <label class="signuptitle">Sender</label><br>
-            <input type="text" disabled="disabled" name="name" size="71" value="${user.getRegistration().getFirstname()+' '+user.getRegistration().getLastname()}"/>
-        	<input type="hidden" name="receiverId"  value="${user.getId()}"/>
-        </div>
-    #{/field}
-
-    
-    #{field 'title'}
-        <div class="signupelement">
-            <label class="signuptitle">Title</label><br>
-            <input type="text" name="title" size="71"/>
-            <span class="error">#{error 'title' /}</span>
-        </div>
-    #{/field}
-
-
-    #{field 'message'}
-        <div class="signupelement">
-            <label class="signuptitle">Message</label><br>
-            <textarea rows="4" name="message" cols="55"></textarea>
-            <span class="error">#{error 'message' /}</span>
-        </div>
-    #{/field}
-
-
-        <div class="signupelement">
-            <input type="submit" name="Send" value="Send Message"/>
-        </div>
-
-    #{/form}
-
+                <span id="message_date">
+                    <span id="timeago">send at ${message.sendDate}</span>
+                </span>
+                <br />
+                <span id="messageText">${message.message.length() > 70 ? message.message[0..70] + '..' : message.message}</span>
+            </div>
+	      </div>
+	        #{/if}
+	      #{/list}
+	</div>
+	<div id=messageTypes class="round">
+        <p class="table_title">MessageBox</p>
+        <span id="messageType"><a href="/inbox/${session.get("userid")}">Inbox (${unreadMessageCount})</a></span>
+		<span id="messageType"><a href="/getNotification/">Notification(${unreadNotificationCount})</a></span>
+	</div>
+	<div id="messageBox" class="round">
+		<div id="message">
+		<form id="add_new_service_form" action="/replyMessage/" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
+			<textarea class="replyMessage" title="Reply" name="message" rows="1" placeholder="Repyl message" style="height: 34px;width:500px "></textarea>
+			<input type="image" src="@{'/public/images/reply.png'}" name="Reply" value="Reply"/>
+			<input type="hidden" name="receiverId"  value="${userId}"/>
+		</form>
+		</div>
+	</div>
 </div>
-
-#{if flash.success}
-    <div class="container">
-        <p id="status">
-            ${flash.success}
-        </p>
-    </div>
-#{/if}

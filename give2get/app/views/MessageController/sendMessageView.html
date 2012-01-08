@@ -2,45 +2,31 @@
 #{set title:'Give2Get - Send Message' /}
 
 
-<h2>Send Message</h2>
+ <div class="maincontainer">
 
-<div id="message_container">
+	 <!-- Inbox -->
+	 <div id="messageBox" class="round">
+	 <p class="table_title">Send Message</p>
 
-    #{form @sendMessage()}
-
-    #{field 'receiverName'}
-        <div class="signupelement">
-            <label class="signuptitle">Sender</label><br>
-            <input type="text" disabled="disabled" name="name" size="71" value="${user.getRegistration().getFirstname()+' '+user.getRegistration().getLastname()}"/>
-        	<input type="hidden" name="receiverId"  value="${user.getId()}"/>
-        </div>
-    #{/field}
-
-    
-    #{field 'title'}
-        <div class="signupelement">
-            <label class="signuptitle">Title</label><br>
-            <input type="text" name="title" size="71"/>
-            <span class="error">#{error 'title' /}</span>
-        </div>
-    #{/field}
-
-
-    #{field 'message'}
-        <div class="signupelement">
-            <label class="signuptitle">Message</label><br>
-            <textarea rows="4" name="message" cols="55"></textarea>
-            <span class="error">#{error 'message' /}</span>
-        </div>
-    #{/field}
-
-
-        <div class="signupelement">
-            <input type="submit" name="Send" value="Send Message"/>
-        </div>
-
-    #{/form}
-
+	    #{form @sendMessage()}
+	
+	    #{field 'receiverName'}
+	        <div class="signupelement">
+	            <label class="signuptitle">Receiver</label><br>
+	            <input type="text" disabled="disabled" name="name" size="71" value="${receiverUser.getRegistration().getFirstname()+' '+receiverUser.getRegistration().getLastname()}"/>
+	        	<input type="hidden" name="receiverId"  value="${receiverUser.getId()}"/>
+	        </div>
+	    #{/field}
+	
+	    #{field 'message'}
+	        <div class="signupelement">
+	        	<textarea class="replyMessage" title="Reply" name="message" rows="1" placeholder="Send message" style="height: 34px;width:500px "></textarea>
+	            <input type="image" src="@{'/public/images/send.png'}" name="Reply" value="Reply"/>
+	        </div>
+	    #{/field}
+	
+	    #{/form}
+	</div>
 </div>
 
 #{if flash.success}

@@ -12,7 +12,8 @@ import com.boun.give2get.db.DAO;
 public final class Message extends ListableModel{
 
     private int userId;
-    private String title;
+    private int senderId;
+    private int receiverId;
     private String message;  
     private String firstName;
     private String lastName;
@@ -26,10 +27,9 @@ public final class Message extends ListableModel{
 
     }
     
-    public Message (int userId,String title,String message) {
+    public Message (int userId,String message) {
 
     	this.userId = userId;
-    	this.title = title;
     	this.message = message;
     }
     
@@ -37,7 +37,6 @@ public final class Message extends ListableModel{
     	Message message = new Message();
     	
     	message.userId       	= rs.getInt("userId");
-    	message.title			= rs.getString("title");
     	message.message			= rs.getString("message");
     	message.sendDate		= rs.getString("sendDate");
     	message.firstName 		= rs.getString("firstname");
@@ -54,14 +53,11 @@ public final class Message extends ListableModel{
     public static Message getMessage(ResultSet rs, int index) throws SQLException {
     	Message message = new Message();
     	
-    	message.userId       	= rs.getInt("userId");
-    	message.title			= rs.getString("title");
+    	message.senderId       	= rs.getInt("senderId");
+    	message.receiverId		= rs.getInt("receiverId");
     	message.message			= rs.getString("message");
     	message.sendDate		= rs.getString("sendDate");
-    	message.firstName 		= rs.getString("firstname");
-    	message.lastName 		= rs.getString("lastname");
-    	message.sendByWho		= rs.getString("sendByUs");
-    	
+   	
     	message.oddOrEven       = index %2 == 0 ? "odd" :"even";
     	
 		return message;
@@ -70,10 +66,6 @@ public final class Message extends ListableModel{
     
     public int getUserId() {
         return userId;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getMessage() {
@@ -96,7 +88,6 @@ public final class Message extends ListableModel{
     public String toString() {
         return "Activity{" +
                 ", userId=" + userId +
-                ", title=" + title +
                 ", message=" + message +
                 ", sendDate=" + sendDate +
                 ", firstName=" + firstName +

@@ -5,27 +5,55 @@
 
 	 <!-- Inbox -->
 	 <div id="messageBox" class="round">
-	    	#{list inboxMessages, as:'message'}
+	 <p class="table_title">Unread Messages</p>
+	    #{list inboxMessages, as:'message'}
+        #{if message.status==0}
 	      <div id="message" onclick="getLink('${message.userId}')">
 	      	<div id="user_photo"><img src="/public/images/char_1.png" /></div>
 	        <div id="message_details">
-                <span id="activity_name">
+                <span id="userName">
                    <a href="/user/${message.userId}">${message.firstName+' '+message.lastName}</a>
                 </span>
-
                 <span id="message_date">
                     <span id="timeago">${message.replyStatus.equals('notreplied') ? 'received at ' : 'send at '}${message.sendDate}</span>
-                	<span id="delete"><img width="7" height="7"  src="/public/images/delete.png" /></span>
-                	<span id="unread"><img width="7" height="7"  src="/public/images/unread.png" /></span>
+                	<span id="delete"><a href="/deleteMessage/${message.userId}"><img title="delete message" width="7" height="7"  src="/public/images/delete.png" /></a></span>
                 </span>
                 <br />
                 <span id="messageText">${message.message.length() > 70 ? message.message[0..70] + '..' : message.message}</span>
-            </div>
-	        
+           		
+            </div> 
 	      </div>
-	      #{/list}
+	    #{/if}
+	    #{/list}
+	    <p/>
+	    <p class="table_title">Read Messages</p>
+	    #{list inboxMessages, as:'message'}
+        #{if message.status!=0}
+	      <div id="message" onclick="getLink('${message.userId}')">
+	      	<div id="user_photo"><img src="/public/images/char_1.png" /></div>
+	        <div id="message_details">
+                <span id="userName">
+                   <a href="/user/${message.userId}">${message.firstName+' '+message.lastName}</a>
+                </span>
+                <span id="message_date">
+                    <span id="timeago">${message.replyStatus.equals('notreplied') ? 'received at ' : 'send at '}${message.sendDate}</span>
+                	<span id="delete"><a href="/deleteMessage/${message.userId}"><img title="delete message" width="7" height="7"  src="/public/images/delete.png" /></a></span>
+                	<span id="unread"><a href="/unreadMessage/${message.userId}"><img title="unread message"width="7" height="7"  src="/public/images/unread.png" /></a></span>
+                </span>
+                <br />
+                <span id="messageText">${message.message.length() > 70 ? message.message[0..70] + '..' : message.message}</span>
+           		
+            </div> 
+	      </div>
+	    #{/if}
+	    #{/list}
 	</div>
-</div>
+	
+	<div id=messageTypes class="round">
+        <p class="table_title">MessageBox</p>
+        <span id="messageType"><a href="/inbox/${session.get("userid")}">Inbox (${unreadMessageCount})</a></span>
+		<span id="messageType"><a href="/getNotification/">Notification(${unreadNotificationCount})</a></span>
+	</div>
 
 <script type="text/javascript">
 	function getLink(userId)
