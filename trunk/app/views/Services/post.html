@@ -35,8 +35,9 @@
     #{field 'startdate'}
         <div class="signupelement">
             <label class="signuptitle">Start Date</label><br>
-            <input name="startdate" value="${flash.startdate}">
-            <input type=button value="select" onclick="displayDatePicker('startdate', this);">
+            <input name="startdate" class="dateClass" type="text" id="postStartDate" value="${flash.startdate}">
+            <script>$( "#postStartDate" ).datepicker();</script>
+            </input>
             <span class="error">#{error 'startdate' /}</span>
         </div>
     #{/field}
@@ -44,9 +45,10 @@
 
     #{field 'enddate'}
         <div class="signupelement">
-            <label class="signuptitle">End Date</label><br>
-            <input name="enddate" value="${flash.enddate}">
-            <input type=button value="select" onclick="displayDatePicker('enddate', this);">
+            <label class="signuptitle">End Date</label><br>            
+            <input name="enddate" class="dateClass" value="${flash.enddate}" id="postEndDate" type="text">
+            <script>$( "#postEndDate" ).datepicker();</script>
+            </input>
             <span class="error">#{error 'enddate' /}</span>
         </div>
     #{/field}
