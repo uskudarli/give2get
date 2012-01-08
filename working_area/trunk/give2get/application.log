@@ -1,0 +1,23 @@
+21:22:43,699 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/give2get
+21:22:44,398 INFO  ~ Precompiling ...
+21:22:53,434 INFO  ~ Done.
+12:45:21,443 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/give2get
+12:45:23,083 WARN  ~ You're running Play! in DEV mode
+12:45:23,213 ERROR ~ Could not bind on port 9000
+12:46:09,249 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/give2get
+12:46:10,174 WARN  ~ You're running Play! in DEV mode
+12:46:10,404 ERROR ~ Could not bind on port 9000
+12:52:44,244 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/give2get
+12:52:45,182 WARN  ~ You're running Play! in DEV mode
+12:52:45,355 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+12:53:02,464 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+12:53:02,540 INFO  ~ Application 'Give2Get' is now started !
+13:04:52,971 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/25.11.2011/give2get/give2get
+13:04:53,741 WARN  ~ You're running Play! in DEV mode
+13:04:53,828 ERROR ~ Could not bind on port 9000
+13:05:04,176 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/25.11.2011/give2get/give2get
+13:05:04,849 WARN  ~ You're running Play! in DEV mode
+13:05:05,006 ERROR ~ Could not bind on port 9000
+13:05:14,781 INFO  ~ Starting /Users/canelmas/IdeaProjects/Give2Get/working_area/trunk/give2get/25.11.2011/give2get/give2get
+13:05:15,553 WARN  ~ You're running Play! in DEV mode
+13:05:15,654 ERROR ~ Could not bind on port 9000

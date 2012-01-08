@@ -1,0 +1,158 @@
+#{set title:'header.html' /}
+
+
+        <script>
+            $(document).ready(function(){
+
+                $('#form_sign_up').validationEngine({promptPosition : "centerRight", scroll: false});
+                $('#form_edit_voting').validationEngine({promptPosition : "centerRight", scroll: false});
+                $('#form_add_voting').validationEngine({promptPosition : "centerRight", scroll: false});
+                $('#form_add_admin').validationEngine({promptPosition : "centerRight", scroll: false});
+                $('#form_add_user').validationEngine({promptPosition : "centerRight", scroll: false});
+                $('#form_sign_in').validationEngine({promptPosition : "bottomLeft", scroll: false});
+
+                $('#send_password').overlay({
+                    color: '#ccc',
+                    top: 100
+                });
+
+                $('#sign_up').overlay({
+                    color: '#ccc',
+                    top: 100
+                });
+
+                $('#send_massive_email').overlay({
+                    color: '#ccc',
+                    top: 100
+                });
+
+
+
+                $('#add_voting').overlay({
+                    color: '#ccc',
+                    top: 100
+                });
+                $('#add_administrator').overlay({
+                    color: '#ccc',
+                    top: 100
+                });
+                $('#add_user').overlay({
+                    color: '#ccc',
+                    top: 100
+                });
+
+                $('#messages').click(function() {
+                      $('#messages').slideToggle('slow', function() {});
+                });
+            });
+        </script>
+
+
+        <div id='header'>
+        <div id='title'><a href="index.jsp" class="home">Give2Get</a></div>
+            <div id='actions'>
+	             #{if session.username}            
+	                Welcome <a href="#" onclick="alert('go to {Application.edit}');">
+	                ${session.username} 
+	                <img src="@{'public/images/user_green.png'}"></a> | <a href="@{Secure.logout()}">Sign out</a>
+	             #{/if}
+            </div>
+        </div>
+
+
+#{if session.error}
+ 		    <div id="messages" class="round error">
+ 			<ul>   
+	        <li>Oops.. ${session.error}</li>
+	        </ul>
+	        </div>
+ #{/if}
+
+ 		#{ifErrors}
+ 		    <div id="messages" class="round error">
+ 			<ul>
+	 		#{errors}    
+	        <li>${error}</li>
+	        #{/errors}
+	        </ul>
+	        </div>
+	    #{/ifErrors}
+
+
+
+		#{ifnot session.username}
+		<form id="form_sign_in" action="@{Secure.authenticate()}" method="POST">
+		<div class="sign_in_box round">
+		    <div id="sign_in">
+		        <input id="username" class="validate[required]" type="text" name="username" placeholder="Username"/>
+		        <input id="password" class="validate[required]" type="password" name="password" placeholder="Password"/>
+		        <input class="sign_in_submit" type="image" src="@{'public/images/arrow-right.png'}" alt="Sign In" />
+		    </div>
+		
+		    <div id="sign_in_options">
+		        <a rel="#sign_up_box" id="sign_up" href="#">I want to <b>sign up!</b></a>
+		        <br />
+		        <a href="#" rel="#msie6" id="send_password">I forgot my password</a>
+		    </div>
+		</div>
+		</form>
+		#{/ifnot}
+		
+		<div class="creation round box small" id="sign_up_box">
+		<h3>Be a part of Give2Get</h3>
+		<form id="form_sign_up" action="@{Application.signUp()}" method="POST">
+		
+		    <table width="100%" cellspacing="0" cellpadding="0">
+		        <tr>
+		            <td><input id="name" type="text" name="name" class="validate[required]" placeholder="Name"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="surname" type="text" name="surname" class="validate[required]" placeholder="Surname"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="username" type="text" name="username" class="validate[required]" placeholder="Username"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="password" type="password" name="password" class="validate[required]" placeholder="Password"/></td>
+		        </tr>
+		        <tr>
+		            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
+		        </tr>
+		        <tr>
+		            <td>
+		            	<img src="@{Application.captcha(randomID)}" />
+    					<br />
+    					<input type="text" name="code" id="code" size="18" value="" />
+    					<input type="hidden" name="randomID" value="${randomID}" />
+    				</td>
+		        </tr>  
+
+		        <tr>
+		            <td align="right" colspan="2">
+		                <input type="submit" value="Register" />
+		            </td>
+		        </tr>
+		    </table>
+		
+		</form>
+		</div>
+		
+		
+		<div class="round box small creation" id="msie6">
+		<h3>Send Activation</h3>
+		<form action="send_password.jsp" method="POST">
+		
+		    <table width="100%" cellspacing="0" cellpadding="0">
+		        <tr>
+		            <td><input id="email" type="text" name="email" class="validate[required,custom[email]]" placeholder="Email" /></td>
+		        </tr>
+		        <tr>
+		            <td align="right" colspan="2">
+		                <input type="submit" value="Register" />
+		            </td>
+		        </tr>
+		    </table>
+		
+		</form>
+		</div>
+

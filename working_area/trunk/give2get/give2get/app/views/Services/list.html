@@ -1,0 +1,77 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - New Comment' /}
+
+
+<div id="service_list">
+
+    <p id="title_profile">${services.size()} Available Services</p>
+
+    #{if flash.error}
+        <p class="profile_status_msg" align="center">${flash.error}</p>
+    #{/if}
+
+    <table width="100%" id="table_service_list">
+
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Provider</th>
+            <th>Created</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        #{list services, as:'service'}
+        <tr class="${service.oddOrEven}">
+            <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+            <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>            
+            <td style="text-align:center;">${service.created}</td>
+            <td style="text-align:center;">${service.requestCount != 0 ? (service.requestCount + (service.requestCount > 1 ? ' Requests' : ' Request')) : service.status}</td>
+            <td style="text-align:center;">
+                #{form @Services.request(service?.id, service?.providerId, service?.title)}
+                <input type="submit" value="Request" class="btnRequest" id="${service.id}" providerId="${service.providerId}" serviceTitle="${service.title}"/>
+                #{/form}
+            </td>
+        </tr>
+        #{/list}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<script>
+
+    $(function() {
+
+        $('#dialog-message').dialog({
+            autoOpen:false,
+            show:"blind",
+            hide:"explode"
+        });
+
+    });
+</script>
+
+
+<div class="demo">
+
+    <div id="dialog-message" title="Download complete">
+        <p>
+            <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+            Your files have downloaded successfully into the My Downloads folder.
+        </p>
+
+        <p>
+            Currently using <b>36% of your storage space</b>.
+        </p>
+    </div>
+
+</div>
+
+

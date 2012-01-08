@@ -1,0 +1,341 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Profile' /}
+
+
+<div id="profile">
+
+    <!-- User Basic Info & Rating -->
+    <div id="info_and_rating">
+
+        <!-- User Name -->
+        <font id="username">${username}</font>
+        #{form @Application.editProfile()} 
+        <input type="image" src="@{'/public/images/edit-profile.png'}" class="login-button" value="Login" tabindex="4"/>
+        #{/form}
+        
+        <table width="100%">
+
+            <tr>
+
+                <!-- Basic User Info -->
+                <td width="50%">
+
+                    <table id="profile_basic_info" width="100%" border="1">
+                        <tr class="odd">
+                            <td>Email</td>
+                            <td>${user.getRegistration().getEmail()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>First Name</td>
+                            <td>${user.getRegistration().getFirstname()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Last Name</td>
+                            <td>${user.getRegistration().getLastname()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Member Since</td>
+                            <td>${user.getRegistration().getActivated()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td># of Posted Services</td>
+                            <td>${user.getNumOfPostedServices()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td># of Comments</td>
+                            <td>${user.getNumOfComments()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Rating</td>
+                            <td><b>${user.getRating()}</b></td>
+                        </tr>
+                        <tr class="even">
+                            <td>Credits</td>
+                            <td><b>${user.getCredits()}</b></td>
+                        </tr>
+                    </table>
+
+                </td>
+
+
+                <!-- Rating and Credits -->
+                <td valign="middle" style="vertical-align:middle;" width="50%">
+                    <p>Rating / Credits</p>
+                    <p class="userrating">${user.getRating()} / ${user.getCredits()}</p>
+                </td>
+
+
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- Posted Service on Roll Status-->
+    #{if flash.error}
+        <p align="center" class="profile_status_msg">
+            ${flash.error}
+        </p>
+    #{/if}
+
+    #{if profile_status}
+        <p align="center" class="profile_status_msg">
+            ${profile_status}
+        </p>
+    #{/if}
+
+	<!-- My Skills -->
+    <div id="user_skills">
+
+        <p class="title_profile">My Skills</p>
+
+        <table width="100%" class="profile_table">
+
+            <thead>
+            <tr>
+                <th>Title</th>                
+                <th>Description</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list userSkills, as:'skill'}
+            <tr class="${skill.oddOrEven}">
+                <td>${skill.title.length() > 200 ? skill.title[0..200] + '..' : skill.title}</a></td>
+                <td>${skill.description}</td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- My Posted Services -->
+    <div id="user_services">
+
+        <p class="title_profile">Your Posted Services</p>
+
+        #{if userProvidedServices}
+        <table width="100%" class="profile_table">
+
+            <thead>
+            <tr>
+                <th>Title</th>                
+                <th>Created</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list userProvidedServices, as:'service'}
+            <tr class="${service.oddOrEven}">
+                <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+                <td style="text-align:center;">${service.created}</td>
+                <td style="text-align:center;">${service.requestCount != 0 ? (service.requestCount + (service.requestCount > 1 ? ' Requests' : ' Request')) : service.status}</td>                
+                <td>
+                    #{if service.requestCount != 0}
+                    <a href="/requesters/${service.id}">Choose Requester</a>
+                    #{/if}
+                    #{else}
+                    -
+                    #{/else}
+                </td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+        #{/if}
+        #{ifnot userProvidedServices}
+        <p align="center">No Provided Services</p>
+        #{/ifnot}
+
+
+    </div>
+
+    <!-- My Provided Rolling Services -->
+    <div id="provided_rolling_services">
+
+        <p class="title_profile">Your Posted Services on Roll</p>
+
+        #{if providedRollingServices}
+        <table width="100%" class="profile_table">
+
+            <thead>
+            <tr>
+                <th>Service</th>
+                <th>Consumer</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list providedRollingServices, as:'service'}
+            <tr class="${service.oddOrEven}">
+                <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a> </td>
+                <td><a href="/user/${service.requesterId}">${service.requesterFullName}</a></td>
+                <td style="text-align:center;">${service.status}</td>
+                <td>
+                    #{form @Services.resolve(service?.id, service?.requesterId, service?.providerId, service?.title, service?.requesterFullName)}
+                    <input type="submit" value="Resolve" />
+                    #{/form}
+                </td>
+                    
+                <!--#{if service.status == 'READY_TO_BE_RATED'}
+                <td><a href="#">Resolve & Rate</a></td>
+                #{/if}
+                #{else}
+                <td style="text-align:center;">-</td>
+                #{/else}-->
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+        #{/if}
+        #{ifnot providedRollingServices}
+        <p align="center">No Posted Rolling Service</p>
+        #{/ifnot}
+
+        <!-- Posted Service on Roll Status-->
+        #{if postedServiceOnRollStatus}
+        <p class="profile_status_msg" align="center">
+            ${postedServiceOnRollStatus}
+        </p>
+        #{/if}
+
+        
+    </div>
+
+
+
+
+
+    <!-- My Requested Services -->
+    <div id="requested_services">
+
+        <p class="title_profile">Your Requested Services</p>
+
+         #{if requestedServices}
+        <table width="100%" class="profile_table">
+
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Provider</th>
+                <th>Requested At</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list requestedServices, as:'service'}
+            <tr class="${service.oddOrEven}">
+                <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+                <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>
+                <td style="text-align:center;">${service.created}</td>
+                <td style="text-align:center;">${service.status}</td>
+                <td>
+                    #{form @Services.unRequest(service?.id)}
+                    <input type="submit" value="Cancel" />
+                    #{/form}
+                </td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+        #{/if}
+        #{ifnot requestedServices}
+        <p align="center">No Requested Service</p>
+        #{/ifnot}
+    </div>
+
+
+    <!-- Waiting Not Rated Services -->
+    #{if notRatedServices}
+    <div id="notrated_services">
+
+        <p class="title_profile">Waiting Services to be Rated</p>
+
+        <table width="100%" class="profile_table">
+
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Consumer</th>
+                <th>Resolved At</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list requestedServices, as:'service'}
+            <tr class="${service.oddOrEven}">
+                <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a></td>
+                <td><a href="/user/${service.providerId}">${service.providerFullName}</a></td>
+                <td style="text-align:center;">${service.created}</td>
+                <td style="text-align:center;">${service.status}</td>
+                <td>
+                    #{form @Services.unRequest(service?.id)}
+                    <input type="submit" value="Cancel" />
+                    #{/form}
+                </td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+    </div>
+    #{/if}
+
+
+    <!-- User Ratings-->
+    <div id="user_ratings">
+
+        <p class="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Ratings</p>
+
+        #{if serviceRatings}
+        <table width="100%">
+            #{list serviceRatings, as:'rating'}
+            <tr class="${rating.oddOrEven}">
+                <td>
+                    <table width="100%">
+                        <tr>
+                            <td width="80%" class="comment_text">${rating.comment}</td>
+                        </tr>
+                        <tr>
+                            <td class="comment_date">${rating.created}, for service <i>'${rating.serviceTitle}'</i></td>
+                            <td class="comment_owner">rated <b>${rating.value}</b> by <i>${rating.givenBy}</i></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            #{/list}
+
+        </table>
+        #{/if}
+        #{else}
+        <p align="center">No Rating or Comment Posted</p>
+        #{/else}
+
+    </div>
+
+
+</div>

@@ -1,0 +1,97 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - User' /}
+
+
+<div id="user_detail">
+
+    <!-- User Basic Info & Rating -->
+    <div id="info_and_rating">
+
+        <!-- User Name -->
+        <p id="username">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}</p>
+
+        <table width="100%">
+
+            <tr>
+
+                <!-- Basic User Info -->
+                <td width="50%">
+
+                    <table id="profile_basic_info" width="100%" border="1">
+                        <tr class="even">
+                            <td>First Name</td>
+                            <td>${user.getRegistration().getFirstname()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Last Name</td>
+                            <td>${user.getRegistration().getLastname()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td>Member Since</td>
+                            <td>${user.getRegistration().getActivated()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td># of Posted Services</td>
+                            <td>${user.getNumOfPostedServices()}</td>
+                        </tr>
+                        <tr class="even">
+                            <td># of Comments</td>
+                            <td>${user.getNumOfComments()}</td>
+                        </tr>
+                        <tr class="odd">
+                            <td>Rating</td>
+                            <td>270</td>
+                        </tr>
+
+                    </table>
+
+                </td>
+
+
+                <!-- Rating -->
+                <td valign="middle" style="vertical-align:middle;" width="50%">
+                    <p id="rating">270</p>
+
+                </td>
+
+            </tr>
+        </table>
+
+    </div>
+
+
+    <!-- User Services -->
+    <div id="user_services">
+
+        <p id="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Services</p>
+
+        <table width="100%" id="user_posted_services">
+
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            #{list userServices, as:'service'}
+            <tr class="${service.oddOrEven}">
+                <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a>
+                </td>
+                <td style="text-align:center;">${service.created}</td>
+                <td style="text-align:center;">${service.status}</td>
+                <td><input type="submit" value="Request"/></td>
+            </tr>
+            #{/list}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>

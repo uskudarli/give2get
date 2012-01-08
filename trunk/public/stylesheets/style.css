@@ -1,0 +1,493 @@
+body {
+    font-family: Helvetica, sans-serif;
+    font: normal 14px/20px Arial, Verdana, sans-serif;     
+    background: #5d656c;
+    color: #555;    
+    margin:auto;
+    display:block;
+    width:11    00px;
+}
+
+div.container {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;   
+}
+
+
+div.maincontainer {       
+    margin: 0 auto;
+    position: relative;
+    direction:ltr;
+}
+
+
+
+
+
+/** Top Banner **/
+div#topbanner {    
+    position:relative;
+    display:block;
+    height:55px;
+    background-color:#333;
+    -webkit-border-radius: 5px;
+}
+
+
+
+p#plogo {
+    display:block;
+    width:230px;    
+    margin:20px 0 0 10px;
+    float:left;
+    font-size:30px;
+    color:#fff;
+}
+
+div #search {
+    display:block;
+    margin:20px 10px;;
+    float:right;
+
+}
+
+
+/** Menu Bar */
+div#menubar {
+   height:40px;
+    display:block;
+    background: #2c4e4e;
+    -webkit-border-radius: 5px;
+
+}
+
+ul#menubar-navigation{
+    list-style:none;    
+    display:block;    
+    float:left;    
+    position: relative;
+    
+}
+
+
+#menubar-navigation li {
+    display:inline;
+    list-style:none;
+    font-size:13px;
+    font-weight:bold;    
+    margin: 0 15px;
+    float:left;
+}
+
+
+div#menubar ul li a {
+    color:#bbb;
+}
+
+div#menubar ul li a:hover {
+    color: #fff;
+}
+
+
+
+/** Login **/
+div#login {
+    float:right;
+    display:block;   
+    position:relative;
+    padding-right:10px;
+}
+
+div#logout {
+    float:right;
+    display:block;
+    position:inherit;
+    padding-right:10px;
+    vertical-align:middle;
+    text-align:right;
+    right:10px;
+}
+
+label.logintitle {
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    margin-left:15px;
+    margin-right:3px;
+    
+}
+
+div.loginelement {
+    float:left;
+    display:block;
+}
+
+div.loginelement a {
+    color:#bbb;
+    font-size:13px;
+    font-style:normal;
+    text-decoration:none;
+}
+
+div.loginelement a:hover {
+    color:greenyellow;
+    font-size:13px;
+    text-decoration:underline;
+}
+
+
+
+/** Content **/
+
+#content {
+    background:#c1c4c4;
+    -webkit-border-radius: 5px;   
+    min-height:480px;    
+    padding:10px;
+    position:relative;
+    z-index:10;    
+}
+
+li menuitem {
+    font-size:14px;
+    text-transform:uppercase;
+}
+
+
+
+
+
+/** Footer  **/
+div#footer ul {
+    list-style: none;
+    float: right;
+    margin: 0;
+}
+
+div#footer p {
+    color: #aaa;
+    float: left;
+    margin: 0;
+    font-size: 12px;
+}
+
+div#footer {
+    background: #363636;
+    -webkit-border-radius: 5px;    
+    padding:3px 10px 3px 10px;
+    position:relative;
+    height:auto;
+    height:20px;
+}
+
+div#footer ul li {
+    display: inline;
+    margin: 0 0 0 12px;
+    font-size: 12px;
+}
+
+div#footer ul li a {
+    color: #bbb;
+}
+
+div#footer ul li a:hover {
+    color: #fff;
+}
+
+
+
+/** Signup **/
+div#signup_container {
+
+    background: #b3bbcd;
+    border:cadetblue;
+    padding:5px;
+    float:left;
+    width:250px;
+    display:block;
+    position:relative;
+
+}
+
+div.signupelement {
+
+    margin-left: 15px;
+    margin-right: 3px;
+    margin-top:10px;
+    margin-bottom:10px;
+
+}
+
+label signuptitle {
+    color: white;
+    font-size: 15px;
+    font-weight: inherit;
+}
+
+
+div#content p status {
+
+    color: red;
+    font-size: 16px;
+    font-weight: inherit;
+    float:left;
+    padding:100px;
+
+}
+
+label.logouttitle {
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    margin-left:15px;
+    margin-right:3px;
+    font-style:italic;
+}
+
+input, textarea {
+
+    letter-spacing:normal;
+    word-spacing:normal;
+    line-height:normal;
+    text-indent:0px;
+
+}
+
+input.new_service {
+    width:130px;    
+}
+
+input.new_post_title {
+    width:400px;
+}
+
+textarea.new_service{
+
+    font-size:14px;
+    width:400px;
+    height:110px;
+    font-family:monospace;
+    border:1px solid;
+    resize:vertical;
+    cursor:auto;
+    padding:2px;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    display:inline-block;
+    
+}
+
+
+/*
+    Recent Activities
+*/
+#recentActs, #topratedservices, #topratedusers, #user_posted_services, #profile_basic_info, #details, #table_service_list {
+    border-radius:7px;    
+    border:#2c4e4e;
+    border-style:groove;
+    width:100%;
+}
+
+#recentActs thead tr {
+    background:#2c4e4e;        
+    color:white;    
+    font-weight:bold;
+    text-align:left;    
+}
+
+
+
+#recentActs td {
+    text-align:left;
+    padding-left:5px
+}
+
+#recentActs tr {
+    display:table-row;
+    vertical-align:text-top;
+}
+
+
+/*  Top Rated Services */
+#topratedservices thead tr {
+    background:#2c4e4e;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    font-size:small;
+    font-style:normal;
+}
+
+#topratedservices tr, td {
+    text-align:center;
+    vertical-align: text-top;
+    word-wrap:normal;    
+}
+
+
+/* Top Rated Users */
+#topratedusers thead tr {
+    background:#2c4e4e;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    font-size:small;
+    font-style:normal;
+}
+
+#topratedusers tr, td {
+    text-align:center;
+    word-wrap:normal;
+}
+
+
+
+
+tr.odd {
+    background:#d9dee0;
+}
+
+tr.even {
+    background:#b9d2dd;
+}
+
+p.table_title{
+    font-size:15px;
+    font-style:normal;
+    font-weight:bold;
+    text-align:left;
+    margin-left:10px;
+    text-decoration:underline;
+}
+
+td#table_data_right {
+    height:100%;
+
+
+}
+
+
+/* Profile */
+p#username, #title_add_comment {
+    color:darkslategray;
+    font-weight:bold;
+    text-align:left;
+    font-style:normal;
+    font-size:25px
+}
+
+p#rating {
+    color:darkslategray;
+    font-weight:bold;
+    font-size:45px;
+    font-style:normal;
+    text-align:center;
+    vertical-align:middle;
+}
+
+#profile_basic_info tr, td {
+    text-align:left;
+    margin-left:10px;
+    vertical-align:top;    
+}
+
+p#title_profile, p#title_service_comments   {
+    color:#2c4e4e;
+    font-weight:bold;
+    font-size:14px;
+    font-style:normal;
+    text-align:left;
+    text-decoration:underline;
+    vertical-align:top;
+}
+
+#user_posted_services thead tr{
+    background:#2c4e4e;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    font-size:small;
+    font-style:normal;
+
+}
+
+
+
+/* Service Detail */
+#details tr, td{
+    text-align: left;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+p#title_service_detail {
+    color:darkslategray;
+    font-weight:bold;
+    text-align:left;
+    font-style:normal;
+    font-size:30px    
+}
+
+#table_comments_header tr td{
+    vertical-align:top;
+    vertical-align:text-top;
+}
+
+
+
+/* Comment */
+.comment_text {
+    font-size:17px;
+    text-align:left;
+    color:#2c4e4e;    
+}
+
+.comment_date {
+    text-align:left;
+    font-size:11px;
+}
+
+.comment_owner {
+    text-align:right;
+    font-size:12px;
+}
+
+p#hint_service_title {
+    font-size:12px;
+    font-style:italic;
+    color:#505050;
+}
+
+
+/* Service List */
+#table_service_list thead tr {
+    background:#2c4e4e;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    font-size:small;
+    font-style:normal;
+}
+
+#table_service_list tr, td {
+    text-align:center;
+    vertical-align: text-top;
+    word-wrap:normal;
+}
+
+
+
+
+p.footer_title{
+
+    color:darkslategray;
+    font-weight:bold;
+    text-align:left;
+    font-style:normal;
+    font-size:30px
+
+}
+
+
+

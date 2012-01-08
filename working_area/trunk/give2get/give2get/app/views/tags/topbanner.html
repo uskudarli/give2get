@@ -1,0 +1,25 @@
+<!-- Top Banner -->
+<div id="topbanner">
+
+    <!-- Logo -->
+    <div id="logo">
+
+        #{a @Application.index()}
+
+        <p id="plogo">Give2Get</p>
+
+        #{/a}
+    </div>
+
+    <!-- Search -->
+    #{form @Application.search()}
+    <div id="search">
+            <div class="search">
+                    <input type="text" name="keyword" alt="Search" title="Search"/>
+                    <input type="submit" value="Search"/>
+            </div>
+    </div>
+    #{/form}
+
+
+</div>
