@@ -2,73 +2,62 @@
 #{set title:'Give2Get - Profile' /}
 
 
+
 <div id="profile">
 
     <!-- User Basic Info & Rating -->
-    <div id="info_and_rating">
+    <div id="info_and_rating" class="white">
 
         <!-- User Name -->
-        <font id="username">${username}</font>
-        #{form @Application.editProfile()} 
-        <input type="image" src="@{'/public/images/edit-profile.png'}" class="login-button" value="Login" tabindex="4"/>
-        #{/form}
-        
-        <table width="100%">
 
-            <tr>
+        <!-- Basic User Info -->
+        <div id="user_info">
+            <div id="user_info_content">
+                <p id="username_text">${username}</p>
 
-                <!-- Basic User Info -->
-                <td width="50%">
+                <span class="info_title">Email - </span>
+                <span>${user.getRegistration().getEmail()}</span>
+                <br/>
+                <span class="info_title">First Name - </span>
+                <span>${user.getRegistration().getFirstname()}</span>
+                <br/>
+                <span class="info_title">Last Name - </span>
+                <span>${user.getRegistration().getLastname()}</span>
+                <br/>
+                <span class="info_title">Member Since - </span>
+                <span>${user.getRegistration().getActivated()}</span>
+                <br/>
+                <span class="info_title">Number of Posted Services - </span>
+                <span>${user.getNumOfPostedServices()}</span>
+                <br/>
+                <span class="info_title">Number of Comments - </span>
+                <span>${user.getNumOfComments()}</span>
+                <br/>
+                <span class="info_title">Rating - </span>
+                <span><b>${user.getRating()}</b></span>
+                <br/>
+                <span class="info_title">Credits - </span>
+                <span><b>${user.getCredits()}</b></span>
+            </div>
+        </div>
 
-                    <table id="profile_basic_info" width="100%" border="1">
-                        <tr class="odd">
-                            <td>Email</td>
-                            <td>${user.getRegistration().getEmail()}</td>
-                        </tr>
-                        <tr class="even">
-                            <td>First Name</td>
-                            <td>${user.getRegistration().getFirstname()}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td>Last Name</td>
-                            <td>${user.getRegistration().getLastname()}</td>
-                        </tr>
-                        <tr class="even">
-                            <td>Member Since</td>
-                            <td>${user.getRegistration().getActivated()}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td># of Posted Services</td>
-                            <td>${user.getNumOfPostedServices()}</td>
-                        </tr>
-                        <tr class="even">
-                            <td># of Comments</td>
-                            <td>${user.getNumOfComments()}</td>
-                        </tr>
-                        <tr class="odd">
-                            <td>Rating</td>
-                            <td><b>${user.getRating()}</b></td>
-                        </tr>
-                        <tr class="even">
-                            <td>Credits</td>
-                            <td><b>${user.getCredits()}</b></td>
-                        </tr>
-                    </table>
+        <!-- Rating and Credits -->
+        <div id="user_rating_grand">
+            <p id="grand_rating">${user.getRating()}</p>
+            <p id="grand_rating_text">points</p>
+        </div>
 
-                </td>
+        <div id="user_credit_grand">
+            <p id="grand_credit">${user.getCredits()}</p>
+            <p id="grand_credit_text">credits</p>
+        </div>
 
 
-                <!-- Rating and Credits -->
-                <td valign="middle" style="vertical-align:middle;" width="50%">
-                    <p>Rating / Credits</p>
-                    <p class="userrating">${user.getRating()} / ${user.getCredits()}</p>
-                </td>
-
-
-            </tr>
-        </table>
 
     </div>
+
+    <br/>
+
 
     <!-- Posted Service on Roll Status-->
     #{if flash.error}
@@ -84,10 +73,11 @@
     #{/if}
 
 	<!-- My Skills -->
-    <div id="user_skills">
+    <div id="user_skills" class="white round padding20px">
 
         <p class="title_profile">My Skills</p>
 
+        #{if userSkills}
         <table width="100%" class="profile_table">
 
             <thead>
@@ -109,16 +99,23 @@
             </tbody>
 
         </table>
+        #{/if}
+        #{ifnot userSkills}
+        <p align="center">You haven't entered any skills</p>
+        #{/ifnot}
+
+
 
     </div>
 
+    <br/>
     <!-- My Posted Services -->
-    <div id="user_services">
+    <div id="user_services" class="white round padding20px">
 
         <p class="title_profile">Your Posted Services</p>
 
         #{if userProvidedServices}
-        <table width="100%" class="profile_table">
+        <table width="100%" class="profile_table round">
 
             <thead>
             <tr>
@@ -159,14 +156,15 @@
 
     </div>
 
+    <br/>
+
     <!-- My Provided Rolling Services -->
-    <div id="provided_rolling_services">
+    <div id="provided_rolling_services" class="white round padding20px">
 
         <p class="title_profile">Your Posted Services on Roll</p>
 
         #{if providedRollingServices}
-        <table width="100%" class="profile_table">
-
+        <table id="table_posted_services" class="profile_table">
             <thead>
             <tr>
                 <th>Service</th>
@@ -179,7 +177,7 @@
             <tbody>
 
             #{list providedRollingServices, as:'service'}
-            <tr class="${service.oddOrEven}">
+            <tr>
                 <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a> </td>
                 <td><a href="/user/${service.requesterId}">${service.requesterFullName}</a></td>
                 <td style="text-align:center;">${service.status}</td>
@@ -218,11 +216,11 @@
     </div>
 
 
-
+    <br/>
 
 
     <!-- My Requested Services -->
-    <div id="requested_services">
+    <div id="requested_services" class="white round padding20px">
 
         <p class="title_profile">Your Requested Services</p>
 
@@ -267,7 +265,7 @@
 
     <!-- Waiting Not Rated Services -->
     #{if notRatedServices}
-    <div id="notrated_services">
+    <div id="notrated_services" class="white round padding20px">
 
         <p class="title_profile">Waiting Services to be Rated</p>
 
@@ -305,9 +303,9 @@
     </div>
     #{/if}
 
-
+    <br/>
     <!-- User Ratings-->
-    <div id="user_ratings">
+    <div id="user_ratings" class="white round padding20px">
 
         <p class="title_profile">${user.getRegistration().getFirstname() + " " + user.getRegistration().getLastname()}'s Ratings</p>
 

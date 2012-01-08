@@ -313,8 +313,6 @@ public final class ServiceDAO {
                 userEligible = rs.getInt(1) >=1;
 
             }
-
-            System.out.println("userEligible=" + userEligible);
             
 
             return userEligible;
@@ -338,10 +336,7 @@ public final class ServiceDAO {
     }
 
     public static final void acceptConsumer(int requesterId, int serviceId, int providerId) {
-
-        System.out.println("requesterId=" + requesterId);
-        System.out.println("serviceId=" + serviceId);
-        System.out.println("providerId=" + providerId);
+        
 
         //  Service Request update status PENDING -> ACCEPTED
 
@@ -386,7 +381,6 @@ public final class ServiceDAO {
 
             pstmt.executeUpdate();
 
-            System.out.println("1");
 
 
             //  Refund credits to those whose requests declined
@@ -398,7 +392,6 @@ public final class ServiceDAO {
 
             pstmt.executeUpdate();
 
-            System.out.println("2");
 
 
             //  udpate services
@@ -411,8 +404,7 @@ public final class ServiceDAO {
             pstmt.setInt(3,     serviceId);
 
             pstmt.executeUpdate();
-
-            System.out.println("3");
+            
 
 
             //  increment provider credit
@@ -422,9 +414,7 @@ public final class ServiceDAO {
 
             pstmt.setInt(1,providerId);
 
-            pstmt.executeUpdate();
-
-            System.out.println("4");
+            pstmt.executeUpdate();            
 
             
             conn.commit();
@@ -572,7 +562,7 @@ public final class ServiceDAO {
 
             pstmt.executeUpdate();
 
-            System.out.println("services updated!");
+
 
 
             // update serviceProgress
@@ -587,7 +577,7 @@ public final class ServiceDAO {
 
             pstmt.executeUpdate();
 
-            System.out.println("service Progress updated!");
+            
 
 
             //  Update Service Request

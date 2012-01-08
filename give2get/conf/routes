@@ -38,6 +38,15 @@ GET     /user/{id}                              Application.user
 GET    /rate                                       Rating.rate
 
 
+#   Message
+GET	   /sendMessage/{receiverId}				MessageController.sendMessageView
+GET	   /inbox/{userId}							MessageController.inbox
+GET	   /getMessage/{userId}					    MessageController.getMessageDetail
+GET	   /getNotification/			    		MessageController.getNotificationDetail
+GET	   /deleteMessage/{userId}					MessageController.deleteMessage
+GET	   /unreadMessage/{userId}					MessageController.unreadMessage
+POST   /replyMessage/							MessageController.replyMessage
+
 #   Search
 POST	/search					Application.search
 

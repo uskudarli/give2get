@@ -9,31 +9,80 @@
         <p class="table_title">Advanced Search</p>
         
         #{form @AdvancedSearch.search()}
-        <table id="search_criterias">
-
-            <tr>
-                <td><label class="table_title">Keyword:</label></td>
-            </tr>
-
-            <tr>
-
-                <td>
-                    <input type="text" name="keyword" alt="search_menu" title="Keyword" value="${keyword}" width="100%"/>
-                    <input type="checkbox" id="cBoxTitle" name="searchInTitle">Title</input>
-                    <input type="checkbox" id="cBoxDescription" name="searchInDescription">Description</input>
-                </td>
-
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="signupelement"><input onclick="copy();" type="submit" value="Search"/></div>
-                </td>
-            </tr>
 
 
+        <label class="table_title">Keyword:</label>
 
-        </table>
+        <input type="text" name="keyword" alt="search_menu" title="Keyword" value="${keyword}" width="100%"/>
+        <input type="checkbox" id="cBoxTitle" name="searchInTitle">Title</input>
+        <input type="checkbox" id="cBoxDescription" name="searchInDescription">Description</input>
+
+        <br/>
+        <br/>
+        <input type="checkbox" name="date" id="cBoxAddDate">Add Date</input>
+        #{field 'startdate'}
+        <div class="signupelement" id="div_startdate">
+            <label class="signuptitle">Start Date</label><br>
+            <input name="startdate" class="dateClass" type="text" id="postStartDate"
+                   value="${flash.startdate}">
+            <script>$("#postStartDate").datepicker();</script>
+            </input>
+        </div>
+        #{/field}
+        #{field 'enddate'}
+        <div class="signupelement" id="div_enddate">
+            <label class="signuptitle">End Date</label><br>
+            <input name="${field.name}" class="dateClass" value="${flash.enddate}" id="postEndDate"
+                   type="text">
+            <script>$("#postEndDate").datepicker();</script>
+            </input>
+        </div>
+        #{/field}
+
+
+        <!-- Location -->
+        <br/>
+        <input type="checkbox" id="cBoxAddLocation">Add Location</input>
+
+        #{field 'city'}
+        <div class="signupelement" id="div_sehir">
+            <label class="signuptitle">City</label><br>
+            <select id="sehirler" name="${field.name}" onchange="javascript:fetchIlceler()">
+                #{list sehirler, as:'sehir'}
+                <option value="${sehir.id}">${sehir.name}</option>
+                #{/list}
+            </select>
+        </div>
+        #{/field}
+
+        #{field 'ilce'}
+        <div class="signupelement" id="div_ilce">
+            <label class="signuptitle">District</label><br>
+
+            <select id="ilceler" name="${field.name}"
+                    onchange="javascript:fetchSemtler(ilceler.selectedIndex)">
+                #{list ilceler, as:'ilce'}
+                <option value="${ilce.id}">${ilce.name}</option>
+                #{/list}
+            </select>
+        </div>
+        #{/field}
+
+        #{field 'semt'}
+        <div class="signupelement" id="div_semt">
+            <label class="signuptitle">Neighborhood</label><br>
+
+            <select id="semtler" name="${field.name}">
+                #{list semtler, as:'semt'}
+                <option value="${semt.id}">${semt.name}</option>
+                #{/list}
+            </select>
+        </div>
+        #{/field}
+
+
+        <div class="signupelement"><input onclick="copy();" type="submit" value="Search"/></div>
+        
         #{/form}
     </div>
 
@@ -84,5 +133,132 @@
 
 </div>
 #{/if}
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#cBoxAddDate").click(handleDates);
+        $("#cBoxAddLocation").click(handleLocation);
+        $("#cBoxPeriodicalInfo").click(handlePeriodicalInfo);
+
+        handleDates();
+        handleLocation();
+        handlePeriodicalInfo();
+
+    });
+    
+    function handleDates() {
+
+        if ($('#cBoxAddDate').attr('checked')) {
+
+            $('#div_startdate').show();
+            $('#div_enddate').show();
+
+        } else {
+
+            $('#div_startdate').hide();
+            $('#div_enddate').hide();
+
+        }
+
+    }
+
+    function handleLocation () {
+
+        if (  $('#cBoxAddLocation').attr('checked') ) {            
+
+            $('#div_sehir').show();
+            $('#div_ilce').show();
+            $('#div_semt').show();
+
+            fetchSehirler();
+
+        } else {            
+
+            $('#div_sehir').hide();
+            $('#div_ilce').hide();
+            $('#div_semt').hide();
+
+            $("#sehirler").empty();
+            $("#ilceler").empty();
+            $("#semtler").empty();
+
+        }
+
+    }
+
+    function fetchSehirler() {
+
+        $("#sehirler").empty();
+
+        $.getJSON("@{Services.getSehirler()}", function(sehirler) {
+
+            var index = 0;
+
+            $('#sehirler').append("<option>-</option>");
+
+            $.each(sehirler, function(id, name) {
+
+                $('#sehirler').append("<option value='" + sehirler[index].id + "'>" + sehirler[index].name + "</option>");
+
+                index++;
+
+            });
+
+        });
+
+    }
+
+    function fetchIlceler() {
+
+        var selectedSehirId = $("#sehirler").val();
+
+        $("#ilceler").empty();
+
+        $.getJSON("@{Services.getIlceler()}", {sehirId : selectedSehirId}, function(ilceler) {
+
+            var index = 0;
+
+            $('#ilceler').append("<option>-</option>");
+
+            $.each(ilceler, function(id, name) {
+
+                $('#ilceler').append("<option value='" + ilceler[index].id + "'>" + ilceler[index].name + "</option>");
+
+                index++;
+
+            });
+
+        });
+
+    }
+
+    function fetchSemtler() {
+
+        var selectedIlceId = $("#ilceler").val();
+
+        $("#semtler").empty();
+
+        $.getJSON("@{Services.getSemtler()}", {ilceId: selectedIlceId}, function(semtler) {
+
+            var index = 0;
+
+            $('#semtler').append("<option>-</option>");
+
+            $.each(semtler, function(id, name) {
+
+                $('#semtler').append("<option value='" + semtler[index].id + "'>" + semtler[index].name + "</option>");
+
+                index++;
+
+            });
+
+        });
+
+    }
+    
+</script>
 
 

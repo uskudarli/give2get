@@ -6,6 +6,7 @@ import models.User;
 import models.Service;
 import models.ServiceRating;
 import com.boun.give2get.db.DAO;
+import com.boun.give2get.db.MessageDAO;
 import com.boun.give2get.db.ServiceDAO;
 import com.boun.give2get.core.Messages;
 
@@ -26,9 +27,11 @@ public class Rating extends Controller {
         if (user != null) {
 
             renderArgs.put("user", user);
-
+            int unreadMessageCount = MessageDAO.getUnreadMessageCount(user.getId());
+            int unreadNotificationCount = MessageDAO.getUnreadNotificationCount(user.getId());
+            renderArgs.put("unreadNotificationCount", unreadNotificationCount);
+            renderArgs.put("unreadMessageCount", unreadMessageCount);
         }
-
     }
 
     public static void rate(String sId, String c, String t) {      

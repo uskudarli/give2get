@@ -22,6 +22,7 @@ public final class User {
 
     private int numOfPostedServices;
     private int numOfComments;
+    private int numOfTags;
         
     private final int credits;
 
@@ -55,6 +56,16 @@ public final class User {
     public void setNumOfComments(int numOfComments) {
         this.numOfComments = numOfComments;
     }
+
+    public int getNumOfTags() {
+        return numOfTags;
+    }
+
+    public void setNumOfTags(int numOfTags) {
+        this.numOfTags = numOfTags;
+    }
+
+
 
     public void setRating(int rating) {
         this.rating = rating;

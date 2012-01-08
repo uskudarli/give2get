@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Give2Get - Send Message' /}
+
+
+<div class="maincontainer">
+
+	 <!-- Inbox -->
+	 <div id="messageBox" class="round">
+	 	  <p class="table_title">Notification</p>
+	    	#{list messageDetails, as:'message'}
+	      <div id="message">
+	      	<div id="user_photo"><img src="/public/images/char_1.png" /></div>
+	        <div id="message_details">
+                <span id="message_date">
+                    <span id="timeago">received at ${message.sendDate}</span>
+                </span>
+                <br />
+                <span id="messageText">${message.message.length() > 70 ? message.message[0..70] + '..' : message.message}</span>
+            </div>
+	      </div>
+	      #{/list}
+	</div>
+	<div id=messageTypes class="round">
+        <p class="table_title">MessageBox</p>
+        <span id="messageType"><a href="/inbox/${session.get("userid")}">Inbox (${unreadMessageCount})</a></span>
+		<span id="messageType"><a href="/getNotification/">Notification(${unreadNotificationCount})</a></span>
+	</div>
+</div>

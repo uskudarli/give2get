@@ -1688,3 +1688,1190 @@ Caused by: java.lang.NullPointerException
 	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
 	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
 	... 1 more
+18:18:30,401 ERROR ~ 
+
+@68oellk6m
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+18:54:16,460 ERROR ~ 
+
+@68oellk6n
+Internal Server Error (500) for request POST /search
+
+Template execution error (In /app/views/Application/search.html around line 48)
+Execution error occured in template /app/views/Application/search.html. Exception raised was GroovyRuntimeException : Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'.
+
+play.exceptions.TemplateExecutionException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.search(Application.java:227)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.GroovyRuntimeException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at /app/views/Application/search.html.(line:48)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+18:54:37,351 ERROR ~ 
+
+@68oellk6o
+Internal Server Error (500) for request POST /search
+
+Template execution error (In /app/views/Application/search.html around line 48)
+Execution error occured in template /app/views/Application/search.html. Exception raised was GroovyRuntimeException : Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'.
+
+play.exceptions.TemplateExecutionException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Application.search(Application.java:227)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.GroovyRuntimeException: Cannot compare java.util.ArrayList with value '[]' and java.lang.Integer with value '0'
+	at /app/views/Application/search.html.(line:48)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+21:22:35,384 ERROR ~ 
+
+@68oellk6p
+Internal Server Error (500) for request POST /search
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 681)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+	at com.boun.give2get.db.DAO.getSearchResults(DAO.java:681)
+	at controllers.Application.search(Application.java:225)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%') and r.firstname like '%%'' at line 1
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.DAO.getSearchResults(DAO.java:662)
+	... 7 more
+21:34:16,469 ERROR ~ 
+
+@68oellk70
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:41:19,512 ERROR ~ 
+
+@68oellk71
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:41:33,414 ERROR ~ 
+
+@68oellk72
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:48:19,630 ERROR ~ 
+
+@68oellk73
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1009)
+DataStoreException occured : com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:1009)
+	at controllers.Services.postNewService(Services.java:135)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 06:44 -12-25' for column 'start' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3607)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2427)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2345)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2330)
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:991)
+	... 7 more
+21:53:09,293 ERROR ~ 
+
+@68oellk74
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1009)
+DataStoreException occured : com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:1009)
+	at controllers.Services.postNewService(Services.java:135)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect datetime value: '2011 21:51 -12-01' for column 'start' at row 1
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3607)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2427)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2345)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2330)
+	at com.boun.give2get.db.DAO.postNewService(DAO.java:991)
+	... 7 more
+21:57:58,953 ERROR ~ 
+
+@68oellk75
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+21:58:57,783 ERROR ~ 
+
+@68oellk76
+Internal Server Error (500) for request POST /services/postnewservice
+
+Execution exception (In /app/controllers/Services.java around line 102)
+NullPointerException occured : null
+
+play.exceptions.JavaExecutionException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.NullPointerException
+	at controllers.Services.postNewService(Services.java:102)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+22:02:02,959 ERROR ~ 
+
+@68oellk77
+Internal Server Error (500) for request GET /editService/72
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:214)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+22:02:18,710 ERROR ~ 
+
+@68oellk78
+Internal Server Error (500) for request GET /editService/72
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:214)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+23:15:58,384 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+23:21:31,539 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+00:04:16,190 ERROR ~ 
+
+@68oellk79
+Internal Server Error (500) for request GET /service/46
+
+Template execution error (In /app/views/Services/service.html around line 104)
+Execution error occured in template /app/views/Services/service.html. Exception raised was MissingPropertyException : No such property: OrEven for class: models.Comment Possible solutions: oddOrEven.
+
+play.exceptions.TemplateExecutionException: No such property: OrEven for class: models.Comment
+Possible solutions: oddOrEven
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.service(Services.java:180)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: OrEven for class: models.Comment
+Possible solutions: oddOrEven
+	at /app/views/Services/service.html.(line:104)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+00:24:27,832 ERROR ~ 
+
+@68oellk7a
+Internal Server Error (500) for request GET /editService/66
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:201)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+00:29:39,935 ERROR ~ 
+
+@68oellk7b
+Internal Server Error (500) for request GET /editService/65
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:201)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+00:52:19,427 ERROR ~ 
+
+@68oellk7c
+Internal Server Error (500) for request GET /user/@%7BServices.getSehirler()%7D
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 579)
+DataStoreException occured : java.lang.NullPointerException
+
+play.exceptions.JavaExecutionException: java.lang.NullPointerException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:579)
+	at controllers.Application.user(Application.java:378)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: java.lang.NullPointerException
+	at com.boun.give2get.registration.RegistrationStatus.fromString(RegistrationStatus.java:16)
+	at models.Registration.create(Registration.java:44)
+	at models.User.<init>(User.java:34)
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:563)
+	... 7 more
+00:52:19,442 ERROR ~ 
+
+@68oellk7d
+Internal Server Error (500) for request GET /user/@%7BServices.getSehirler()%7D
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 579)
+DataStoreException occured : java.lang.NullPointerException
+
+play.exceptions.JavaExecutionException: java.lang.NullPointerException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:579)
+	at controllers.Application.user(Application.java:378)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: java.lang.NullPointerException
+	at com.boun.give2get.registration.RegistrationStatus.fromString(RegistrationStatus.java:16)
+	at models.Registration.create(Registration.java:44)
+	at models.User.<init>(User.java:34)
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:563)
+	... 7 more
+00:52:56,657 ERROR ~ 
+
+@68oellk7e
+Internal Server Error (500) for request GET /user/@%7BServices.getSehirler()%7D
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 579)
+DataStoreException occured : java.lang.NullPointerException
+
+play.exceptions.JavaExecutionException: java.lang.NullPointerException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:579)
+	at controllers.Application.user(Application.java:378)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: java.lang.NullPointerException
+	at com.boun.give2get.registration.RegistrationStatus.fromString(RegistrationStatus.java:16)
+	at models.Registration.create(Registration.java:44)
+	at models.User.<init>(User.java:34)
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:563)
+	... 7 more
+00:52:56,678 ERROR ~ 
+
+@68oellk7f
+Internal Server Error (500) for request GET /user/@%7BServices.getSehirler()%7D
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 579)
+DataStoreException occured : java.lang.NullPointerException
+
+play.exceptions.JavaExecutionException: java.lang.NullPointerException
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: java.lang.NullPointerException
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:579)
+	at controllers.Application.user(Application.java:378)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: java.lang.NullPointerException
+	at com.boun.give2get.registration.RegistrationStatus.fromString(RegistrationStatus.java:16)
+	at models.Registration.create(Registration.java:44)
+	at models.User.<init>(User.java:34)
+	at com.boun.give2get.db.DAO.getUserDetailedInfo(DAO.java:563)
+	... 7 more
+02:01:14,494 ERROR ~ 
+
+@68oellk7g
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+02:03:25,779 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+08:04:33,924 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+08:04:34,830 WARN  ~ You're running Play! in DEV mode
+08:04:35,043 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+08:06:31,903 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+08:06:32,653 WARN  ~ You're running Play! in DEV mode
+08:06:32,724 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+08:06:39,049 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+08:06:39,066 INFO  ~ Application 'Give2Get' is now started !
+09:06:12,480 ERROR ~ 
+
+@68ol645h7
+Internal Server Error (500) for request POST /request?serviceTitle=dog+22&serviceId=64&providerId=13
+
+Execution exception (In /app/com/boun/give2get/mail/MailUtil.java around line 211)
+MailException occured : javax.mail.SendFailedException: Unable to send email;   nested exception is: 	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+
+play.exceptions.JavaExecutionException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.MailException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at com.boun.give2get.mail.MailUtil.informServiceProvider(MailUtil.java:211)
+	at controllers.Services.request(Services.java:292)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:279)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendMessage(AWSJavaMailTransport.java:97)
+	at com.boun.give2get.mail.MailUtil.informServiceProvider(MailUtil.java:193)
+	... 7 more
+Caused by: com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:272)
+	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:166)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.invoke(AmazonSimpleEmailServiceClient.java:447)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.sendRawEmail(AmazonSimpleEmailServiceClient.java:329)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:266)
+	... 9 more
+Caused by: java.net.UnknownHostException: email.us-east-1.amazonaws.com
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$1.lookupAllHostAddr(InetAddress.java:850)
+	at java.net.InetAddress.getAddressFromNameService(InetAddress.java:1201)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1154)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1084)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1020)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:242)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:130)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:149)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:121)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:561)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:415)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:820)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:754)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:732)
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:240)
+	... 13 more
+09:06:19,431 ERROR ~ 
+
+@68ol645h8
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+09:08:15,585 ERROR ~ 
+
+@68ol645h9
+Internal Server Error (500) for request GET /editService/65
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:201)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+18:59:30,696 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+18:59:31,767 WARN  ~ You're running Play! in DEV mode
+18:59:31,947 ERROR ~ Could not bind on port 9000
+18:59:41,333 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+18:59:42,000 WARN  ~ You're running Play! in DEV mode
+18:59:42,159 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+18:59:56,149 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+18:59:56,210 INFO  ~ Application 'Give2Get' is now started !
+19:01:05,752 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+19:01:06,332 WARN  ~ You're running Play! in DEV mode
+19:01:06,423 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+19:01:15,041 INFO  ~ Connected to jdbc:mysql://give2get.c1ix3ltlxgix.eu-west-1.rds.amazonaws.com:3306/give2get
+19:01:15,058 INFO  ~ Application 'Give2Get' is now started !
+19:03:36,752 ERROR ~ 
+
+@68oo6ffn5
+sendmessage.20 action not found
+
+Action not found
+Action sendmessage.20 could not be found. Error raised is Controller controllers.sendmessage not found
+
+play.exceptions.ActionNotFoundException: Action sendmessage.20 not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:588)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: Controller controllers.sendmessage not found
+	... 3 more
+19:08:11,832 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+19:08:12,583 WARN  ~ You're running Play! in DEV mode
+19:08:12,652 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+19:08:15,935 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+19:08:15,958 INFO  ~ Application 'Give2Get' is now started !
+19:12:00,077 ERROR ~ 
+
+@68oo7i65f
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+19:23:49,230 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+19:23:49,864 WARN  ~ You're running Play! in DEV mode
+19:23:49,934 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+19:27:39,095 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+19:27:39,117 INFO  ~ Application 'Give2Get' is now started !
+19:28:16,796 ERROR ~ 
+
+@68oo9ll0l
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+19:29:24,993 ERROR ~ 
+
+@68oo9ll0m
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+19:33:48,461 ERROR ~ 
+
+@68oo9ll0n
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+19:42:54,780 ERROR ~ 
+
+@68oo9ll0o
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+19:49:10,362 ERROR ~ 
+
+@68oo9ll0p
+Internal Server Error (500) for request GET /editService/65
+
+Template execution error (In /app/views/Services/editService.html around line 31)
+Execution error occured in template /app/views/Services/editService.html. Exception raised was MissingPropertyException : No such property: location for class: models.Service.
+
+play.exceptions.TemplateExecutionException: No such property: location for class: models.Service
+	at play.templates.BaseTemplate.throwException(BaseTemplate.java:84)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:252)
+	at play.templates.Template.render(Template.java:26)
+	at play.templates.GroovyTemplate.render(GroovyTemplate.java:184)
+	at play.mvc.results.RenderTemplate.<init>(RenderTemplate.java:24)
+	at play.mvc.Controller.renderTemplate(Controller.java:659)
+	at play.mvc.Controller.renderTemplate(Controller.java:639)
+	at play.mvc.Controller.render(Controller.java:694)
+	at controllers.Services.editService(Services.java:201)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	at Invocation.HTTP Request(Play!)
+Caused by: groovy.lang.MissingPropertyException: No such property: location for class: models.Service
+	at /app/views/Services/editService.html.(line:31)
+	at play.templates.JavaExtensions.toString(JavaExtensions.java:76)
+	at play.templates.FastTags._form(FastTags.java:108)
+	at /app/views/Services/editService.html.(line:18)
+	at play.templates.GroovyTemplate.internalRender(GroovyTemplate.java:229)
+	... 13 more
+18:33:35,013 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+18:33:36,178 WARN  ~ You're running Play! in DEV mode
+18:33:36,412 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+18:34:03,603 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+18:34:03,672 INFO  ~ Application 'Give2Get' is now started !
+18:36:29,288 ERROR ~ 
+
+@68pjo69me
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+20:48:59,116 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+20:48:59,829 WARN  ~ You're running Play! in DEV mode
+20:48:59,954 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+20:49:29,722 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+20:49:29,743 INFO  ~ Application 'Give2Get' is now started !
+20:51:42,530 ERROR ~ 
+
+@68pkfppnj
+Internal Server Error (500) for request POST /request?serviceTitle=dog+21&serviceId=63&providerId=13
+
+Execution exception (In /app/com/boun/give2get/mail/MailUtil.java around line 211)
+MailException occured : javax.mail.SendFailedException: Unable to send email;   nested exception is: 	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+
+play.exceptions.JavaExecutionException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.MailException: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at com.boun.give2get.mail.MailUtil.informServiceProvider(MailUtil.java:211)
+	at controllers.Services.request(Services.java:292)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: javax.mail.SendFailedException: Unable to send email;
+  nested exception is:
+	com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:279)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendMessage(AWSJavaMailTransport.java:97)
+	at com.boun.give2get.mail.MailUtil.informServiceProvider(MailUtil.java:193)
+	... 7 more
+Caused by: com.amazonaws.AmazonClientException: Unable to execute HTTP request: email.us-east-1.amazonaws.com
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:272)
+	at com.amazonaws.http.AmazonHttpClient.execute(AmazonHttpClient.java:166)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.invoke(AmazonSimpleEmailServiceClient.java:447)
+	at com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClient.sendRawEmail(AmazonSimpleEmailServiceClient.java:329)
+	at com.amazonaws.services.simpleemail.AWSJavaMailTransport.sendEmail(AWSJavaMailTransport.java:266)
+	... 9 more
+Caused by: java.net.UnknownHostException: email.us-east-1.amazonaws.com
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$1.lookupAllHostAddr(InetAddress.java:850)
+	at java.net.InetAddress.getAddressFromNameService(InetAddress.java:1201)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1154)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1084)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1020)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.resolveHostname(DefaultClientConnectionOperator.java:242)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:130)
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:149)
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:121)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:561)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:415)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:820)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:754)
+	at org.apache.http.impl.client.AbstractHttpClient.execute(AbstractHttpClient.java:732)
+	at com.amazonaws.http.AmazonHttpClient.executeHelper(AmazonHttpClient.java:240)
+	... 13 more
+21:08:54,574 ERROR ~ 
+
+@68pkfppnk
+Internal Server Error (500) for request GET /inbox/21
+
+Execution exception (In /app/com/boun/give2get/db/MessageDAO.java around line 134)
+DataStoreException occured : com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+
+play.exceptions.JavaExecutionException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:134)
+	at controllers.MessageController.inbox(MessageController.java:82)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.messages' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.MessageDAO.getMessages(MessageDAO.java:108)
+	... 7 more
+11:37:54,944 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+11:37:56,049 WARN  ~ You're running Play! in DEV mode
+11:37:56,268 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11:38:12,153 ERROR ~ 
+
+@68pp2a493
+Internal Server Error (500) for request GET /
+
+Compilation error (In /app/com/boun/give2get/db/DAO.java around line 1775)
+The file /app/com/boun/give2get/db/DAO.java could not be compiled. Error raised is : The method getServiceTags(int) in the type DAO is not applicable for the arguments (Connection, int)
+
+play.exceptions.CompilationException: The method getServiceTags(int) in the type DAO is not applicable for the arguments (Connection, int)
+	at play.classloading.ApplicationCompiler$2.acceptResult(ApplicationCompiler.java:246)
+	at org.eclipse.jdt.internal.compiler.Compiler.handleInternalException(Compiler.java:672)
+	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:516)
+	at play.classloading.ApplicationCompiler.compile(ApplicationCompiler.java:278)
+	at play.classloading.ApplicationClassloader.getAllClasses(ApplicationClassloader.java:412)
+	at play.Play.start(Play.java:485)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+11:39:09,300 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+11:39:10,252 WARN  ~ You're running Play! in DEV mode
+11:39:10,435 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11:39:14,864 ERROR ~ 
+
+@68pp2djj4
+Internal Server Error (500) for request GET /
+
+Compilation error (In /app/com/boun/give2get/db/DAO.java around line 1869)
+The file /app/com/boun/give2get/db/DAO.java could not be compiled. Error raised is : Type mismatch: cannot convert from List&lt;Comment> to List&lt;Tag>
+
+play.exceptions.CompilationException: Type mismatch: cannot convert from List<Comment> to List<Tag>
+	at play.classloading.ApplicationCompiler$2.acceptResult(ApplicationCompiler.java:246)
+	at org.eclipse.jdt.internal.compiler.Compiler.handleInternalException(Compiler.java:672)
+	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:516)
+	at play.classloading.ApplicationCompiler.compile(ApplicationCompiler.java:278)
+	at play.classloading.ApplicationClassloader.getAllClasses(ApplicationClassloader.java:412)
+	at play.Play.start(Play.java:485)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+11:39:46,062 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+11:39:46,792 WARN  ~ You're running Play! in DEV mode
+11:39:46,863 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11:39:57,501 ERROR ~ 
+
+@68pp2g4gi
+Internal Server Error (500) for request GET /
+
+Compilation error (In /app/com/boun/give2get/db/DAO.java around line 1962)
+The file /app/com/boun/give2get/db/DAO.java could not be compiled. Error raised is : Type mismatch: cannot convert from Comment to Tag
+
+play.exceptions.CompilationException: Type mismatch: cannot convert from Comment to Tag
+	at play.classloading.ApplicationCompiler$2.acceptResult(ApplicationCompiler.java:246)
+	at org.eclipse.jdt.internal.compiler.Compiler.handleInternalException(Compiler.java:672)
+	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:516)
+	at play.classloading.ApplicationCompiler.compile(ApplicationCompiler.java:278)
+	at play.classloading.ApplicationClassloader.getAllClasses(ApplicationClassloader.java:412)
+	at play.Play.start(Play.java:485)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+11:40:37,998 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+11:40:38,699 WARN  ~ You're running Play! in DEV mode
+11:40:38,771 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11:40:45,712 ERROR ~ 
+
+@68pp2ine4
+Internal Server Error (500) for request GET /
+
+Compilation error (In /app/com/boun/give2get/db/DAO.java around line 1962)
+The file /app/com/boun/give2get/db/DAO.java could not be compiled. Error raised is : The method newServiceTag(ResultSet, int) is undefined for the type Comment
+
+play.exceptions.CompilationException: The method newServiceTag(ResultSet, int) is undefined for the type Comment
+	at play.classloading.ApplicationCompiler$2.acceptResult(ApplicationCompiler.java:246)
+	at org.eclipse.jdt.internal.compiler.Compiler.handleInternalException(Compiler.java:672)
+	at org.eclipse.jdt.internal.compiler.Compiler.compile(Compiler.java:516)
+	at play.classloading.ApplicationCompiler.compile(ApplicationCompiler.java:278)
+	at play.classloading.ApplicationClassloader.getAllClasses(ApplicationClassloader.java:412)
+	at play.Play.start(Play.java:485)
+	at play.Play.detectChanges(Play.java:599)
+	at play.Invoker$Invocation.init(Invoker.java:186)
+	at Invocation.HTTP Request(Play!)
+11:41:09,446 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+11:41:09,546 INFO  ~ Application 'Give2Get' is now started !
+11:41:09,898 ERROR ~ 
+
+@68pp2ine5
+Internal Server Error (500) for request GET /
+
+Execution exception (In /app/com/boun/give2get/db/DAO.java around line 1264)
+DataStoreException occured : com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.tags' doesn't exist
+
+play.exceptions.JavaExecutionException: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.tags' doesn't exist
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:229)
+	at Invocation.HTTP Request(Play!)
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.tags' doesn't exist
+	at com.boun.give2get.db.DAO.getRecentActivities(DAO.java:1264)
+	at controllers.Application.index(Application.java:74)
+	at play.mvc.ActionInvoker.invokeWithContinuation(ActionInvoker.java:546)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:500)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:476)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:471)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:159)
+	... 1 more
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.tags' doesn't exist
+	at com.boun.give2get.db.DAO.getServiceDetail(DAO.java:1793)
+	at models.Activity.<init>(Activity.java:31)
+	at com.boun.give2get.db.DAO.getRecentActivities(DAO.java:1249)
+	... 7 more
+Caused by: com.boun.give2get.exceptions.DataStoreException: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.tags' doesn't exist
+	at com.boun.give2get.db.DAO.getServiceTags(DAO.java:1977)
+	at com.boun.give2get.db.DAO.getServiceDetail(DAO.java:1775)
+	... 9 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'give2get.tags' doesn't exist
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1052)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3609)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3541)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2002)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2163)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2624)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2127)
+	at com.mysql.jdbc.PreparedStatement.executeQuery(PreparedStatement.java:2293)
+	at com.boun.give2get.db.DAO.getServiceTags(DAO.java:1952)
+	... 10 more
+11:53:48,079 INFO  ~ Starting /home/rcakirerk/workspace/give2get/give2get
+11:53:48,796 WARN  ~ You're running Play! in DEV mode
+11:53:48,913 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+11:53:57,753 INFO  ~ Connected to jdbc:mysql://127.0.0.1:3306/give2get
+11:53:57,777 INFO  ~ Application 'Give2Get' is now started !

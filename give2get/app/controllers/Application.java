@@ -7,6 +7,7 @@ import models.*;
 
 import com.boun.give2get.registration.RegistrationController;
 import com.boun.give2get.db.DAO;
+import com.boun.give2get.db.MessageDAO;
 import com.boun.give2get.db.ServiceDAO;
 import com.boun.give2get.mail.MailUtil;
 import com.boun.give2get.exceptions.MailException;
@@ -30,12 +31,17 @@ public class Application extends Controller {
 
             renderArgs.put("user",      user);
             renderArgs.put("username",  user.getRegistration().getFirstname().concat(" ").concat(user.getRegistration().getLastname()));
+            int unreadMessageCount = MessageDAO.getUnreadMessageCount(user.getId());
+            int unreadNotificationCount = MessageDAO.getUnreadNotificationCount(user.getId());
+            renderArgs.put("unreadNotificationCount", unreadNotificationCount);
+            renderArgs.put("unreadMessageCount", unreadMessageCount);
         }  
 
 
     }
 
-    public static final User isUserConnected() {
+    public static User  isUserConnected() {
+
 
         
         //  Check render Args
@@ -60,7 +66,7 @@ public class Application extends Controller {
 
             return user;
 
-        }         
+        }
 
         //  Not Logged in
         return null;
@@ -130,9 +136,7 @@ public class Application extends Controller {
             signup();
 
         }
-        
-
-        System.out.println("Registering...");
+                
 
         //  New Registration
         Registration registration = Registration.create(email, firstname, lastname, password);
@@ -281,9 +285,7 @@ public class Application extends Controller {
 
     }
 
-    public static final void profile() {
-
-        System.out.println("here!");
+    public static final void profile() {        
 
         profile(null);
         

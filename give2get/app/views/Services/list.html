@@ -1,9 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Give2Get - New Comment' /}
 
-<div id="service_list">
+<div id="service_list" class="white round padding20px">
 
-    <p id="title_profile">${services.size()} Available Services</p>
+    <p class="title_profile">List of Available Services</p>
+    <p id="title_profile">Currently there are ${services.size()} available services</p>
 
     <table width="100%" id="table_service_list">
 
