@@ -86,13 +86,18 @@
             <tbody>
 
             #{list userServices, as:'service'}
+            #{form @Services.request()}
             <tr class="${service.oddOrEven}">
                 <td><a href="/service/${service.id}">${service.title.length() > 200 ? service.title[0..200] + '..' : service.title}</a>
                 </td>
                 <td style="text-align:center;">${service.created}</td>
                 <td style="text-align:center;">${service.status}</td>
                 <td><input type="submit" value="Request"/></td>
+                <input type="hidden" name="serviceId"  value="${service.id}"/>
+                <input type="hidden" name="providerId"  value="${user.getId()}"/>
+                <input type="hidden" name="serviceTitle"  value="${service.title}"/>
             </tr>
+            #{/form}
             #{/list}
 
             </tbody>

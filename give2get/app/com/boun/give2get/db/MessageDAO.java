@@ -50,7 +50,7 @@ public final class MessageDAO {
             conn = DAO.getConnection();
 
 
-            pstmt = conn.prepareStatement("INSERT INTO messages (senderId,receiverId, message, sendDate,status,type) VALUES (?,?,?,?,1,1)", Statement.RETURN_GENERATED_KEYS);
+            pstmt = conn.prepareStatement("INSERT INTO messages (senderId,receiverId, message, sendDate,status,type) VALUES (?,?,?,?,0,1)", Statement.RETURN_GENERATED_KEYS);
 
 
             pstmt.setInt(1, userId);
@@ -110,7 +110,7 @@ public final class MessageDAO {
             conn = DAO.getConnection();
 
 
-            pstmt = conn.prepareStatement("INSERT INTO messages (senderId,receiverId, message, sendDate,status,type) VALUES (0,?,?,?,1,2)", Statement.RETURN_GENERATED_KEYS);
+            pstmt = conn.prepareStatement("INSERT INTO messages (senderId,receiverId, message, sendDate,status,type) VALUES (0,?,?,?,0,2)", Statement.RETURN_GENERATED_KEYS);
 
 
             pstmt.setInt(1, message.getUserId());

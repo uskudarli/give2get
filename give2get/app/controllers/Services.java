@@ -300,6 +300,11 @@ public class Services extends Controller {
 
             User crntUser  = renderArgs.get("user", User.class);
            
+            User requester = DAO.getUser(userId);
+            
+            String notification = requester.getRegistration().getFullName()+ " has requested your service: " + serviceTitle;
+            MessageController.sendNotification(providerId, notification);
+            
             MailUtil.informServiceProvider(
                     provider.getRegistration().getFullName(),
                     provider.getEmail(),
