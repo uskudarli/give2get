@@ -652,13 +652,36 @@ public final class DAO {
 
             conn = getConnection();
 
-            pstmt = conn.prepareStatement("SELECT s.id AS SERVICE_ID, s.created, s.status, s.provider_id, s.viewCount,r.*,i.* " +
+            /*pstmt = conn.prepareStatement("SELECT s.id AS SERVICE_ID, s.created, s.status, s.provider_id, s.viewCount,r.*,i.* " +
                     "FROM services s,registrations r,users u, serviceInfos i WHERE " +
             							  "s.provider_id = u.id and u.reg_id = r.id and " +
             							  "(i.title like '%"+keyword+"%' or i.description like '%"+keyword+"%') and " +
-            							  "r.firstname like '%" +provider+ "%'" + dateSql);
+            							  "r.firstname like '%" +provider+ "%'" + dateSql);*/
             
-
+            pstmt = conn.prepareStatement("SELECT D.service_id, D.title, D.description, D.provider_id, D.created," +
+            		"D.status,D.start,D.end,D.viewCount,D.NumberOfViews, D.PROVIDER_ID2, D.Rating, " +
+            		"D.NumberOfPostedService, D.NumberOfRatedServices, D.firstname, D.lastname, D.fullname," +
+            		"CASE /*WHEN NumberOfRatedServices=0 OR MAXRATE=0 OR MAXPOST=0 OR MAXVIEW=0 THEN " +
+            		"convert(int, 1  100* RAND(CHECKSUM(NEWID())))*/ WHEN NumberOfRatedServices>0 THEN " +
+            		"CEILING(((Rating-MINRATE)*100/(MAXRATE-MINRATE))*0.40 + " +
+            		"((MAXPOST-NumberOfPostedService)*100/(MAXPOST-MINPOST))*0.15 +" +
+            		"((MAXVIEW-NumberOfViews)*100/(MAXVIEW-MINVIEW))*0.15 +" +
+            		"((NumberOfRatedServices-MIN_NO_OF_RATED)*100/(MAX_NO_OF_RATED-MIN_NO_OF_RATED))*0.30) END AS 'FINAL_RATE' " +
+            		"FROM ( SELECT " +
+            		"MAX(A.Rating) AS 'MAXRATE', MIN(A.Rating) AS 'MINRATE',  MAX(A.NumberOfPostedService) AS 'MAXPOST'," +
+            		"MIN(A.NumberOfPostedService) AS 'MINPOST', MAX(A.NumberOfViews) AS 'MAXVIEW'," +
+            		" MIN(A.NumberOfViews) AS 'MINVIEW',MAX(A.NumberOfRatedServices) AS 'MAX_NO_OF_RATED'," +
+            		"MIN(A.NumberOfRatedServices) AS 'MIN_NO_OF_RATED' from ( " +
+            		"SELECT s.viewCount as 'NumberOfViews', u.rating as 'Rating', " +
+            		"u.postedCount as 'NumberOfPostedService', u.providedCount as 'NumberOfRatedServices' FROM  " +
+            		"services s INNER JOIN users u ON u.id = s.provider_id)A ) B CROSS JOIN (" +
+            		"SELECT s.status,s.viewCount,s.start,s.end,i.service_id, i.title, i.description, s.provider_id, s.created, " +
+            		"s.viewCount as 'NumberOfViews', u.id as PROVIDER_ID2, u.rating as 'Rating', " +
+            		"u.postedCount as 'NumberOfPostedService', u.providedCount as 'NumberOfRatedServices', " +
+            		"r.firstname, r.lastname, concat(r.firstname,r.lastname) as fullname FROM serviceInfos i INNER JOIN services s ON s.id = i.service_id " +
+            		"INNER JOIN users u ON u.id = s.provider_id INNER JOIN registrations r ON u.reg_id = r.id) D " +
+            		"WHERE title like '%"+keyword+"%' and description like '%"+keyword+"%' and " +
+            		"fullname like '%"+provider+"%' ORDER BY FINAL_RATE DESC");
             rs = pstmt.executeQuery();
             services = new ArrayList<Service>();
             int index = 0;
