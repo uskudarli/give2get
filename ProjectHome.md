@@ -1,0 +1,1 @@
+This is a group project for "Bogazici University - Software Engineering - Software Development as a Team" class.
